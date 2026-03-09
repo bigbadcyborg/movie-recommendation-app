@@ -1,0 +1,18 @@
+{
+  "name": "movie-recommendation-backend",
+  "version": "1.0.0",
+  "description": "Movie Recommendation System Backend",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node src/db/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "jsonwebtoken": "^9.0.2",
+    "sql.js": "^1.11.0"
+  }
+}
