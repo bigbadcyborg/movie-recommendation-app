@@ -65,6 +65,37 @@ Visit **http://localhost:5173** in your browser.
   - Collaborative filtering (cosine similarity between users)
 - **User Profile** - View stats, manage preferred genres, see favorites and ratings
 
+## AI Automation (Ollama Agent)
+
+The system includes an automated movie curator powered by Ollama to periodically expand the movie database with new content and similarity links.
+
+### Agent Control Flow
+
+```mermaid
+graph TD
+    Start([Start Daily Update]) --> CheckOllama{Ollama Running?}
+    CheckOllama -- No --> Error[Exit with Error]
+    CheckOllama -- Yes --> Setup[Run setup_ollama_agent.sh]
+    
+    Setup --> CreateModel[ollama create cinematch-movie-curator]
+    CreateModel --> RunUpdate[run_daily_update.sh]
+    
+    subgraph "Update Process (update-movie-list.js)"
+        RunUpdate --> LoadData[Load movies.json & similarities.json]
+        LoadData --> GenMovies[Ollama: Generate New Movies]
+        GenMovies --> ValidateMovies{Validate & Sanitize}
+        ValidateMovies --> GenSim[Ollama: Generate Similarities]
+        GenSim --> Merge[Merge & Deduplicate Data]
+        Merge --> Save[Write back to .json files]
+    end
+    
+    Save --> Reseed{Reseed DB?}
+    Reseed -- Yes --> Seed[npm run seed --force]
+    Reseed -- No --> Sleep[Wait for next interval]
+    Seed --> Sleep
+    Sleep --> RunUpdate
+```
+
 ## API Endpoints
 
 | Method | Endpoint | Description |
