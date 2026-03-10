@@ -85,7 +85,7 @@ Visit **http://localhost:5173** in your browser.
 | GET | `/api/interactions/ratings` | Get user ratings |
 | GET | `/api/recommendations` | Get personalized recommendations |
 
-
+```text
 movie-recommendation-app/
 ├── backend/                    # Node.js/Express API server
 │   ├── src/
@@ -111,3 +111,4 @@ movie-recommendation-app/
 │   │   └── main.jsx
 │   └── vite.config.js
 └── README.md
+```
