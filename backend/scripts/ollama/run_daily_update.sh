@@ -8,6 +8,7 @@ UPDATE_SCRIPT="${SCRIPT_DIR}/update-movie-list.js"
 MODEL_NAME="${OLLAMA_MODEL:-cinematch-movie-curator}"
 MOVIE_COUNT="${MOVIE_COUNT:-5}"
 INTERVAL_SECONDS="${INTERVAL_SECONDS:-86400}"
+RESEED_AFTER_UPDATE="${RESEED_AFTER_UPDATE:-true}"
 RUN_ONCE="false"
 
 while [[ $# -gt 0 ]]; do
@@ -27,6 +28,10 @@ while [[ $# -gt 0 ]]; do
       INTERVAL_SECONDS="$2"
       shift
       ;;
+    --reseed-after-update)
+      RESEED_AFTER_UPDATE="$2"
+      shift
+      ;;
     *)
       echo "Unknown option: $1"
       exit 1
@@ -38,6 +43,12 @@ done
 run_update() {
   echo "[$(date -Iseconds)] Starting movie update (model=${MODEL_NAME}, count=${MOVIE_COUNT})"
   node "${UPDATE_SCRIPT}" --model "${MODEL_NAME}" --count "${MOVIE_COUNT}"
+
+  if [[ "${RESEED_AFTER_UPDATE}" == "true" ]]; then
+    echo "[$(date -Iseconds)] Re-seeding database from updated movies.json and similarities.json"
+    npm run seed -- --force
+  fi
+
   echo "[$(date -Iseconds)] Movie update finished"
 }
 

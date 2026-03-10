@@ -15,13 +15,38 @@ const MOVIES = JSON.parse(fs.readFileSync(path.join(__dirname, 'movies.json'), '
 const SIMILAR_PAIRS = JSON.parse(fs.readFileSync(path.join(__dirname, 'similarities.json'), 'utf8'));
 
 
+
+function parseArgs(argv) {
+  return {
+    force: argv.includes('--force')
+  };
+}
+
+function resetSeededData() {
+  runQuery('DELETE FROM movie_similarities');
+  runQuery('DELETE FROM recommendations');
+  runQuery('DELETE FROM ratings');
+  runQuery('DELETE FROM favorites');
+  runQuery('DELETE FROM comments');
+  runQuery('DELETE FROM movie_genres');
+  runQuery('DELETE FROM movies');
+  runQuery('DELETE FROM genres');
+  runQuery('DELETE FROM users');
+}
+
 async function seed() {
+  const options = parseArgs(process.argv.slice(2));
   await initializeSchema();
 
   const existingMovie = getOne('SELECT id FROM movies LIMIT 1');
-  if (existingMovie) {
+  if (existingMovie && !options.force) {
     console.log('Database already seeded. Skipping.');
     return;
+  }
+
+  if (options.force) {
+    console.log('Force seed enabled. Clearing existing seeded data...');
+    resetSeededData();
   }
 
   console.log('Seeding database...');

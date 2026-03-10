@@ -115,14 +115,14 @@ movie-recommendation-app/
 
 ## Daily Movie List Updates with Ollama
 
-The backend includes an Ollama-powered updater that can append fresh movie entries to `backend/src/db/movies.json` every day.
+The backend includes an Ollama-powered updater that refreshes both `backend/src/db/movies.json` and `backend/src/db/similarities.json` every day, then re-seeds the SQLite database from those JSON sources.
 
 ### Included files
 
 - `backend/ollama/Modelfile` - required model definition for the movie-curation agent.
 - `backend/scripts/ollama/setup_ollama_agent.sh` - builds the Ollama model locally.
 - `backend/scripts/ollama/run_daily_update.sh` - runs the update once or on a daily loop.
-- `backend/scripts/ollama/update-movie-list.js` - Node.js updater that validates and merges generated movies.
+- `backend/scripts/ollama/update-movie-list.js` - Node.js updater that validates/merges generated movies and generated similarity pairs.
 
 ### Setup
 
@@ -150,3 +150,12 @@ Optional environment variables:
 - `OLLAMA_MODEL` (default: `cinematch-movie-curator`)
 - `MOVIE_COUNT` (default: `5`)
 - `INTERVAL_SECONDS` (default: `86400`)
+- `RESEED_AFTER_UPDATE` (default: `true`, runs `npm run seed -- --force` after each update cycle)
+
+
+### Run updater without reseeding DB
+
+```bash
+cd backend
+RESEED_AFTER_UPDATE=false npm run ollama:run -- --once
+```

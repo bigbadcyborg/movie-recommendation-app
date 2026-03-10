@@ -9,7 +9,8 @@
     "seed": "node src/db/seed.js",
     "ollama:setup": "bash scripts/ollama/setup_ollama_agent.sh",
     "ollama:update": "node scripts/ollama/update-movie-list.js",
-    "ollama:run": "bash scripts/ollama/run_daily_update.sh"
+    "ollama:run": "bash scripts/ollama/run_daily_update.sh",
+    "seed:force": "node src/db/seed.js --force"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
