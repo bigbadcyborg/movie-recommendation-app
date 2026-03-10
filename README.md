@@ -228,7 +228,7 @@ RESEED_AFTER_UPDATE=false npm run ollama:run -- --once
 
 ## Poster URL Repair
 
-Fixes missing or broken poster URLs in `movies.json` using the DuckDuckGo Instant Answer API (no API key required). Also removes duplicate movie entries.
+Fixes missing or broken poster URLs in `movies.json` using the Wikipedia API (no API key required). Also removes duplicate movie entries.
 
 ```bash
 cd backend
