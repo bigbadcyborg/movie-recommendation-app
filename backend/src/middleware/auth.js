@@ -33,12 +33,19 @@ function optionalAuth(req, res, next) {
   next();
 }
 
+function requireAdmin(req, res, next) {
+  if (!req.user || !req.user.is_admin) {
+    return res.status(403).json({ error: 'Admin access required' });
+  }
+  next();
+}
+
 function generateToken(user) {
   return jwt.sign(
-    { id: user.id, username: user.username, email: user.email },
+    { id: user.id, username: user.username, email: user.email, is_admin: user.is_admin ? 1 : 0 },
     JWT_SECRET,
     { expiresIn: '7d' }
   );
 }
 
-module.exports = { authenticateToken, optionalAuth, generateToken, JWT_SECRET };
+module.exports = { authenticateToken, optionalAuth, requireAdmin, generateToken, JWT_SECRET };

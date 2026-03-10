@@ -287,6 +287,34 @@ a:hover {
   justify-content: center;
 }
 
+.hero-search-form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 32px;
+  gap: 8px;
+}
+
+.hero-search-form .search-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  color: white;
+  font-size: 16px;
+}
+
+.hero-search-form .search-input:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.hero-search-form .btn {
+  padding: 0 24px;
+  border-radius: var(--radius);
+}
+
 /* Sections */
 .section {
   padding: 60px 0;
@@ -493,6 +521,32 @@ a:hover {
 
 .filter-select option {
   background: var(--bg-secondary);
+}
+
+/* Similar Movies Section */
+.similar-movies-section {
+  border-top: 1px solid var(--border);
+  padding-top: 48px;
+  margin-top: 48px;
+}
+
+.similar-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.similar-movies-grid .movie-card-title {
+  font-size: 13px;
+}
+
+.similar-movies-grid .movie-card-info {
+  padding: 10px;
+}
+
+.similar-movies-grid .genre-tag {
+  padding: 2px 8px;
+  font-size: 10px;
 }
 
 /* Pagination */

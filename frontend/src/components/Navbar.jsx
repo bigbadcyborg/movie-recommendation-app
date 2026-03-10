@@ -26,6 +26,9 @@ export default function Navbar() {
         <div className="navbar-auth">
           {user ? (
             <>
+              {user.isAdmin && (
+                <Link to="/admin/add-movie" className="nav-link">Add Movie</Link>
+              )}
               <Link to="/profile" className="nav-link user-link">
                 <span className="user-avatar">{user.username[0].toUpperCase()}</span>
                 {user.username}

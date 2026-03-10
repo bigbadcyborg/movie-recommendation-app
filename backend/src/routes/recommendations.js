@@ -127,7 +127,49 @@ function getCollaborativeScores(userId) {
   return normalizedScores;
 }
 
-function generateExplanation(movieId, contentScore, collabScore, genreCounts) {
+function getSimilarMovieScores(userId) {
+  const userRatings = getAll(
+    'SELECT movie_id, rating FROM ratings WHERE user_id = ? AND rating >= 3',
+    [userId]
+  );
+  const userFavorites = getAll('SELECT movie_id FROM favorites WHERE user_id = ?', [userId]);
+
+  const likedMovies = new Map();
+  for (const r of userRatings) {
+    likedMovies.set(r.movie_id, r.rating / 5);
+  }
+  for (const f of userFavorites) {
+    if (!likedMovies.has(f.movie_id)) {
+      likedMovies.set(f.movie_id, 0.8);
+    }
+  }
+
+  if (likedMovies.size === 0) return {};
+
+  let totalWeight = 0;
+  const scores = {};
+
+  for (const [movieId, weight] of likedMovies) {
+    totalWeight += weight;
+    const similarMovies = getAll(
+      'SELECT similar_movie_id FROM movie_similarities WHERE movie_id = ?',
+      [movieId]
+    );
+    for (const { similar_movie_id } of similarMovies) {
+      if (!likedMovies.has(similar_movie_id)) {
+        scores[similar_movie_id] = (scores[similar_movie_id] || 0) + weight;
+      }
+    }
+  }
+
+  const normalized = {};
+  for (const [movieId, score] of Object.entries(scores)) {
+    normalized[Number(movieId)] = score / totalWeight;
+  }
+  return normalized;
+}
+
+function generateExplanation(movieId, contentScore, collabScore, similarScore, genreCounts) {
   const genres = getAll(
     'SELECT g.name FROM genres g JOIN movie_genres mg ON g.id = mg.genre_id WHERE mg.movie_id = ?',
     [movieId]
@@ -136,6 +178,19 @@ function generateExplanation(movieId, contentScore, collabScore, genreCounts) {
 
   const matchingGenres = genreNames.filter(g => genreCounts[g] > 0);
   const parts = [];
+
+  if (similarScore > 0) {
+    const sourceMovies = getAll(`
+      SELECT m.title FROM movies m
+      JOIN movie_similarities ms ON m.id = ms.movie_id
+      WHERE ms.similar_movie_id = ?
+      ORDER BY (SELECT AVG(r.rating) FROM ratings r WHERE r.movie_id = m.id) DESC
+      LIMIT 2
+    `, [movieId]);
+    if (sourceMovies.length > 0) {
+      parts.push(`Similar to ${sourceMovies.map(m => m.title).join(' and ')}`);
+    }
+  }
 
   if (matchingGenres.length > 0) {
     parts.push(`Matches your interest in ${matchingGenres.slice(0, 3).join(', ')}`);
@@ -157,10 +212,12 @@ router.get('/', authenticateToken, (req, res) => {
 
     const contentScores = getContentBasedScores(userId);
     const collabScores = getCollaborativeScores(userId);
+    const similarScores = getSimilarMovieScores(userId);
 
     const allMovieIds = new Set([
-      ...Object.keys(contentScores),
-      ...Object.keys(collabScores)
+      ...Object.keys(contentScores).map(Number),
+      ...Object.keys(collabScores).map(Number),
+      ...Object.keys(similarScores).map(Number)
     ]);
 
     const user = getOne('SELECT preferred_genres FROM users WHERE id = ?', [userId]);
@@ -187,17 +244,17 @@ router.get('/', authenticateToken, (req, res) => {
     }
 
     const scored = [];
-    for (const movieId of allMovieIds) {
-      const mid = Number(movieId);
+    for (const mid of allMovieIds) {
       const cs = contentScores[mid] || 0;
       const cf = collabScores[mid] || 0;
-      const finalScore = cs * 0.6 + cf * 0.4;
+      const sm = similarScores[mid] || 0;
+      const finalScore = cs * 0.35 + cf * 0.25 + sm * 0.40;
 
       if (finalScore > 0.01) {
         scored.push({
           movieId: mid,
           score: Math.round(finalScore * 100) / 100,
-          explanation: generateExplanation(mid, cs, cf, genreCounts)
+          explanation: generateExplanation(mid, cs, cf, sm, genreCounts)
         });
       }
     }
