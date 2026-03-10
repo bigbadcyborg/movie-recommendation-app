@@ -8,7 +8,7 @@
     "genres": [
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg"
   },
   {
     "title": "The Godfather",
@@ -20,7 +20,7 @@
       "Crime",
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
   },
   {
     "title": "The Dark Knight",
@@ -34,7 +34,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg"
   },
   {
     "title": "Pulp Fiction",
@@ -46,7 +46,7 @@
       "Crime",
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg"
   },
   {
     "title": "Forrest Gump",
@@ -58,7 +58,7 @@
       "Drama",
       "Romance"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVhYWU2ZjFmXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/6/67/Forrest_Gump_poster.jpg"
   },
   {
     "title": "Inception",
@@ -72,7 +72,7 @@
       "Sci-Fi",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg"
   },
   {
     "title": "The Matrix",
@@ -84,7 +84,7 @@
       "Action",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDL0XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/d/db/The_Matrix.png"
   },
   {
     "title": "Interstellar",
@@ -97,7 +97,7 @@
       "Drama",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
   },
   {
     "title": "Gladiator",
@@ -110,7 +110,7 @@
       "Adventure",
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png"
   },
   {
     "title": "The Lord of the Rings: The Fellowship of the Ring",
@@ -124,7 +124,7 @@
       "Drama",
       "Fantasy"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOGY3NTVmMDVhXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/f/fb/Lord_Rings_Fellowship_Ring.jpg"
   },
   {
     "title": "Fight Club",
@@ -136,7 +136,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/f/fc/Fight_Club_poster.jpg"
   },
   {
     "title": "Goodfellas",
@@ -148,7 +148,7 @@
       "Crime",
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/7/7b/Goodfellas.jpg"
   },
   {
     "title": "The Silence of the Lambs",
@@ -161,7 +161,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctNzZkOS00OWZmLTk0ODgtNGI1NDY4OWI4N2Q4XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/86/The_Silence_of_the_Lambs_poster.jpg"
   },
   {
     "title": "Saving Private Ryan",
@@ -173,7 +173,7 @@
       "Drama",
       "War"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWQtZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/ac/Saving_Private_Ryan_poster.jpg"
   },
   {
     "title": "Jurassic Park",
@@ -186,7 +186,7 @@
       "Adventure",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/e/e7/Jurassic_Park_poster.jpg"
   },
   {
     "title": "The Departed",
@@ -199,7 +199,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/5/50/Departed234.jpg"
   },
   {
     "title": "Whiplash",
@@ -210,7 +210,7 @@
     "genres": [
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BOTA5NDZlZGUtMjAxOS00YTRhLWJlYmMtYzNhMjgyOWQxMjI0XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/0/01/Whiplash_poster.jpg"
   },
   {
     "title": "Spirited Away",
@@ -223,7 +223,7 @@
       "Adventure",
       "Fantasy"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/d/db/Spirited_Away_Japanese_poster.png"
   },
   {
     "title": "Parasite",
@@ -236,7 +236,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/5/53/Parasite_%282019_film%29.png"
   },
   {
     "title": "The Grand Budapest Hotel",
@@ -249,7 +249,7 @@
       "Comedy",
       "Crime"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Grand_Budapest_Hotel.png"
   },
   {
     "title": "Mad Max: Fury Road",
@@ -262,7 +262,7 @@
       "Adventure",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BZDRkODJhOGYtYzc4MC00ZTcwLThjZGYtNGU1MzgyMjg5YjI2XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/6/6e/Mad_Max_Fury_Road.jpg"
   },
   {
     "title": "Get Out",
@@ -275,7 +275,7 @@
       "Mystery",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/a3/Get_Out_poster.png"
   },
   {
     "title": "La La Land",
@@ -288,7 +288,7 @@
       "Drama",
       "Romance"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/ab/La_La_Land_%28film%29.png"
   },
   {
     "title": "Alien",
@@ -300,7 +300,7 @@
       "Horror",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BOGQwMDhkZGEtMjRiYS00NDY2LWE2NjItNWQxNzRjOTg3NDUzXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/c/c3/Alien_movie_poster.jpg"
   },
   {
     "title": "The Prestige",
@@ -314,7 +314,7 @@
       "Sci-Fi",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/d/d2/Prestige_poster.jpg"
   },
   {
     "title": "Django Unchained",
@@ -326,7 +326,7 @@
       "Drama",
       "Western"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/8b/Django_Unchained_Poster.jpg"
   },
   {
     "title": "WALL-E",
@@ -339,7 +339,7 @@
       "Adventure",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMQ@@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/4/4c/WALL-E_poster.jpg"
   },
   {
     "title": "The Truman Show",
@@ -351,7 +351,7 @@
       "Comedy",
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMDIzODcyY2EtMmY2MC00ZWVlLTgwMzAtMjQwOWUyNmJlMDU5XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/c/cd/Trumanshow.jpg"
   },
   {
     "title": "No Country for Old Men",
@@ -364,7 +364,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/8b/No_Country_for_Old_Men_poster.jpg"
   },
   {
     "title": "Blade Runner 2049",
@@ -379,7 +379,7 @@
       "Sci-Fi",
       "Thriller"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/9/9b/Blade_Runner_2049_poster.png"
   },
   {
     "title": "Eternal Sunshine of the Spotless Mind",
@@ -392,7 +392,7 @@
       "Romance",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/a4/Eternal_Sunshine_of_the_Spotless_Mind.png"
   },
   {
     "title": "The Social Network",
@@ -403,7 +403,7 @@
     "genres": [
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMi00YzU0LWEzMTctNDBhYjgxNmI2MThlXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/8c/The_Social_Network_film_poster.png"
   },
   {
     "title": "Toy Story",
@@ -416,7 +416,7 @@
       "Adventure",
       "Comedy"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtMDQzODNlNGE3ZmFlXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg"
   },
   {
     "title": "The Shining",
@@ -428,7 +428,7 @@
       "Drama",
       "Horror"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/1/1d/The_Shining_%281980%29_U.K._release_poster_-_The_tide_of_terror_that_swept_America_IS_HERE.jpg"
   },
   {
     "title": "Schindlers List",
@@ -440,7 +440,7 @@
       "Drama",
       "War"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BNjM1ZDQxYWUtMzQyZS00MTE1LWJmZGYtNGUyNTdlYjM5MGQ2XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/3/38/Schindler%27s_List_movie.jpg"
   },
   {
     "title": "Coco",
@@ -455,7 +455,7 @@
       "Drama",
       "Fantasy"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/9/98/Coco_%282017_film%29_poster.jpg"
   },
   {
     "title": "The Wolf of Wall Street",
@@ -468,7 +468,7 @@
       "Crime",
       "Drama"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/d/d8/The_Wolf_of_Wall_Street_%282013%29.png"
   },
   {
     "title": "A Quiet Place",
@@ -481,7 +481,7 @@
       "Horror",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/a0/A_Quiet_Place_film_poster.png"
   },
   {
     "title": "The Princess Bride",
@@ -495,7 +495,7 @@
       "Fantasy",
       "Romance"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BYmJkMTYxMjYtNGIxYy00MDQ5LTljMTEtNTI4NWIxMjE0YWY1XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/d/db/Princess_bride.jpg"
   },
   {
     "title": "Dunkirk",
@@ -508,7 +508,7 @@
       "Drama",
       "War"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BZWU0ZTRhODAtOGQyMy00ZmZhLThlNDctNmY3ZTBjMzYxZWI0XkEyXkFqcGc@._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/1/15/Dunkirk_Film_poster.jpg"
   },
   {
     "title": "Arrival",
@@ -521,7 +521,7 @@
       "Mystery",
       "Sci-Fi"
     ],
-    "poster": "https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_SX300.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/d/df/Arrival%2C_Movie_Poster.jpg"
   },
   {
     "title": "The Revenant",
@@ -534,7 +534,7 @@
       "Drama",
       "Comedy"
     ],
-    "poster": ""
+    "poster": "https://upload.wikimedia.org/wikipedia/en/b/b6/The_Revenant_2015_film_poster.jpg"
   },
   {
     "title": "Ex Machina",
@@ -547,7 +547,7 @@
       "Sci-Fi",
       "Thriller"
     ],
-    "poster": "https://image.tmdb.org/t/p/w3o/9eJQXK6Rr2kUxW8uZ4y7dL"
+    "poster": "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Ex-machina-uk-poster.jpg/330px-Ex-machina-uk-poster.jpg"
   },
   {
     "title": "Her",
@@ -560,7 +560,7 @@
       "Romance",
       "Sci-Fi"
     ],
-    "poster": ""
+    "poster": "https://upload.wikimedia.org/wikipedia/en/4/44/Her2013Poster.jpg"
   },
   {
     "title": "The Imitation Game",
@@ -573,7 +573,7 @@
       "Drama",
       "Thriller"
     ],
-    "poster": ""
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/87/The_Imitation_Game_%282014%29.png"
   },
   {
     "title": "12 Angry Men",
@@ -584,19 +584,6 @@
     "genres": [
       "Drama"
     ],
-    "poster": "https://image.tmdb.org/t/p/w500/00000f0d-1e2a-41c3-a4b5-9f8f7f6fba88.jpg"
-  },
-  {
-    "title": "Schindler\"s List",
-    "director": "Steven Spielberg",
-    "year": 1993,
-    "duration": 192,
-    "desc": "Historical drama about a German businessman who saves the lives of thousands of Jews during WWII.",
-    "genres": [
-      "Drama",
-      "History",
-      "Thriller"
-    ],
-    "poster": "https://image.tmdb.org/t/p/w500/00000f0d-1e2a-41c3-a4b5-9f8f7f6fba88.jpg"
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/12_Angry_Men_%281957_film_poster%29.jpg/330px-12_Angry_Men_%281957_film_poster%29.jpg"
   }
 ]

@@ -202,3 +202,23 @@ Optional environment variables:
 cd backend
 RESEED_AFTER_UPDATE=false npm run ollama:run -- --once
 ```
+
+## Poster URL Repair
+
+Fixes missing or broken poster URLs in `movies.json` using the DuckDuckGo Instant Answer API (no API key required). Also removes duplicate movie entries.
+
+```bash
+cd backend
+
+# Preview changes without writing
+npm run fix:posters -- --dry-run
+
+# Apply fixes and save
+npm run fix:posters
+```
+
+After running, re-seed the database to apply changes:
+
+```bash
+npm run seed:force
+```

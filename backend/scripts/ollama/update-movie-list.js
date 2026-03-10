@@ -10,6 +10,7 @@
  */
 
 const fs = require('fs');
+const https = require('https');
 const path = require('path');
 const { execFileSync } = require('child_process');
 
@@ -169,6 +170,45 @@ class SearchProvider {
 }
 
 /**
+ * Fetches a poster image URL for a movie using the Wikipedia REST API.
+ * Requires no API key. Tries common article naming patterns for films.
+ */
+class PosterFetcher {
+  fetch(title, year) {
+    const candidates = [
+      `${title}_(${year}_film)`,
+      `${title}_(film)`,
+      title,
+    ];
+
+    const tryNext = (index) => {
+      if (index >= candidates.length) return Promise.resolve('');
+      const slug = encodeURIComponent(candidates[index].replace(/ /g, '_'));
+      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`;
+      return new Promise((resolve) => {
+        const req = https.get(url, { headers: { 'User-Agent': 'CineMatch/1.0' } }, (res) => {
+          let data = '';
+          res.on('data', (chunk) => { data += chunk; });
+          res.on('end', () => {
+            try {
+              const parsed = JSON.parse(data);
+              if (res.statusCode === 200 && parsed.thumbnail && parsed.thumbnail.source) {
+                return resolve(parsed.thumbnail.source);
+              }
+            } catch { /* ignore */ }
+            resolve(tryNext(index + 1));
+          });
+        });
+        req.on('error', () => resolve(tryNext(index + 1)));
+        req.setTimeout(8000, () => { req.destroy(); resolve(tryNext(index + 1)); });
+      });
+    };
+
+    return tryNext(0);
+  }
+}
+
+/**
  * Builds structured prompts for the AI, including existing data context to avoid duplicates.
  */
 class PromptBuilder {
@@ -274,7 +314,8 @@ class MovieCatalogUpdater {
     ollamaClient,
     promptBuilder,
     catalogMerger,
-    searchProvider
+    searchProvider,
+    posterFetcher
   }) {
     this.moviesRepository = moviesRepository;
     this.similaritiesRepository = similaritiesRepository;
@@ -282,6 +323,7 @@ class MovieCatalogUpdater {
     this.promptBuilder = promptBuilder;
     this.catalogMerger = catalogMerger;
     this.searchProvider = searchProvider;
+    this.posterFetcher = posterFetcher;
   }
 
   /**
@@ -405,7 +447,7 @@ class MovieCatalogUpdater {
    * 3. Sanitizes and merges generated items.
    * 4. Persists the changes to JSON files if not in dry-run mode.
    */
-  run({ count, dryRun, searchQuery }) {
+  async run({ count, dryRun, searchQuery }) {
     const currentMovies = this.moviesRepository.readArray();
     const currentSimilarities = this.similaritiesRepository.readArray();
     const existingTitles = currentMovies.map((movie) => movie.title);
@@ -438,6 +480,15 @@ class MovieCatalogUpdater {
       generatedMovies = this.extractJsonArray(rawMovieResponse)
         .map((movie) => MovieValidator.sanitize(movie))
         .filter(Boolean);
+    }
+
+    // Fetch missing posters for newly generated movies
+    if (this.posterFetcher && generatedMovies.length > 0) {
+      for (const movie of generatedMovies) {
+        if (!movie.poster || movie.poster.trim() === '') {
+          movie.poster = await this.posterFetcher.fetch(movie.title, movie.year);
+        }
+      }
     }
 
     const mergedMovies = this.catalogMerger.dedupeMoviesByTitle([...currentMovies, ...generatedMovies]);
@@ -521,7 +572,7 @@ function parseArgs(argv) {
 /**
  * Script entry point.
  */
-function main() {
+async function main() {
   const options = parseArgs(process.argv.slice(2));
   const PYTHON_PATH = 'C:/Users/sully/AppData/Local/Microsoft/WindowsApps/python3.13.exe';
 
@@ -531,10 +582,11 @@ function main() {
     ollamaClient: new OllamaClient(options.model),
     promptBuilder: new PromptBuilder(),
     catalogMerger: new CatalogMerger(),
-    searchProvider: new SearchProvider(PYTHON_PATH)
+    searchProvider: new SearchProvider(PYTHON_PATH),
+    posterFetcher: new PosterFetcher()
   });
 
-  const result = updater.run({
+  const result = await updater.run({
     count: options.count,
     dryRun: options.dryRun,
     searchQuery: options.search

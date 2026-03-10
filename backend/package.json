@@ -10,6 +10,7 @@
     "ollama:setup": "bash scripts/ollama/setup_ollama_agent.sh",
     "ollama:update": "node scripts/ollama/update-movie-list.js",
     "ollama:run": "bash scripts/ollama/run_daily_update.sh",
+    "fix:posters": "node scripts/fix-posters.js",
     "seed:force": "node src/db/seed.js --force"
   },
   "dependencies": {
