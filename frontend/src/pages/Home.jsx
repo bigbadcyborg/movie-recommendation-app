@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import MovieCard from '../components/MovieCard';
 
 export default function Home() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [popular, setPopular] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     async function load() {
@@ -33,6 +35,13 @@ export default function Home() {
     load();
   }, [user]);
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (search.trim()) {
+      navigate(`/movies?search=${encodeURIComponent(search.trim())}`);
+    }
+  };
+
   if (loading) {
     return <div className="container"><div className="spinner" /></div>;
   }
@@ -45,9 +54,21 @@ export default function Home() {
           <p>
             Personalized recommendations powered by your ratings, favorites, and viewing preferences.
           </p>
+          
+          <form onSubmit={handleSearch} className="hero-search-form">
+            <input
+              type="text"
+              placeholder="Search movies, directors..."
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              className="search-input"
+            />
+            <button type="submit" className="btn btn-primary">Search</button>
+          </form>
+
           <div className="hero-actions">
-            <Link to="/movies" className="btn btn-primary btn-lg">Browse Movies</Link>
-            {!user && <Link to="/register" className="btn btn-outline btn-lg">Get Started</Link>}
+            <Link to="/movies" className="btn btn-ghost btn-lg">Browse All</Link>
+            {!user && <Link to="/register" className="btn btn-primary btn-lg">Get Started</Link>}
           </div>
         </div>
       </section>
