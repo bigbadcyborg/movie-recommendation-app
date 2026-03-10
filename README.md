@@ -112,3 +112,41 @@ movie-recommendation-app/
 │   └── vite.config.js
 └── README.md
 ```
+
+## Daily Movie List Updates with Ollama
+
+The backend includes an Ollama-powered updater that can append fresh movie entries to `backend/src/db/movies.json` every day.
+
+### Included files
+
+- `backend/ollama/Modelfile` - required model definition for the movie-curation agent.
+- `backend/scripts/ollama/setup_ollama_agent.sh` - builds the Ollama model locally.
+- `backend/scripts/ollama/run_daily_update.sh` - runs the update once or on a daily loop.
+- `backend/scripts/ollama/update-movie-list.js` - Node.js updater that validates and merges generated movies.
+
+### Setup
+
+```bash
+cd backend
+npm run ollama:setup
+```
+
+### Run once
+
+```bash
+cd backend
+npm run ollama:run -- --once
+```
+
+### Run continuously (daily)
+
+```bash
+cd backend
+npm run ollama:run
+```
+
+Optional environment variables:
+
+- `OLLAMA_MODEL` (default: `cinematch-movie-curator`)
+- `MOVIE_COUNT` (default: `5`)
+- `INTERVAL_SECONDS` (default: `86400`)

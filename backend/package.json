@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "seed": "node src/db/seed.js"
+    "seed": "node src/db/seed.js",
+    "ollama:setup": "bash scripts/ollama/setup_ollama_agent.sh",
+    "ollama:update": "node scripts/ollama/update-movie-list.js",
+    "ollama:run": "bash scripts/ollama/run_daily_update.sh"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
