@@ -96,6 +96,18 @@ graph TD
     Sleep --> RunUpdate
 ```
 
+### Usage
+
+To manually trigger the AI curator and add a specific number of movies:
+
+```bash
+# From the backend directory
+npm run ollama:run -- --once --count <number>
+```
+
+- `--once`: Runs a single update cycle and exits.
+- `--count <number>`: Specifies how many unique movies to add (default: 5, max: 25).
+
 ## API Endpoints
 
 | Method | Endpoint | Description |

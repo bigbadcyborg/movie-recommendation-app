@@ -51,11 +51,9 @@ while [[ $# -gt 0 ]]; do
   shift
 done
 
-/**
- * Executes a single update cycle:
- * 1. Runs the Node.js update script to fetch new movies from AI.
- * 2. Optionally rescinds the SQLite database with the new data.
- */
+# Executes a single update cycle:
+# 1. Runs the Node.js update script to fetch new movies from AI.
+# 2. Optionally rescinds the SQLite database with the new data.
 run_update() {
   echo "[$(date -Iseconds)] Starting movie update (model=${MODEL_NAME}, count=${MOVIE_COUNT})"
   node "${UPDATE_SCRIPT}" --model "${MODEL_NAME}" --count "${MOVIE_COUNT}"

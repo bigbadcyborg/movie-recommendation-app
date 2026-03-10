@@ -127,11 +127,44 @@ class OllamaClient {
    * Invokes 'ollama run <model> <prompt>' and returns the raw output.
    */
   generate(prompt) {
-    return execFileSync('ollama', ['run', this.modelName, prompt], {
-      encoding: 'utf8',
-      stdio: ['ignore', 'pipe', 'pipe'],
-      maxBuffer: 10 * 1024 * 1024
-    });
+    try {
+      return execFileSync('ollama', ['run', this.modelName, prompt], {
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe'],
+        maxBuffer: 10 * 1024 * 1024
+      });
+    } catch (error) {
+      console.error(`[ollama-client] Failed to generate for model ${this.modelName}.`);
+      console.error(`[ollama-client] Error: ${error.stderr || error.message}`);
+      console.error(`[ollama-client] Hint: Ensure you've run 'bash backend/scripts/ollama/setup_ollama_agent.sh' to create the model.`);
+      throw error;
+    }
+  }
+}
+
+/**
+ * Handles web-based search for movie data using a sub-script.
+ */
+class SearchProvider {
+  constructor(pythonPath) {
+    this.pythonPath = pythonPath;
+    this.scriptPath = path.resolve(__dirname, 'search_movies.py');
+  }
+
+  /**
+   * Performs a search using the python bridge.
+   */
+  search(query) {
+    try {
+      const output = execFileSync(this.pythonPath, [this.scriptPath, query], {
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'pipe']
+      });
+      return JSON.parse(output.trim());
+    } catch (error) {
+      console.warn(`[search-provider] Warning: Search failed for "${query}".`);
+      return [];
+    }
   }
 }
 
@@ -143,14 +176,18 @@ class PromptBuilder {
    * Creates a prompt for generating new movie entries.
    */
   buildMoviePrompt(existingTitles, existingSimilarities, count) {
+    // 1B model struggles with long title lists. Limit the context to the last 20 titles.
+    const limitedTitles = existingTitles.slice(-20);
     return [
-      `Generate ${count} unique movies NOT present in the existing title list.`,
-      'Return JSON only: an array of movie objects with fields:',
-      'title, director, year, duration, desc, genres, poster.',
-      'Genres should be broad labels like Drama, Comedy, Sci-Fi, Thriller, Action, Romance, Horror.',
-      'Poster should be a URL string or empty string if unknown.',
-      `Existing titles to avoid: ${JSON.stringify(existingTitles)}`,
-      `Existing similarity pairs for style/context (do not duplicate): ${JSON.stringify(existingSimilarities.slice(0, 100))}`
+      `Generate ${count} unique movies that are FAMOUS and popular but NOT in the list below.`,
+      'Return JSON only: an array of movie objects with fields: "title", "director", "year", "duration", "desc", "genres", "poster".',
+      'Rules:',
+      '- Only return the JSON array [ { "title": "Example", ... }, ... ].',
+      '- No Markdown. No JavaScript. No explanation.',
+      '- Genres: Drama, Comedy, Sci-Fi, Thriller, Action, Romance, Horror.',
+      '- Poster: valid URL or empty string.',
+      `- Recently added titles (do not repeat): ${JSON.stringify(limitedTitles)}`,
+      `Total catalog size to avoid: ${existingTitles.length} movies.`
     ].join('\n');
   }
 
@@ -158,17 +195,18 @@ class PromptBuilder {
    * Creates a prompt for generating similarity links between new and catalog movies.
    */
   buildSimilarityPrompt(newMovies, catalogTitles, existingSimilarities) {
+    // 1B model needs a smaller similarity task.
+    const sampleCatalog = catalogTitles.slice(-30);
     return [
-      'Create similarity links for newly generated movies.',
+      'Create 2-3 similarity links for each NEW movie below using titles from the catalog.',
       'Return JSON only: an array of [titleA, titleB] pairs.',
       'Rules:',
-      '- Use only titles from the provided catalog and new movies.',
-      '- At least one title in each pair must be a NEW movie.',
-      '- Do not repeat existing similarity pairs.',
-      '- No self-pairs.',
-      `New movies: ${JSON.stringify(newMovies.map((movie) => ({ title: movie.title, genres: movie.genres, year: movie.year })))}`,
-      `All catalog titles: ${JSON.stringify(catalogTitles)}`,
-      `Existing similarity pairs to avoid: ${JSON.stringify(existingSimilarities.slice(0, 200))}`
+      '- Use only titles from the provided lists.',
+      '- At least one title in each pair must be from the "New movies" list.',
+      '- Do not repeat existing pairs.',
+      `- New movies: ${JSON.stringify(newMovies.map((m) => m.title))}`,
+      `- Catalog titles to link with: ${JSON.stringify(sampleCatalog)}`,
+      '- Return format: [["Movie A", "Movie B"], ["Movie B", "Movie C"]]'
     ].join('\n');
   }
 }
@@ -235,29 +273,126 @@ class MovieCatalogUpdater {
     similaritiesRepository,
     ollamaClient,
     promptBuilder,
-    catalogMerger
+    catalogMerger,
+    searchProvider
   }) {
     this.moviesRepository = moviesRepository;
     this.similaritiesRepository = similaritiesRepository;
     this.ollamaClient = ollamaClient;
     this.promptBuilder = promptBuilder;
     this.catalogMerger = catalogMerger;
+    this.searchProvider = searchProvider;
   }
 
   /**
-   * Helper to find a JSON array within a potentially bloated text block from the AI.
+   * Robust JSON extractor using brace-depth tracking.
+   * Instead of trying to fix one big broken array string, it extracts each
+   * {...} object individually, repairs each one, and assembles the array.
+   * This handles the llama3.2:1b model's tendency to emit truncated arrays,
+   * literal \" escapes, }} double-braces, and objects without commas between them.
    */
-  extractJsonArray(rawText) {
-    const start = rawText.indexOf('[');
-    const end = rawText.lastIndexOf(']');
-    if (start === -1 || end === -1 || end <= start) {
-      throw new Error('Ollama response did not contain a JSON array.');
+  extractJsonArray(rawResponse) {
+    if (!rawResponse) throw new Error('Ollama result was empty.');
+
+    // Step 1: Global pre-processing on the raw string
+    let raw = rawResponse;
+
+    // Unescape literal \" sequences the 1B model emits (actual backslash + quote chars)
+    raw = raw.replace(/\\"/g, '"');
+
+    // Remove control characters (newlines inside strings break JSON.parse)
+    raw = raw.replace(/[\x00-\x09\x0B\x0C\x0E-\x1F\x7F]/g, ' ');
+    // Normalize newlines to spaces so strings don't have bare \n
+    raw = raw.replace(/\n|\r/g, ' ');
+
+    // Fix broken URL protocol: "https: "// -> https://
+    raw = raw.replace(/"https?:\s*"\/\//g, '"https://');
+    raw = raw.replace(/"http:\s*"\/\//g, '"http://');
+
+    // Collapse double closing braces (}} -> }) — the 1B model often emits these
+    raw = raw.replace(/}}/g, '}');
+
+    // Step 2: Extract individual {...} objects via brace-depth tracking (string-aware)
+    const objectStrings = [];
+    let depth = 0;
+    let objStart = -1;
+    let inString = false;
+    let prevChar = '';
+
+    for (let i = 0; i < raw.length; i++) {
+      const ch = raw[i];
+      if (ch === '"' && prevChar !== '\\') {
+        inString = !inString;
+      }
+      if (!inString) {
+        if (ch === '{') {
+          if (depth === 0) objStart = i;
+          depth++;
+        } else if (ch === '}') {
+          depth--;
+          if (depth === 0 && objStart !== -1) {
+            objectStrings.push(raw.slice(objStart, i + 1));
+            objStart = -1;
+          }
+        }
+      }
+      prevChar = ch;
     }
 
-    const candidate = rawText.slice(start, end + 1);
-    const parsed = JSON.parse(candidate);
-    if (!Array.isArray(parsed)) {
-      throw new Error('Ollama response JSON was not an array.');
+    if (objectStrings.length === 0) {
+      // Fallback: no objects found — response may be an array of primitive arrays
+      // (e.g. similarity pairs: [["Title A", "Title B"], ...])
+      const arrStart = raw.indexOf('[');
+      const arrEnd = raw.lastIndexOf(']');
+      if (arrStart !== -1 && arrEnd !== -1) {
+        const candidate = raw.slice(arrStart, arrEnd + 1)
+          .replace(/,\s*([\]}])/g, '$1'); // strip trailing commas
+        try {
+          const parsed = JSON.parse(candidate);
+          if (Array.isArray(parsed)) return parsed;
+        } catch {}
+      }
+      console.error('[json-parser] Failed to parse AI response. Raw suspect chunk:');
+      console.error(raw.slice(0, 500));
+      throw new Error('No JSON objects found in response.');
+    }
+
+    // Step 3: Parse each object individually, applying targeted repairs
+    const parsed = [];
+
+    for (const objStr of objectStrings) {
+      let fixed = objStr;
+
+      // Fix unclosed string values before } or , : "poster": "   } -> "poster": ""
+      fixed = fixed.replace(/:\s*"(\s*)(?=[,}])/g, ': ""');
+
+      // Fix possessive: someone"s -> someone's
+      fixed = fixed.replace(/(\w)"s\b/g, "$1\u2019s");
+
+      // Fix single quotes -> double (must come after possessive fix)
+      fixed = fixed.replace(/'/g, '"');
+
+      // Remove trailing commas before } or ]
+      fixed = fixed.replace(/,\s*}/g, '}');
+      fixed = fixed.replace(/,\s*]/g, ']');
+
+      // Wrap unquoted scalar values: "director": Christopher Nolan -> "director": "Christopher Nolan"
+      fixed = fixed.replace(/:\s*([^"\[\{0-9\-tfn][^,}\]"]*?)(?=[,}\]])/g, (match, p1) => {
+        const trimmed = p1.trim();
+        if (['true', 'false', 'null'].includes(trimmed)) return `: ${trimmed}`;
+        if (trimmed === '') return match;
+        return `: "${trimmed.replace(/"/g, '')}"`;
+      });
+
+      try {
+        parsed.push(JSON.parse(fixed));
+      } catch {
+        console.warn('[json-parser] Skipping unparseable object:', fixed.slice(0, 120));
+      }
+    }
+
+    if (parsed.length === 0) {
+      throw new Error('No parseable JSON objects found after repair attempts.');
     }
 
     return parsed;
@@ -270,17 +405,40 @@ class MovieCatalogUpdater {
    * 3. Sanitizes and merges generated items.
    * 4. Persists the changes to JSON files if not in dry-run mode.
    */
-  run({ count, dryRun }) {
+  run({ count, dryRun, searchQuery }) {
     const currentMovies = this.moviesRepository.readArray();
     const currentSimilarities = this.similaritiesRepository.readArray();
     const existingTitles = currentMovies.map((movie) => movie.title);
 
-    // Initial phase: Generating movies
-    const moviePrompt = this.promptBuilder.buildMoviePrompt(existingTitles, currentSimilarities, count);
-    const rawMovieResponse = this.ollamaClient.generate(moviePrompt);
-    const generatedMovies = this.extractJsonArray(rawMovieResponse)
-      .map((movie) => MovieValidator.sanitize(movie))
-      .filter(Boolean);
+    let generatedMovies = [];
+
+    if (searchQuery) {
+      console.log(`[movie-updater] Searching the internet for: "${searchQuery}"...`);
+      const searchResults = this.searchProvider.search(searchQuery);
+      console.log(`[movie-updater] Found ${searchResults.length} related links.`);
+
+      // Prompting AI to turn links into valid JSON movie data
+      const searchPrompt = [
+        `Convert the following movie search links/titles into detailed movie JSON metadata.`,
+        `Query: ${searchQuery}`,
+        `Links: ${JSON.stringify(searchResults)}`,
+        `Return JSON only. An array of movie objects with: title, director, year, duration, desc, genres, poster.`,
+        `- Exclude titles already in: ${JSON.stringify(existingTitles.slice(-20))}`,
+        `- Use genres: Action, Drama, Comedy, Sci-Fi, Thriller, Adventure, Horror.`
+      ].join('\n');
+      
+      const rawSearchResponse = this.ollamaClient.generate(searchPrompt);
+      generatedMovies = this.extractJsonArray(rawSearchResponse)
+        .map((movie) => MovieValidator.sanitize(movie))
+        .filter(Boolean);
+    } else {
+      // Initial phase: Generating movies randomly based on criteria
+      const moviePrompt = this.promptBuilder.buildMoviePrompt(existingTitles, currentSimilarities, count);
+      const rawMovieResponse = this.ollamaClient.generate(moviePrompt);
+      generatedMovies = this.extractJsonArray(rawMovieResponse)
+        .map((movie) => MovieValidator.sanitize(movie))
+        .filter(Boolean);
+    }
 
     const mergedMovies = this.catalogMerger.dedupeMoviesByTitle([...currentMovies, ...generatedMovies]);
     const newMovies = mergedMovies.slice(currentMovies.length);
@@ -305,6 +463,17 @@ class MovieCatalogUpdater {
     if (!dryRun) {
       this.moviesRepository.writeArray(mergedMovies);
       this.similaritiesRepository.writeArray(mergedSimilarities);
+
+      if (newMovies.length > 0) {
+        console.log(`[movie-updater] Added ${newMovies.length} new movies:`);
+        newMovies.forEach((m) => console.log(`  - ${m.title} (${m.year}) by ${m.director}`));
+      }
+
+      const newSims = mergedSimilarities.slice(currentSimilarities.length);
+      if (newSims.length > 0) {
+        console.log(`[movie-updater] Added ${newSims.length} new similarity links:`);
+        newSims.forEach(([a, b]) => console.log(`  - ${a} <-> ${b}`));
+      }
     }
 
     return {
@@ -328,7 +497,8 @@ function parseArgs(argv) {
     model: process.env.OLLAMA_MODEL || 'cinematch-movie-curator',
     moviesFile: path.resolve(__dirname, '../../src/db/movies.json'),
     similaritiesFile: path.resolve(__dirname, '../../src/db/similarities.json'),
-    dryRun: false
+    dryRun: false,
+    search: null
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -338,6 +508,7 @@ function parseArgs(argv) {
     if (arg === '--movies-file') options.moviesFile = path.resolve(argv[index + 1]);
     if (arg === '--similarities-file') options.similaritiesFile = path.resolve(argv[index + 1]);
     if (arg === '--dry-run') options.dryRun = true;
+    if (arg === '--search') options.search = argv[index + 1];
   }
 
   if (!Number.isInteger(options.count) || options.count < 1 || options.count > 25) {
@@ -352,16 +523,22 @@ function parseArgs(argv) {
  */
 function main() {
   const options = parseArgs(process.argv.slice(2));
+  const PYTHON_PATH = 'C:/Users/sully/AppData/Local/Microsoft/WindowsApps/python3.13.exe';
 
   const updater = new MovieCatalogUpdater({
     moviesRepository: new JsonFileRepository(options.moviesFile, 'Movies'),
     similaritiesRepository: new JsonFileRepository(options.similaritiesFile, 'Similarities'),
     ollamaClient: new OllamaClient(options.model),
     promptBuilder: new PromptBuilder(),
-    catalogMerger: new CatalogMerger()
+    catalogMerger: new CatalogMerger(),
+    searchProvider: new SearchProvider(PYTHON_PATH)
   });
 
-  const result = updater.run({ count: options.count, dryRun: options.dryRun });
+  const result = updater.run({
+    count: options.count,
+    dryRun: options.dryRun,
+    searchQuery: options.search
+  });
 
   console.log(
     `[movie-updater] movies_generated=${result.generatedMovieCount} movies_added=${result.addedMovieCount} movies_total=${result.totalMovieCount} similarities_generated=${result.generatedSimilarityCount} similarities_added=${result.addedSimilarityCount} similarities_total=${result.totalSimilarityCount} dryRun=${result.dryRun}`
