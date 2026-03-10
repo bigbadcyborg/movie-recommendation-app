@@ -72,27 +72,50 @@ The system includes an automated movie curator powered by Ollama to periodically
 ### Agent Control Flow
 
 ```mermaid
-graph TD
-    Start([Start Daily Update]) --> CheckOllama{Ollama Running?}
-    CheckOllama -- No --> Error[Exit with Error]
-    CheckOllama -- Yes --> Setup[Run setup_ollama_agent.sh]
-    
-    Setup --> CreateModel[ollama create cinematch-movie-curator]
-    CreateModel --> RunUpdate[run_daily_update.sh]
-    
-    subgraph "Update Process (update-movie-list.js)"
-        RunUpdate --> LoadData[Load movies.json & similarities.json]
-        LoadData --> GenMovies[Ollama: Generate New Movies]
-        GenMovies --> ValidateMovies{Validate & Sanitize}
-        ValidateMovies --> GenSim[Ollama: Generate Similarities]
-        GenSim --> Merge[Merge & Deduplicate Data]
-        Merge --> Save[Write back to .json files]
-    end
-    
-    Save --> Reseed{Reseed DB?}
-    Reseed -- Yes --> Seed[npm run seed --force]
-    Reseed -- No --> Sleep[Wait for next interval]
-    Seed --> Sleep
+flowchart TD
+    Start([npm run ollama:run]) --> Setup[setup_ollama_agent.sh\nBuilds cinematch-movie-curator\nfrom Modelfile]
+    Setup --> RunUpdate[run_daily_update.sh]
+    RunUpdate --> LoadData[Load movies.json\n& similarities.json]
+
+    LoadData --> Mode{Search query\nprovided?}
+
+    Mode -- "--search &lt;query&gt;" --> WebSearch[Python bridge:\nDuckDuckGo → IMDb links]
+    WebSearch --> SearchPrompt[Prompt: convert links\nto movie JSON metadata]
+    SearchPrompt --> ModelSearch[🤖 cinematch-movie-curator\nGenerates movie objects]
+
+    Mode -- "--count N\n(default)" --> MoviePrompt[Prompt: generate N new movies\nexcluding last 20 known titles]
+    MoviePrompt --> ModelGen[🤖 cinematch-movie-curator\nGenerates movie objects]
+
+    ModelGen --> ParseMovies[extractJsonArray:\nbrace-depth object extractor\n+ per-object JSON repair]
+    ModelSearch --> ParseMovies
+
+    ParseMovies --> Validate[MovieValidator.sanitize\nCheck title · director · desc\nyear · duration · genres]
+    Validate -- Invalid --> Drop[Discard object]
+    Validate -- Valid --> PosterCheck{poster\nempty?}
+
+    PosterCheck -- Yes --> WikiFetch[PosterFetcher:\nWikipedia REST API\nTitle_year_film → thumbnail]
+    PosterCheck -- No --> Merge
+    WikiFetch --> Merge
+
+    Merge[Deduplicate by title\nMerge with existing movies] --> NewMovies{Any new\nmovies added?}
+
+    NewMovies -- Yes --> SimPrompt[Prompt: suggest similarity pairs\nfor new movies vs full catalog]
+    NewMovies -- No --> SimPromptAny[Prompt: suggest similarity pairs\namong existing movies]
+
+    SimPrompt --> ModelSim[🤖 cinematch-movie-curator\nGenerates pairs]
+    SimPromptAny --> ModelSim
+
+    ModelSim --> ParseSim[extractJsonArray:\nfallback primitive-array parser]
+    ParseSim --> MergeSim[SimilarityValidator:\nfilter unknown titles\ndeduplicate pairs]
+
+    MergeSim --> DryRun{dry-run\nmode?}
+    DryRun -- Yes --> Summary[Print summary\nNo files written]
+    DryRun -- No --> Write[Write movies.json\n& similarities.json]
+
+    Write --> Reseed{RESEED_AFTER\n_UPDATE?}
+    Reseed -- Yes --> Seed[npm run seed --force\nRe-seeds SQLite DB]
+    Reseed -- No --> Sleep
+    Seed --> Sleep[Sleep INTERVAL_SECONDS\ndefault: 86400s / 1 day]
     Sleep --> RunUpdate
 ```
 
