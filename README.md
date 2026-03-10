@@ -84,3 +84,30 @@ Visit **http://localhost:5173** in your browser.
 | GET | `/api/interactions/favorites` | Get user favorites |
 | GET | `/api/interactions/ratings` | Get user ratings |
 | GET | `/api/recommendations` | Get personalized recommendations |
+
+
+movie-recommendation-app/
+├── backend/                    # Node.js/Express API server
+│   ├── src/
+│   │   ├── server.js          # Main entry point (port 3001)
+│   │   ├── db/
+│   │   │   ├── database.js    # SQLite wrapper (sql.js)
+│   │   │   ├── schema.js      # Database schema & initialization
+│   │   │   └── seed.js        # Database seeding with 40+ movies
+│   │   ├── routes/
+│   │   │   ├── auth.js        # User registration & login
+│   │   │   ├── movies.js      # Movie listing & search
+│   │   │   ├── interactions.js # Ratings, favorites, comments
+│   │   │   └── recommendations.js # Recommendation algorithm
+│   │   └── middleware/
+│   │       └── auth.js        # JWT authentication
+│   └── package.json
+├── frontend/                   # React 18 + Vite UI
+│   ├── src/
+│   │   ├── pages/            # Home, Movies, MovieDetail, Profile, Login, Register
+│   │   ├── components/       # MovieCard, StarRating, Navbar
+│   │   ├── context/          # AuthContext for state management
+│   │   ├── api/              # API client
+│   │   └── main.jsx
+│   └── vite.config.js
+└── README.md
