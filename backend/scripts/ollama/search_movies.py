@@ -4,34 +4,59 @@ import urllib.request
 import urllib.parse
 import re
 
-def search_movie(query):
+# Maps genre names to Wikipedia "List of..." article titles
+GENRE_LIST_PAGES = {
+    'Horror':    'List of horror films of the 2010s',
+    'Romance':   'List of romantic drama films',
+    'Comedy':    'List of American comedy films of the 2010s',
+    'Sci-Fi':    'List of science fiction films of the 2010s',
+    'Action':    'List of action films of the 2010s',
+    'Drama':     'List of drama films of the 2010s',
+    'Thriller':  'List of thriller films',
+    'Adventure': 'List of adventure films of the 2010s',
+}
+
+def get_movie_titles(query, limit=10):
     """
-    Simulates a search for a movie using a public API or duckduckgo scrape.
-    For this implementation, we use a simple search query to a public movie DB or search engine.
+    Uses Wikipedia's free search API to find real film titles matching the query.
+    Returns clean movie title strings (strips year suffixes like '(2015 film)').
+    API docs: https://www.mediawiki.org/wiki/API:Search
     """
-    encoded_query = urllib.parse.quote(query)
-    # Using a search endpoint (e.g., DuckDuckGo or a movie-specific API)
-    url = f"https://duckduckgo.com/html/?q={encoded_query}+movie+details+site:imdb.com"
-    
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-    
+    encoded = urllib.parse.quote(query + ' film')
+    url = (
+        'https://en.wikipedia.org/w/api.php'
+        f'?action=query&list=search&srsearch={encoded}'
+        f'&srlimit={limit}&srnamespace=0&format=json'
+    )
+    headers = {'User-Agent': 'CineMatch/1.0 (movie recommendation research)'}
     try:
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req) as response:
-            html = response.read().decode('utf-8')
-            
-            # Simple regex to find titles and links from the search result
-            links = re.findall(r'href="(https://www.imdb.com/title/tt\d+/)"', html)
-            return links[:3] # Return top 3 imdb links
-    except Exception as e:
-        return [f"Error searching: {str(e)}"]
+        with urllib.request.urlopen(req, timeout=10) as response:
+            data = json.loads(response.read().decode('utf-8'))
+        results = data.get('query', {}).get('search', [])
+        titles = []
+        seen = set()
+        for r in results:
+            title = r.get('title', '')
+            # Strip disambiguation suffixes: "Alien (1979 film)" -> "Alien"
+            clean = re.sub(r'\s*\(\d{4}\s+film\)$', '', title).strip()
+            clean = re.sub(r'\s*\(film\)$', '', clean).strip()
+            # Skip list articles, years, or very short titles
+            if clean.lower().startswith('list of') or len(clean) < 2:
+                continue
+            key = clean.lower()
+            if key in seen:
+                continue
+            seen.add(key)
+            titles.append(clean)
+        return titles
+    except Exception:
+        return []
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     if len(sys.argv) > 1:
-        query = " ".join(sys.argv[1:])
-        results = search_movie(query)
+        query = ' '.join(sys.argv[1:])
+        results = get_movie_titles(query)
         print(json.dumps(results))
     else:
         print(json.dumps([]))

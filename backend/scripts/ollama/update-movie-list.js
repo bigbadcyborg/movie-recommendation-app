@@ -215,39 +215,53 @@ class PromptBuilder {
   /**
    * Creates a prompt for generating new movie entries.
    */
-  buildMoviePrompt(existingTitles, existingSimilarities, count) {
-    // 1B model struggles with long title lists. Limit the context to the last 20 titles.
-    const limitedTitles = existingTitles.slice(-20);
+  buildMoviePrompt(existingTitles, count) {
+    // Pass the full title list so the model cannot regenerate any already-catalogued movie.
     return [
-      `Generate ${count} unique movies that are FAMOUS and popular but NOT in the list below.`,
+      `Generate ${count} unique, famous, real movies NOT in the exclusion list below.`,
       'Return JSON only: an array of movie objects with fields: "title", "director", "year", "duration", "desc", "genres", "poster".',
       'Rules:',
       '- Only return the JSON array [ { "title": "Example", ... }, ... ].',
       '- No Markdown. No JavaScript. No explanation.',
-      '- Genres: Drama, Comedy, Sci-Fi, Thriller, Action, Romance, Horror.',
-      '- Poster: valid URL or empty string.',
-      `- Recently added titles (do not repeat): ${JSON.stringify(limitedTitles)}`,
-      `Total catalog size to avoid: ${existingTitles.length} movies.`
+      '- Genres: Drama, Comedy, Sci-Fi, Thriller, Action, Romance, Horror, Adventure.',
+      '- Poster: empty string.',
+      `- Exclusion list — do not include ANY of these titles: ${JSON.stringify(existingTitles)}`,
     ].join('\n');
   }
 
-  /**
-   * Creates a prompt for generating similarity links between new and catalog movies.
-   */
-  buildSimilarityPrompt(newMovies, catalogTitles, existingSimilarities) {
-    // 1B model needs a smaller similarity task.
-    const sampleCatalog = catalogTitles.slice(-30);
-    return [
-      'Create 2-3 similarity links for each NEW movie below using titles from the catalog.',
-      'Return JSON only: an array of [titleA, titleB] pairs.',
-      'Rules:',
-      '- Use only titles from the provided lists.',
-      '- At least one title in each pair must be from the "New movies" list.',
-      '- Do not repeat existing pairs.',
-      `- New movies: ${JSON.stringify(newMovies.map((m) => m.title))}`,
-      `- Catalog titles to link with: ${JSON.stringify(sampleCatalog)}`,
-      '- Return format: [["Movie A", "Movie B"], ["Movie B", "Movie C"]]'
-    ].join('\n');
+}
+
+/**
+ * Computes genre-based similarity pairs for new movies against the full catalog.
+ * Uses Jaccard similarity of genre sets — deterministic, no LLM hallucination.
+ * Each new movie gets its top `topK` most genre-similar catalog partners.
+ */
+class SimilarityComputer {
+  static computePairs(newMovies, allMovies, topK = 2) {
+    const pairs = [];
+
+    for (const newMovie of newMovies) {
+      const newGenres = new Set((newMovie.genres || []).map((g) => g.toLowerCase()));
+      if (newGenres.size === 0) continue;
+
+      const scored = allMovies
+        .filter((m) => m.title.toLowerCase() !== newMovie.title.toLowerCase())
+        .map((m) => {
+          const mGenres = new Set((m.genres || []).map((g) => g.toLowerCase()));
+          const intersection = [...newGenres].filter((g) => mGenres.has(g)).length;
+          const union = new Set([...newGenres, ...mGenres]).size;
+          return { title: m.title, score: union > 0 ? intersection / union : 0 };
+        })
+        .filter((m) => m.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, topK);
+
+      for (const match of scored) {
+        pairs.push([newMovie.title, match.title]);
+      }
+    }
+
+    return pairs;
   }
 }
 
@@ -259,9 +273,12 @@ class CatalogMerger {
    * Returns a list of movies with duplicates (by title) removed.
    */
   dedupeMoviesByTitle(movies) {
+    // Normalize titles for comparison: lowercase, strip all non-alphanumeric characters.
+    // This catches near-duplicates like "Se7en" vs "Seven", "Schindler's List" vs "Schindlers List".
+    const normalize = (t) => t.toLowerCase().replace(/[^a-z0-9]/g, '');
     const seen = new Set();
     return movies.filter((movie) => {
-      const key = movie.title.toLowerCase();
+      const key = normalize(movie.title);
       if (seen.has(key)) return false;
       seen.add(key);
       return true;
@@ -408,10 +425,21 @@ class MovieCatalogUpdater {
       // Fix unclosed string values before } or , : "poster": "   } -> "poster": ""
       fixed = fixed.replace(/:\s*"(\s*)(?=[,}])/g, ': ""');
 
+      // Fix values where model wrapped content in movie-style quotes:
+      // "desc": ""Quote here." - Person." → "desc": "Quote here. - Person."
+      // Pattern: colon + opening-quote + extra-quote + content (stripping any inner ") + closing-quote before ,/}
+      fixed = fixed.replace(/:\s*""((?:[^"]|"(?!\s*[,}]))*?)"(?=\s*[,}])/g, (_, inner) => {
+        return ': "' + inner.replace(/"/g, '') + '"';
+      });
+
       // Fix possessive: someone"s -> someone's
       fixed = fixed.replace(/(\w)"s\b/g, "$1\u2019s");
 
-      // Fix single quotes -> double (must come after possessive fix)
+      // Protect contractions and possessives (don't, can't, it's, someone's)
+      // so the blanket ' -> " step below doesn't break in-string apostrophes.
+      fixed = fixed.replace(/(\b\w+)'(\w)/g, "$1\u2019$2");
+
+      // Fix single quotes -> double (must come after possessive/contraction protection)
       fixed = fixed.replace(/'/g, '"');
 
       // Remove trailing commas before } or ]
@@ -429,12 +457,18 @@ class MovieCatalogUpdater {
       try {
         parsed.push(JSON.parse(fixed));
       } catch {
-        console.warn('[json-parser] Skipping unparseable object:', fixed.slice(0, 120));
+        // Also attempt with " escapes flattened (catches bad \" at key boundaries)
+        try {
+          parsed.push(JSON.parse(fixed.replace(/\\"/g, '"')));
+        } catch {
+          console.warn('[json-parser] Skipping unparseable object:', fixed.slice(0, 500));
+        }
       }
     }
 
     if (parsed.length === 0) {
-      throw new Error('No parseable JSON objects found after repair attempts.');
+      console.warn('[json-parser] No parseable objects found after all repair attempts. Returning empty array.');
+      return [];
     }
 
     return parsed;
@@ -465,21 +499,66 @@ class MovieCatalogUpdater {
         `Query: ${searchQuery}`,
         `Links: ${JSON.stringify(searchResults)}`,
         `Return JSON only. An array of movie objects with: title, director, year, duration, desc, genres, poster.`,
-        `- Exclude titles already in: ${JSON.stringify(existingTitles.slice(-20))}`,
+        `- Exclusion list — do not include ANY of these titles: ${JSON.stringify(existingTitles)}`,
         `- Use genres: Action, Drama, Comedy, Sci-Fi, Thriller, Adventure, Horror.`
       ].join('\n');
-      
+
       const rawSearchResponse = this.ollamaClient.generate(searchPrompt);
       generatedMovies = this.extractJsonArray(rawSearchResponse)
         .map((movie) => MovieValidator.sanitize(movie))
         .filter(Boolean);
     } else {
-      // Initial phase: Generating movies randomly based on criteria
-      const moviePrompt = this.promptBuilder.buildMoviePrompt(existingTitles, currentSimilarities, count);
-      const rawMovieResponse = this.ollamaClient.generate(moviePrompt);
+      // Determine underrepresented genres to target the search
+      const VALID_GENRES = ['Action', 'Drama', 'Comedy', 'Sci-Fi', 'Thriller', 'Adventure', 'Horror', 'Romance'];
+      const genreCounts = {};
+      for (const movie of currentMovies) {
+        for (const g of (movie.genres || [])) {
+          genreCounts[g] = (genreCounts[g] || 0) + 1;
+        }
+      }
+      const sortedGenres = [...VALID_GENRES].sort((a, b) => (genreCounts[a] || 0) - (genreCounts[b] || 0));
+
+      // Auto-search the internet for movies in underrepresented genres
+      const allLinks = [];
+      const numQueries = Math.min(count, 3);
+      for (let i = 0; i < numQueries; i++) {
+        const genre = sortedGenres[i % sortedGenres.length];
+        console.log(`[movie-updater] Searching internet for: top ${genre} movies...`);
+        const links = this.searchProvider.search(`top ${genre} movies`);
+        allLinks.push(...links);
+      }
+      const uniqueLinks = [...new Set(allLinks)];
+
+      // Pre-filter: strip Wikipedia titles that already exist in the catalog
+      // so the LLM only ever sees genuinely new titles to work with.
+      const normalizeTitle = (t) => t.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const catalogNormalized = new Set(existingTitles.map(normalizeTitle));
+      const freshLinks = uniqueLinks.filter((t) => !catalogNormalized.has(normalizeTitle(t)));
+      console.log(`[movie-updater] ${freshLinks.length}/${uniqueLinks.length} Wikipedia titles are new to the catalog.`);
+
+      let rawMovieResponse;
+      if (freshLinks.length > 0) {
+        // Internet-grounded prompt: convert real movie titles to metadata
+        const moviePrompt = [
+          `Generate JSON metadata for up to ${count} of the following real movies.`,
+          `Return JSON only: [ { "title":"...", "director":"...", "year":"...", "duration":"...", "desc":"...", "genres":[...], "poster":"" } ]`,
+          'Rules: No markdown. Keep desc under 25 words. No double-quotes inside string values.',
+          'Genres: Action, Drama, Comedy, Sci-Fi, Thriller, Adventure, Horror, Romance.',
+          `Movie titles to convert: ${JSON.stringify(freshLinks)}`,
+        ].join('\n');
+        rawMovieResponse = this.ollamaClient.generate(moviePrompt);
+      } else {
+        // Fallback: pure generation with full exclusion list
+        console.log('[movie-updater] Internet search unavailable, falling back to generation.');
+        rawMovieResponse = this.ollamaClient.generate(
+          this.promptBuilder.buildMoviePrompt(existingTitles, count)
+        );
+      }
+
       generatedMovies = this.extractJsonArray(rawMovieResponse)
         .map((movie) => MovieValidator.sanitize(movie))
-        .filter(Boolean);
+        .filter(Boolean)
+        .slice(0, count);
     }
 
     // Fetch missing posters for newly generated movies
@@ -494,15 +573,8 @@ class MovieCatalogUpdater {
     const mergedMovies = this.catalogMerger.dedupeMoviesByTitle([...currentMovies, ...generatedMovies]);
     const newMovies = mergedMovies.slice(currentMovies.length);
 
-    // Second phase: Generating similarities for those new movies
-    const similarityPrompt = this.promptBuilder.buildSimilarityPrompt(
-      newMovies,
-      mergedMovies.map((movie) => movie.title),
-      currentSimilarities
-    );
-
-    const rawSimilarityResponse = this.ollamaClient.generate(similarityPrompt);
-    const generatedSimilarities = this.extractJsonArray(rawSimilarityResponse);
+    // Second phase: compute similarity pairs via genre overlap (deterministic, no LLM)
+    const generatedSimilarities = SimilarityComputer.computePairs(newMovies, mergedMovies);
 
     const mergedSimilarities = this.catalogMerger.mergeSimilarities(
       currentSimilarities,
@@ -574,7 +646,18 @@ function parseArgs(argv) {
  */
 async function main() {
   const options = parseArgs(process.argv.slice(2));
-  const PYTHON_PATH = 'C:/Users/sully/AppData/Local/Microsoft/WindowsApps/python3.13.exe';
+
+  // Detect the available Python executable (handles WSL, Linux, and Windows environments)
+  const PYTHON_PATH = (() => {
+    const candidates = ['python3', 'python', 'C:/Users/sully/AppData/Local/Microsoft/WindowsApps/python3.13.exe'];
+    for (const cmd of candidates) {
+      try {
+        execFileSync(cmd, ['--version'], { stdio: 'ignore' });
+        return cmd;
+      } catch { /* not available */ }
+    }
+    return candidates[0]; // best guess fallback
+  })();
 
   const updater = new MovieCatalogUpdater({
     moviesRepository: new JsonFileRepository(options.moviesFile, 'Movies'),

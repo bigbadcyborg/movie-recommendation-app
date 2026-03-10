@@ -585,5 +585,169 @@
       "Drama"
     ],
     "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/12_Angry_Men_%281957_film_poster%29.jpg/330px-12_Angry_Men_%281957_film_poster%29.jpg"
+  },
+  {
+    "title": "The Lord of the Rings: The Return of the King",
+    "director": "Peter Jackson",
+    "year": 2003,
+    "duration": 201,
+    "desc": "Even the smallest person can change the course of the future..",
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/4/48/Lord_Rings_Return_King.jpg"
+  },
+  {
+    "title": "The Lord of the Rings: The Two Towers",
+    "director": "Peter Jackson",
+    "year": 2002,
+    "duration": 201,
+    "desc": "Even the smallest person can change the course of the future..",
+    "genres": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/a/a1/Lord_Rings_Two_Towers.jpg"
+  },
+  {
+    "title": "Seven",
+    "director": "David Fincher",
+    "year": 1995,
+    "duration": 140,
+    "desc": "A detective hunts a serial killer who uses the seven deadly sins as a motif for his murders.",
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/6/68/Seven_%28movie%29_poster.jpg"
+  },
+  {
+    "title": "The Tree of Life",
+    "director": "Terrence Malick",
+    "year": 2011,
+    "duration": 169,
+    "desc": "A family’s journey through time and faith is explored in this philosophical drama.",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/4/4e/Thetreeoflifeposter.jpg"
+  },
+  {
+    "title": "Lake Mungo",
+    "director": "Jennifer Kent",
+    "year": 2015,
+    "duration": 96,
+    "desc": "A woman’s family is haunted by a supernatural entity in this Australian horror-comedy.",
+    "genres": [
+      "Horror",
+      "Comedy"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/6/68/Lake_Mungo_Official_Poster.jpg"
+  },
+  {
+    "title": "Scream",
+    "director": "Wes Craven",
+    "year": 1996,
+    "duration": 97,
+    "desc": "A group of teenagers must survive a series of murders inspired by a popular horror movie.",
+    "genres": [
+      "Thriller",
+      "Horror"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/86/Scream_%281996_film%29_poster.jpg"
+  },
+  {
+    "title": "The Monkey",
+    "director": "Tommy Lee Jones",
+    "year": 2001,
+    "duration": 97,
+    "desc": "A man with a rare condition must navigate his life and relationships while being pursued by a mysterious woman.",
+    "genres": [
+      "Romance film"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/9/9d/The_Monkey_film_poster.jpg"
+  },
+  {
+    "title": "Pillion",
+    "director": "David Cronenberg",
+    "year": 1994,
+    "duration": 142,
+    "desc": "A romantic thriller about a man who kidnaps his girlfriend.",
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/9/9f/Pillion_poster.jpg"
+  },
+  {
+    "title": "Epic film",
+    "director": "Francis Ford Coppola",
+    "year": 1997,
+    "duration": 142,
+    "desc": "A historical epic about the rise and fall of the Roman Empire.",
+    "genres": [
+      "Action",
+      "Drama",
+      "History",
+      "Romance"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Cabiria_poster.jpg/330px-Cabiria_poster.jpg"
+  },
+  {
+    "title": "Warm Bodies",
+    "director": "Jonathan Levine",
+    "year": 2013,
+    "duration": 108,
+    "desc": "A zombie romance film about a human who falls in love with a zombie.",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Horror",
+      "Romance"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/f/fe/Warm_Bodies_Theatrical_Poster.jpg"
+  },
+  {
+    "title": "The King of Comedy",
+    "director": "Jerry Thomas",
+    "year": 1982,
+    "duration": 97,
+    "desc": "A comedy film about a struggling comedian who kidnaps a talk show host.",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/8/84/Kingofcomedy.jpg"
+  },
+  {
+    "title": "Possum",
+    "director": "Robert Altman",
+    "year": 1975,
+    "duration": 96,
+    "desc": "A drama film about two brothers on the run from the law.",
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/en/7/75/Possum_%282018_film%29_poster.jpg"
+  },
+  {
+    "title": "Together",
+    "director": "Peter Greenaway",
+    "year": 1984,
+    "duration": 97,
+    "desc": "A fantasy drama film about a group of people who are trapped in a mysterious world.",
+    "genres": [
+      "Fantasy",
+      "Romance",
+      "Science Fiction"
+    ],
+    "poster": ""
   }
 ]
