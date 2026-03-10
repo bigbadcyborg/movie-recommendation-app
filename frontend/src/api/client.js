@@ -30,6 +30,7 @@ export const api = {
     get: (id) => request(`/movies/${id}`),
     genres: () => request('/movies/genres'),
     popular: () => request('/movies/popular'),
+    create: (data) => request('/movies', { method: 'POST', body: JSON.stringify(data) }),
   },
   interactions: {
     rate: (movieId, rating) => request('/interactions/rate', { method: 'POST', body: JSON.stringify({ movieId, rating }) }),

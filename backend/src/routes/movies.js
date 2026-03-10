@@ -1,6 +1,6 @@
 const express = require('express');
-const { getOne, getAll } = require('../db/database');
-const { optionalAuth } = require('../middleware/auth');
+const { getOne, getAll, runQuery, getLastInsertId } = require('../db/database');
+const { optionalAuth, authenticateToken, requireAdmin } = require('../middleware/auth');
 
 const router = express.Router();
 
@@ -171,6 +171,50 @@ router.get('/:id', optionalAuth, (req, res) => {
     });
   } catch (err) {
     console.error('Movie detail error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.post('/', authenticateToken, requireAdmin, (req, res) => {
+  try {
+    const { title, director, release_year, duration, description, poster_url, genres } = req.body;
+
+    if (!title) {
+      return res.status(400).json({ error: 'Title is required' });
+    }
+
+    const existing = getOne('SELECT id FROM movies WHERE title = ?', [title]);
+    if (existing) {
+      return res.status(409).json({ error: 'A movie with this title already exists' });
+    }
+
+    runQuery(
+      'INSERT INTO movies (title, director, release_year, duration, description, poster_url) VALUES (?, ?, ?, ?, ?, ?)',
+      [title, director || null, release_year ? parseInt(release_year) : null, duration ? parseInt(duration) : null, description || null, poster_url || null]
+    );
+
+    const movie = getOne('SELECT * FROM movies WHERE title = ?', [title]);
+
+    if (Array.isArray(genres) && genres.length > 0) {
+      for (const genreName of genres) {
+        const genre = getOne('SELECT id FROM genres WHERE name = ?', [genreName]);
+        if (genre) {
+          runQuery('INSERT OR IGNORE INTO movie_genres (movie_id, genre_id) VALUES (?, ?)', [movie.id, genre.id]);
+        }
+      }
+    }
+
+    const movieGenres = getAll(
+      'SELECT g.name FROM genres g JOIN movie_genres mg ON g.id = mg.genre_id WHERE mg.movie_id = ?',
+      [movie.id]
+    );
+
+    res.status(201).json({
+      ...movie,
+      genres: movieGenres.map(g => g.name)
+    });
+  } catch (err) {
+    console.error('Add movie error:', err);
     res.status(500).json({ error: 'Internal server error' });
   }
 });

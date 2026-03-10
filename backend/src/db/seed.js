@@ -88,6 +88,12 @@ async function seed() {
   );
   const demoUser = getOne('SELECT id FROM users WHERE username = ?', ['demo']);
 
+  const adminHash = bcrypt.hashSync('Admin1234', 10);
+  runQuery(
+    'INSERT INTO users (username, email, password_hash, is_admin) VALUES (?, ?, ?, ?)',
+    ['admin', 'admin@example.com', adminHash, 1]
+  );
+
   const sampleRatings = [
     { movieId: 1, rating: 5 }, { movieId: 3, rating: 5 }, { movieId: 6, rating: 4 },
     { movieId: 7, rating: 5 }, { movieId: 8, rating: 4 }, { movieId: 11, rating: 3 },
@@ -111,6 +117,7 @@ async function seed() {
   console.log(`  - ${GENRES.length} genres`);
   console.log(`  - ${MOVIES.length} movies`);
   console.log(`  - 1 demo user (demo / Password123)`);
+  console.log(`  - 1 admin user (admin / Admin1234)`);
 }
 
 seed().catch(console.error);

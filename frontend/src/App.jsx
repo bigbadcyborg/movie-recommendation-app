@@ -6,6 +6,7 @@ import MovieDetail from './pages/MovieDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
+import AddMovie from './pages/AddMovie';
 import { useAuth } from './context/AuthContext';
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/admin/add-movie" element={<AddMovie />} />
         </Routes>
       </main>
     </div>

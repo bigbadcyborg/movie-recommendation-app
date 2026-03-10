@@ -11,9 +11,17 @@ async function initializeSchema() {
       password_hash TEXT NOT NULL,
       preferred_genres TEXT DEFAULT '[]',
       watch_history TEXT DEFAULT '[]',
+      is_admin INTEGER DEFAULT 0,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )
   `);
+
+  // Migration: add is_admin column to existing databases that lack it
+  try {
+    runQuery('ALTER TABLE users ADD COLUMN is_admin INTEGER DEFAULT 0');
+  } catch {
+    // Column already exists, safe to ignore
+  }
 
   runQuery(`
     CREATE TABLE IF NOT EXISTS movies (
