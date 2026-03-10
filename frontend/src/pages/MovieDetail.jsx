@@ -221,7 +221,7 @@ export default function MovieDetail() {
       {similarMovies.length > 0 && (
         <section className="similar-movies-section">
           <h2>Similar Movies</h2>
-          <div className="movies-grid">
+          <div className="similar-movies-grid">
             {similarMovies.map(m => (
               <MovieCard key={m.id} movie={m} />
             ))}

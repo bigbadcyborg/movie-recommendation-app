@@ -495,6 +495,32 @@ a:hover {
   background: var(--bg-secondary);
 }
 
+/* Similar Movies Section */
+.similar-movies-section {
+  border-top: 1px solid var(--border);
+  padding-top: 48px;
+  margin-top: 48px;
+}
+
+.similar-movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.similar-movies-grid .movie-card-title {
+  font-size: 13px;
+}
+
+.similar-movies-grid .movie-card-info {
+  padding: 10px;
+}
+
+.similar-movies-grid .genre-tag {
+  padding: 2px 8px;
+  font-size: 10px;
+}
+
 /* Pagination */
 .pagination {
   display: flex;
