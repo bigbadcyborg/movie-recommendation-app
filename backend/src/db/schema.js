@@ -19,8 +19,10 @@ async function initializeSchema() {
   // Migration: add is_admin column to existing databases that lack it
   try {
     runQuery('ALTER TABLE users ADD COLUMN is_admin INTEGER DEFAULT 0');
-  } catch {
-    // Column already exists, safe to ignore
+  } catch (err) {
+    if (!err.message || !err.message.includes('duplicate column name')) {
+      throw err;
+    }
   }
 
   runQuery(`
@@ -115,7 +117,17 @@ async function initializeSchema() {
     )
   `);
 
-  runQuery('CREATE INDEX IF NOT EXISTS idx_users_email ON users(email)');
+  runQuery(`
+    CREATE TABLE IF NOT EXISTS movie_similarities (
+      movie_id INTEGER NOT NULL,
+      similar_movie_id INTEGER NOT NULL,
+      PRIMARY KEY (movie_id, similar_movie_id),
+      FOREIGN KEY (movie_id) REFERENCES movies(id) ON DELETE CASCADE,
+      FOREIGN KEY (similar_movie_id) REFERENCES movies(id) ON DELETE CASCADE
+    )
+  `);
+
+  runQuery('CREATE INDEX IF NOT EXISTS idx_movie_similarities_movie_id ON movie_similarities(movie_id)');
   runQuery('CREATE INDEX IF NOT EXISTS idx_users_username ON users(username)');
   runQuery('CREATE INDEX IF NOT EXISTS idx_movies_title ON movies(title)');
   runQuery('CREATE INDEX IF NOT EXISTS idx_ratings_user ON ratings(user_id, movie_id)');

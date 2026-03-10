@@ -81,6 +81,104 @@ async function seed() {
     }
   }
 
+  // Hardcoded similar-movie pairs (bidirectional).
+  // Each pair [A, B] means A is similar to B and B is similar to A.
+  const SIMILAR_PAIRS = [
+    // Drama masterpieces
+    ['The Shawshank Redemption', 'The Godfather'],
+    ['The Shawshank Redemption', "Schindler's List"],
+    ['The Shawshank Redemption', 'Forrest Gump'],
+    ['The Shawshank Redemption', 'The Green Mile'],
+    // Crime / Mob
+    ['The Godfather', 'Goodfellas'],
+    ['The Godfather', 'Pulp Fiction'],
+    ['The Godfather', 'The Departed'],
+    ['The Godfather', 'No Country for Old Men'],
+    ['Goodfellas', 'Pulp Fiction'],
+    ['Goodfellas', 'The Departed'],
+    ['Goodfellas', 'The Wolf of Wall Street'],
+    ['Goodfellas', 'Django Unchained'],
+    ['Pulp Fiction', 'Django Unchained'],
+    ['Pulp Fiction', 'Fight Club'],
+    ['Pulp Fiction', 'The Departed'],
+    ['The Departed', 'No Country for Old Men'],
+    ['The Departed', 'The Silence of the Lambs'],
+    ['No Country for Old Men', 'The Silence of the Lambs'],
+    ['No Country for Old Men', 'Parasite'],
+    // Nolan / mind-benders
+    ['The Dark Knight', 'Inception'],
+    ['The Dark Knight', 'The Prestige'],
+    ['The Dark Knight', 'Interstellar'],
+    ['Inception', 'The Prestige'],
+    ['Inception', 'Interstellar'],
+    ['Inception', 'The Matrix'],
+    ['Inception', 'Blade Runner 2049'],
+    ['The Matrix', 'Blade Runner 2049'],
+    ['The Matrix', 'Interstellar'],
+    ['The Matrix', 'Mad Max: Fury Road'],
+    ['The Matrix', 'Alien'],
+    // Sci-Fi
+    ['Interstellar', 'Arrival'],
+    ['Interstellar', 'Blade Runner 2049'],
+    ['Interstellar', 'WALL-E'],
+    ['Blade Runner 2049', 'Arrival'],
+    ['Blade Runner 2049', 'Alien'],
+    ['Arrival', 'Eternal Sunshine of the Spotless Mind'],
+    ['Arrival', 'A Quiet Place'],
+    ['Alien', 'A Quiet Place'],
+    ['Alien', 'Jurassic Park'],
+    ['Jurassic Park', 'Mad Max: Fury Road'],
+    // Adventure / Epic
+    ['Gladiator', 'The Lord of the Rings: The Fellowship of the Ring'],
+    ['Gladiator', 'Saving Private Ryan'],
+    ['Gladiator', 'Dunkirk'],
+    ['Gladiator', 'Mad Max: Fury Road'],
+    ['The Lord of the Rings: The Fellowship of the Ring', 'The Princess Bride'],
+    ['The Lord of the Rings: The Fellowship of the Ring', 'Spirited Away'],
+    ['Saving Private Ryan', "Schindler's List"],
+    ['Saving Private Ryan', 'Dunkirk'],
+    ["Schindler's List", 'Dunkirk'],
+    // Thriller / Horror
+    ['Fight Club', 'The Prestige'],
+    ['Fight Club', 'No Country for Old Men'],
+    ['The Silence of the Lambs', 'Get Out'],
+    ['The Silence of the Lambs', 'Parasite'],
+    ['Get Out', 'Parasite'],
+    ['Get Out', 'A Quiet Place'],
+    ['Get Out', 'The Shining'],
+    ['A Quiet Place', 'The Shining'],
+    ['The Shining', 'Alien'],
+    // Drama / Character
+    ['Forrest Gump', 'The Truman Show'],
+    ['Forrest Gump', 'La La Land'],
+    ['Whiplash', 'La La Land'],
+    ['Whiplash', 'The Social Network'],
+    ['La La Land', 'The Grand Budapest Hotel'],
+    ['La La Land', 'Eternal Sunshine of the Spotless Mind'],
+    ['The Truman Show', 'Eternal Sunshine of the Spotless Mind'],
+    ['The Truman Show', 'The Grand Budapest Hotel'],
+    ['The Social Network', 'The Wolf of Wall Street'],
+    // Animation / Family
+    ['Spirited Away', 'Princess Bride'],
+    ['Spirited Away', 'Coco'],
+    ['Spirited Away', 'WALL-E'],
+    ['Toy Story', 'WALL-E'],
+    ['Toy Story', 'Coco'],
+    ['WALL-E', 'Coco'],
+    ['The Princess Bride', 'The Grand Budapest Hotel'],
+  ];
+
+  let similarityCount = 0;
+  for (const [titleA, titleB] of SIMILAR_PAIRS) {
+    const movieA = getOne('SELECT id FROM movies WHERE title = ?', [titleA]);
+    const movieB = getOne('SELECT id FROM movies WHERE title = ?', [titleB]);
+    if (movieA && movieB) {
+      runQuery('INSERT OR IGNORE INTO movie_similarities (movie_id, similar_movie_id) VALUES (?, ?)', [movieA.id, movieB.id]);
+      runQuery('INSERT OR IGNORE INTO movie_similarities (movie_id, similar_movie_id) VALUES (?, ?)', [movieB.id, movieA.id]);
+      similarityCount++;
+    }
+  }
+
   const demoHash = bcrypt.hashSync('Password123', 10);
   runQuery(
     'INSERT INTO users (username, email, password_hash, preferred_genres) VALUES (?, ?, ?, ?)',
@@ -116,6 +214,7 @@ async function seed() {
   console.log('Database seeded successfully!');
   console.log(`  - ${GENRES.length} genres`);
   console.log(`  - ${MOVIES.length} movies`);
+  console.log(`  - ${similarityCount} similar-movie pairs`);
   console.log(`  - 1 demo user (demo / Password123)`);
   console.log(`  - 1 admin user (admin / Admin1234)`);
 }

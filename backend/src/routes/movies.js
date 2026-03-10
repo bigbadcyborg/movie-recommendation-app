@@ -1,8 +1,17 @@
 const express = require('express');
+const rateLimit = require('express-rate-limit');
 const { getOne, getAll, runQuery, getLastInsertId } = require('../db/database');
 const { optionalAuth, authenticateToken, requireAdmin } = require('../middleware/auth');
 
 const router = express.Router();
+
+const addMovieLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 30,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { error: 'Too many requests, please try again later' }
+});
 
 router.get('/', optionalAuth, (req, res) => {
   try {
@@ -125,6 +134,42 @@ router.get('/popular', (req, res) => {
   }
 });
 
+router.get('/:id/similar', (req, res) => {
+  try {
+    const movie = getOne('SELECT id FROM movies WHERE id = ?', [req.params.id]);
+    if (!movie) {
+      return res.status(404).json({ error: 'Movie not found' });
+    }
+
+    const similar = getAll(`
+      SELECT m.*,
+        (SELECT AVG(r.rating) FROM ratings r WHERE r.movie_id = m.id) as avg_rating,
+        (SELECT COUNT(r.id) FROM ratings r WHERE r.movie_id = m.id) as rating_count
+      FROM movies m
+      JOIN movie_similarities ms ON m.id = ms.similar_movie_id
+      WHERE ms.movie_id = ?
+      ORDER BY m.title
+    `, [req.params.id]);
+
+    const similarWithGenres = similar.map(m => {
+      const genres = getAll(
+        'SELECT g.name FROM genres g JOIN movie_genres mg ON g.id = mg.genre_id WHERE mg.movie_id = ?',
+        [m.id]
+      );
+      return {
+        ...m,
+        avg_rating: m.avg_rating ? Math.round(m.avg_rating * 10) / 10 : null,
+        genres: genres.map(g => g.name)
+      };
+    });
+
+    res.json(similarWithGenres);
+  } catch (err) {
+    console.error('Similar movies error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 router.get('/:id', optionalAuth, (req, res) => {
   try {
     const movie = getOne(`
@@ -175,9 +220,9 @@ router.get('/:id', optionalAuth, (req, res) => {
   }
 });
 
-router.post('/', authenticateToken, requireAdmin, (req, res) => {
+router.post('/', addMovieLimiter, authenticateToken, requireAdmin, (req, res) => {
   try {
-    const { title, director, release_year, duration, description, poster_url, genres } = req.body;
+    const { title, director, release_year, duration, description, poster_url, genres, similar_movie_ids } = req.body;
 
     if (!title) {
       return res.status(400).json({ error: 'Title is required' });
@@ -193,7 +238,8 @@ router.post('/', authenticateToken, requireAdmin, (req, res) => {
       [title, director || null, release_year ? parseInt(release_year) : null, duration ? parseInt(duration) : null, description || null, poster_url || null]
     );
 
-    const movie = getOne('SELECT * FROM movies WHERE title = ?', [title]);
+    const newId = getLastInsertId();
+    const movie = getOne('SELECT * FROM movies WHERE id = ?', [newId]);
 
     if (Array.isArray(genres) && genres.length > 0) {
       for (const genreName of genres) {
@@ -204,14 +250,31 @@ router.post('/', authenticateToken, requireAdmin, (req, res) => {
       }
     }
 
+    if (Array.isArray(similar_movie_ids) && similar_movie_ids.length > 0) {
+      for (const similarId of similar_movie_ids) {
+        const similarMovie = getOne('SELECT id FROM movies WHERE id = ?', [similarId]);
+        if (similarMovie) {
+          runQuery('INSERT OR IGNORE INTO movie_similarities (movie_id, similar_movie_id) VALUES (?, ?)', [movie.id, similarMovie.id]);
+          runQuery('INSERT OR IGNORE INTO movie_similarities (movie_id, similar_movie_id) VALUES (?, ?)', [similarMovie.id, movie.id]);
+        }
+      }
+    }
+
     const movieGenres = getAll(
       'SELECT g.name FROM genres g JOIN movie_genres mg ON g.id = mg.genre_id WHERE mg.movie_id = ?',
       [movie.id]
     );
 
+    const similarMovies = getAll(`
+      SELECT m.id, m.title FROM movies m
+      JOIN movie_similarities ms ON m.id = ms.similar_movie_id
+      WHERE ms.movie_id = ?
+    `, [movie.id]);
+
     res.status(201).json({
       ...movie,
-      genres: movieGenres.map(g => g.name)
+      genres: movieGenres.map(g => g.name),
+      similar_movies: similarMovies
     });
   } catch (err) {
     console.error('Add movie error:', err);

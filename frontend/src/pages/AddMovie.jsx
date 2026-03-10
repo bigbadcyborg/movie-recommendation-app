@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 
+const FIRST_FILM_YEAR = 1888;
+
 const ALL_GENRES = [
   'Action', 'Adventure', 'Animation', 'Comedy', 'Crime',
   'Documentary', 'Drama', 'Fantasy', 'Horror', 'Mystery',
@@ -19,8 +21,11 @@ export default function AddMovie() {
     duration: '',
     description: '',
     poster_url: '',
-    genres: []
+    genres: [],
+    similar_movie_ids: []
   });
+  const [allMovies, setAllMovies] = useState([]);
+  const [movieSearch, setMovieSearch] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
@@ -28,7 +33,11 @@ export default function AddMovie() {
   useEffect(() => {
     if (!user || !user.isAdmin) {
       navigate('/');
+      return;
     }
+    api.movies.list({ limit: 200 }).then(data => setAllMovies(data.movies || [])).catch((err) => {
+      console.error('Failed to load movies for similarity picker:', err);
+    });
   }, [user, navigate]);
 
   const handleChange = (e) => {
@@ -44,6 +53,19 @@ export default function AddMovie() {
         : [...prev.genres, genre]
     }));
   };
+
+  const handleSimilarToggle = (movieId) => {
+    setForm(prev => ({
+      ...prev,
+      similar_movie_ids: prev.similar_movie_ids.includes(movieId)
+        ? prev.similar_movie_ids.filter(id => id !== movieId)
+        : [...prev.similar_movie_ids, movieId]
+    }));
+  };
+
+  const filteredMovies = allMovies.filter(m =>
+    m.title.toLowerCase().includes(movieSearch.toLowerCase())
+  );
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -64,10 +86,13 @@ export default function AddMovie() {
         duration: form.duration ? parseInt(form.duration) : undefined,
         description: form.description.trim() || undefined,
         poster_url: form.poster_url.trim() || undefined,
-        genres: form.genres
+        genres: form.genres,
+        similar_movie_ids: form.similar_movie_ids
       });
       setSuccess(`"${movie.title}" was added successfully!`);
-      setForm({ title: '', director: '', release_year: '', duration: '', description: '', poster_url: '', genres: [] });
+      setAllMovies(prev => [...prev, movie]);
+      setForm({ title: '', director: '', release_year: '', duration: '', description: '', poster_url: '', genres: [], similar_movie_ids: [] });
+      setMovieSearch('');
     } catch (err) {
       setError(err.message);
     } finally {
@@ -124,8 +149,7 @@ export default function AddMovie() {
                 value={form.release_year}
                 onChange={handleChange}
                 placeholder="e.g. 1994"
-                min="1888"
-                max={new Date().getFullYear() + 5}
+                min={FIRST_FILM_YEAR}                max={new Date().getFullYear() + 5}
               />
             </div>
 
@@ -170,12 +194,11 @@ export default function AddMovie() {
 
           <div className="form-group">
             <label>Genres</label>
-            <div className="genre-grid" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '0.5rem' }}>
               {ALL_GENRES.map(genre => (
                 <button
                   key={genre}
                   type="button"
-                  className={`genre-tag${form.genres.includes(genre) ? ' active' : ''}`}
                   onClick={() => handleGenreToggle(genre)}
                   style={{
                     padding: '0.25rem 0.75rem',
@@ -193,6 +216,39 @@ export default function AddMovie() {
             </div>
           </div>
 
+          <div className="form-group">
+            <label>Similar Movies</label>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', margin: '0.25rem 0 0.5rem' }}>
+              Select movies that are similar to this one. They will appear in each other's "Similar Movies" section and feed the recommendation algorithm.
+            </p>
+            <input
+              type="text"
+              placeholder="Search movies..."
+              value={movieSearch}
+              onChange={e => setMovieSearch(e.target.value)}
+              style={{ marginBottom: '0.5rem' }}
+            />
+            {form.similar_movie_ids.length > 0 && (
+              <p style={{ fontSize: '0.8rem', color: 'var(--primary)', marginBottom: '0.5rem' }}>
+                {form.similar_movie_ids.length} movie{form.similar_movie_ids.length !== 1 ? 's' : ''} selected
+              </p>
+            )}
+            <div style={{ maxHeight: '200px', overflowY: 'auto', border: '1px solid var(--border)', borderRadius: '0.5rem', padding: '0.5rem' }}>
+              {filteredMovies.length === 0 ? (
+                <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', margin: 0 }}>No movies found</p>
+              ) : filteredMovies.map(m => (
+                <label key={m.id} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.25rem 0', cursor: 'pointer', fontSize: '0.875rem' }}>
+                  <input
+                    type="checkbox"
+                    checked={form.similar_movie_ids.includes(m.id)}
+                    onChange={() => handleSimilarToggle(m.id)}
+                  />
+                  {m.title} {m.release_year ? `(${m.release_year})` : ''}
+                </label>
+              ))}
+            </div>
+          </div>
+
           <button type="submit" className="btn btn-primary btn-block" disabled={loading}>
             {loading ? 'Adding movie...' : 'Add Movie'}
           </button>
@@ -201,3 +257,5 @@ export default function AddMovie() {
     </div>
   );
 }
+
+

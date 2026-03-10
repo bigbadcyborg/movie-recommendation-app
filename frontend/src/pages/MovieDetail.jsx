@@ -3,11 +3,13 @@ import { useParams, Link } from 'react-router-dom';
 import { api } from '../api/client';
 import { useAuth } from '../context/AuthContext';
 import StarRating from '../components/StarRating';
+import MovieCard from '../components/MovieCard';
 
 export default function MovieDetail() {
   const { id } = useParams();
   const { user } = useAuth();
   const [movie, setMovie] = useState(null);
+  const [similarMovies, setSimilarMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [commentText, setCommentText] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -15,8 +17,12 @@ export default function MovieDetail() {
   useEffect(() => {
     async function load() {
       try {
-        const data = await api.movies.get(id);
+        const [data, similar] = await Promise.all([
+          api.movies.get(id),
+          api.movies.similar(id)
+        ]);
         setMovie(data);
+        setSimilarMovies(similar);
       } catch (err) {
         console.error('Failed to load movie:', err);
       } finally {
@@ -211,6 +217,17 @@ export default function MovieDetail() {
           )}
         </div>
       </section>
+
+      {similarMovies.length > 0 && (
+        <section className="similar-movies-section">
+          <h2>Similar Movies</h2>
+          <div className="movies-grid">
+            {similarMovies.map(m => (
+              <MovieCard key={m.id} movie={m} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
