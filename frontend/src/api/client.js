@@ -11,8 +11,17 @@ async function request(endpoint, options = {}) {
   });
 
   if (!res.ok) {
-    const data = await res.json().catch(() => ({}));
-    throw new Error(data.error || `Request failed (${res.status})`);
+    const text = await res.text();
+    let data = {};
+    try {
+      data = text ? JSON.parse(text) : {};
+    } catch {
+      /* non-JSON body */
+    }
+    const detail =
+      data.error ||
+      (text && text.length < 200 && !text.trim().startsWith('<') ? text.trim() : null);
+    throw new Error(detail || `Request failed (${res.status})`);
   }
 
   return res.json();
@@ -43,5 +52,13 @@ export const api = {
   },
   recommendations: {
     get: (limit) => request(`/recommendations?limit=${limit || 10}`),
+  },
+  onboarding: {
+    starterMovies: (genreNames) => {
+      const q = genreNames.join(',');
+      return request(`/onboarding/starter-movies?genres=${encodeURIComponent(q)}`);
+    },
+    complete: (body) =>
+      request('/onboarding/complete', { method: 'POST', body: JSON.stringify(body) }),
   },
 };

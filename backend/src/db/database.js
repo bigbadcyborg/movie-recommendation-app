@@ -35,12 +35,20 @@ function saveDb() {
   fs.writeFileSync(DB_PATH, buffer);
 }
 
+function ensureDb() {
+  if (!db) {
+    throw new Error('Database not initialized');
+  }
+}
+
 function runQuery(sql, params = []) {
+  ensureDb();
   db.run(sql, params);
   saveDb();
 }
 
 function getOne(sql, params = []) {
+  ensureDb();
   const stmt = db.prepare(sql);
   stmt.bind(params);
   let result = null;
@@ -52,6 +60,7 @@ function getOne(sql, params = []) {
 }
 
 function getAll(sql, params = []) {
+  ensureDb();
   const stmt = db.prepare(sql);
   stmt.bind(params);
   const results = [];

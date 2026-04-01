@@ -36,6 +36,9 @@ async function seedTestData(db) {
   db.run("INSERT INTO movies (title, release_year) VALUES ('Test Movie D', 2017)");
   const movieD = getLastInsertId(db);
 
+  db.run("INSERT INTO movies (title, release_year) VALUES ('Test Movie E', 2016)");
+  const movieE = getLastInsertId(db);
+
   // --- movie_genres ---
   // Movie A: Action, Sci-Fi
   db.run('INSERT INTO movie_genres (movie_id, genre_id) VALUES (?, ?)', [movieA, actionId]);
@@ -46,6 +49,8 @@ async function seedTestData(db) {
   db.run('INSERT INTO movie_genres (movie_id, genre_id) VALUES (?, ?)', [movieC, dramaId]);
   // Movie D: Sci-Fi
   db.run('INSERT INTO movie_genres (movie_id, genre_id) VALUES (?, ?)', [movieD, scifiId]);
+  // Movie E: Action
+  db.run('INSERT INTO movie_genres (movie_id, genre_id) VALUES (?, ?)', [movieE, actionId]);
 
   // --- similarities (bidirectional): A↔B, C↔D ---
   db.run('INSERT INTO movie_similarities (movie_id, similar_movie_id) VALUES (?, ?)', [movieA, movieB]);
@@ -57,13 +62,13 @@ async function seedTestData(db) {
   const passwordHash = bcrypt.hashSync('Password123', 10);
 
   db.run(
-    "INSERT INTO users (username, email, password_hash, is_admin) VALUES ('testuser', 'test@test.com', ?, 0)",
+    "INSERT INTO users (username, email, password_hash, is_admin, onboarding_completed) VALUES ('testuser', 'test@test.com', ?, 0, 1)",
     [passwordHash]
   );
   const userId = getLastInsertId(db);
 
   db.run(
-    "INSERT INTO users (username, email, password_hash, is_admin) VALUES ('adminuser', 'admin@test.com', ?, 1)",
+    "INSERT INTO users (username, email, password_hash, is_admin, onboarding_completed) VALUES ('adminuser', 'admin@test.com', ?, 1, 1)",
     [passwordHash]
   );
   const adminId = getLastInsertId(db);
@@ -72,7 +77,7 @@ async function seedTestData(db) {
   const userToken = generateToken({ id: userId, username: 'testuser', email: 'test@test.com', is_admin: 0 });
   const adminToken = generateToken({ id: adminId, username: 'adminuser', email: 'admin@test.com', is_admin: 1 });
 
-  return { movieA, movieB, movieC, movieD, actionId, dramaId, scifiId, userId, adminId, userToken, adminToken };
+  return { movieA, movieB, movieC, movieD, movieE, actionId, dramaId, scifiId, userId, adminId, userToken, adminToken };
 }
 
 module.exports = { seedTestData };

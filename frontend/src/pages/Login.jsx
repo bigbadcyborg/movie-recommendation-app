@@ -14,8 +14,8 @@ export default function Login() {
     setError('');
     setLoading(true);
     try {
-      await login(form);
-      navigate('/');
+      const u = await login(form);
+      navigate(u.onboardingCompleted === false ? '/onboarding' : '/');
     } catch (err) {
       setError(err.message);
     } finally {

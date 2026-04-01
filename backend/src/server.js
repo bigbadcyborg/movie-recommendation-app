@@ -8,6 +8,7 @@ const authRoutes = require('./routes/auth');
 const movieRoutes = require('./routes/movies');
 const interactionRoutes = require('./routes/interactions');
 const recommendationRoutes = require('./routes/recommendations');
+const onboardingRoutes = require('./routes/onboarding');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,6 +20,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/movies', movieRoutes);
 app.use('/api/interactions', interactionRoutes);
 app.use('/api/recommendations', recommendationRoutes);
+app.use('/api/onboarding', onboardingRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });

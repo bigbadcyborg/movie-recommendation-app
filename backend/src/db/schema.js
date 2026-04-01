@@ -25,6 +25,19 @@ async function initializeSchema() {
     }
   }
 
+  try {
+    runQuery('ALTER TABLE users ADD COLUMN onboarding_completed INTEGER DEFAULT 0');
+  } catch (err) {
+    if (!err.message || !err.message.includes('duplicate column name')) {
+      throw err;
+    }
+  }
+
+  // Existing seeded accounts should skip cold-start
+  runQuery(
+    "UPDATE users SET onboarding_completed = 1 WHERE username IN ('demo', 'admin')"
+  );
+
   runQuery(`
     CREATE TABLE IF NOT EXISTS movies (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -135,6 +148,7 @@ async function initializeSchema() {
   runQuery('CREATE INDEX IF NOT EXISTS idx_comments_movie ON comments(movie_id)');
   runQuery('CREATE INDEX IF NOT EXISTS idx_recommendations_user ON recommendations(user_id, score)');
   runQuery('CREATE INDEX IF NOT EXISTS idx_interaction_logs_user ON interaction_logs(user_id, created_at)');
+  runQuery('CREATE INDEX IF NOT EXISTS idx_users_onboarding ON users(onboarding_completed)');
 
   console.log('Database schema initialized');
 }

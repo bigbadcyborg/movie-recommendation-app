@@ -12,6 +12,7 @@ const SCHEMA_SQL = `
     preferred_genres TEXT DEFAULT '[]',
     watch_history TEXT DEFAULT '[]',
     is_admin INTEGER DEFAULT 0,
+    onboarding_completed INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 

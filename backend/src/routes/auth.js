@@ -32,7 +32,10 @@ router.post('/register', (req, res) => {
       [username, email, passwordHash]
     );
 
-    const user = getOne('SELECT id, username, email, preferred_genres, is_admin, created_at FROM users WHERE username = ?', [username]);
+    const user = getOne(
+      'SELECT id, username, email, preferred_genres, is_admin, onboarding_completed, created_at FROM users WHERE username = ?',
+      [username]
+    );
     const token = generateToken(user);
 
     res.status(201).json({
@@ -43,6 +46,7 @@ router.post('/register', (req, res) => {
         email: user.email,
         isAdmin: !!user.is_admin,
         preferredGenres: JSON.parse(user.preferred_genres || '[]'),
+        onboardingCompleted: !!user.onboarding_completed,
         createdAt: user.created_at
       }
     });
@@ -79,6 +83,7 @@ router.post('/login', (req, res) => {
         email: user.email,
         isAdmin: !!user.is_admin,
         preferredGenres: JSON.parse(user.preferred_genres || '[]'),
+        onboardingCompleted: !!user.onboarding_completed,
         createdAt: user.created_at
       }
     });
@@ -91,7 +96,7 @@ router.post('/login', (req, res) => {
 router.get('/me', authenticateToken, (req, res) => {
   try {
     const user = getOne(
-      'SELECT id, username, email, preferred_genres, watch_history, is_admin, created_at FROM users WHERE id = ?',
+      'SELECT id, username, email, preferred_genres, watch_history, is_admin, onboarding_completed, created_at FROM users WHERE id = ?',
       [req.user.id]
     );
 
@@ -110,6 +115,7 @@ router.get('/me', authenticateToken, (req, res) => {
       isAdmin: !!user.is_admin,
       preferredGenres: JSON.parse(user.preferred_genres || '[]'),
       watchHistory: JSON.parse(user.watch_history || '[]'),
+      onboardingCompleted: !!user.onboarding_completed,
       createdAt: user.created_at,
       stats: {
         favorites: favoriteCount.count,
@@ -150,7 +156,10 @@ router.put('/me', authenticateToken, (req, res) => {
     params.push(req.user.id);
     runQuery(`UPDATE users SET ${updates.join(', ')} WHERE id = ?`, params);
 
-    const user = getOne('SELECT id, username, email, preferred_genres, is_admin, created_at FROM users WHERE id = ?', [req.user.id]);
+    const user = getOne(
+      'SELECT id, username, email, preferred_genres, is_admin, onboarding_completed, created_at FROM users WHERE id = ?',
+      [req.user.id]
+    );
 
     res.json({
       id: user.id,
@@ -158,6 +167,7 @@ router.put('/me', authenticateToken, (req, res) => {
       email: user.email,
       isAdmin: !!user.is_admin,
       preferredGenres: JSON.parse(user.preferred_genres || '[]'),
+      onboardingCompleted: !!user.onboarding_completed,
       createdAt: user.created_at
     });
   } catch (err) {

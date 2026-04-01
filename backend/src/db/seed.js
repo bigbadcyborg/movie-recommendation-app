@@ -61,15 +61,15 @@ async function seed() {
 
   const demoHash = bcrypt.hashSync('Password123', 10);
   runQuery(
-    'INSERT INTO users (username, email, password_hash, preferred_genres) VALUES (?, ?, ?, ?)',
-    ['demo', 'demo@example.com', demoHash, JSON.stringify(['Action', 'Sci-Fi', 'Drama'])]
+    'INSERT INTO users (username, email, password_hash, preferred_genres, onboarding_completed) VALUES (?, ?, ?, ?, ?)',
+    ['demo', 'demo@example.com', demoHash, JSON.stringify(['Action', 'Sci-Fi', 'Drama']), 1]
   );
   const demoUser = getOne('SELECT id FROM users WHERE username = ?', ['demo']);
 
   const adminHash = bcrypt.hashSync('Admin1234', 10);
   runQuery(
-    'INSERT INTO users (username, email, password_hash, is_admin) VALUES (?, ?, ?, ?)',
-    ['admin', 'admin@example.com', adminHash, 1]
+    'INSERT INTO users (username, email, password_hash, is_admin, onboarding_completed) VALUES (?, ?, ?, ?, ?)',
+    ['admin', 'admin@example.com', adminHash, 1, 1]
   );
 
   const sampleRatings = [
