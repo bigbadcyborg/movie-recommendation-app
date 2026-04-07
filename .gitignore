@@ -11,6 +11,7 @@ backend/data/
 .env
 .env.local
 .env.*.local
+backend/.env
 
 # Logs
 *.log
@@ -25,3 +26,5 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+package-lock.json
