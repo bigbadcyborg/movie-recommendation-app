@@ -12,7 +12,8 @@ function getFormattedDateTime() {
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const ampm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12 || 12;
-  return `${dd}-${mm}-${yy}-${hours}:${minutes}${ampm}`;
+  // Colon is not valid in Windows filenames; use dot as separator (e.g. 2.33PM)
+  return `${dd}-${mm}-${yy}-${hours}.${minutes}${ampm}`;
 }
 
 const backendDir = path.resolve(__dirname, '..');
