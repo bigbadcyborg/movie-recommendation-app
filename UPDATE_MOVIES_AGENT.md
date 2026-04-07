@@ -12,7 +12,7 @@ This repository stores the canonical movie catalog in JSON, then seeds SQLite fr
    - `duration` (number, minutes)
    - `desc` (string)
    - `genres` (array of strings)
-   - `poster` (string URL)
+   - `poster` (string URL; can be left blank because the preseed hook automatically fulfills it)
 3. Preserve valid JSON formatting (double quotes, comma placement, array/object brackets).
 
 ## Required consistency checks
@@ -23,6 +23,7 @@ This repository stores the canonical movie catalog in JSON, then seeds SQLite fr
 - Ensure movie titles are unique (case-insensitive).
 - Ensure similarity pairs are unique regardless of order (`[A, B]` is the same pair as `[B, A]`).
 - Ensure newly added movies have at least one related entry in `backend/src/db/similarities.json`.
+- Posters are validated automatically. If adding a new movie, you can leave the `poster` empty, or provide a URL. During `npm run seed`, the `preseed` script will automatically fetch and repair missing or broken URLs via the OMDb API.
 
 ## Validation steps after editing
 
@@ -40,14 +41,16 @@ From `backend/`:
    node -e "const fs=require('fs');const path=require('path');const movies=JSON.parse(fs.readFileSync(path.join('src','db','movies.json'),'utf8'));const sims=JSON.parse(fs.readFileSync(path.join('src','db','similarities.json'),'utf8'));const titles=new Set(movies.map(m=>m.title));const missing=[...new Set(sims.flat().filter(t=>!titles.has(t)))];const norm=p=>[p[0],p[1]].sort().join('||');const seen=new Set();let dup=0;for(const p of sims){const k=norm(p);if(seen.has(k)) dup++;else seen.add(k);}console.log('pairs',sims.length);console.log('missingTitles',missing.length?missing.join(' | '):'none');console.log('duplicatePairs',dup);"
    ```
 
-3. Force a fresh seed so counts are deterministic (seed does nothing if DB already exists):
+3. Ensure `.env` is populated with `OMDB_API_KEY` for fetching posters.
+
+4. Force a fresh seed so counts are deterministic (seed does nothing if DB already exists), which will trigger automatic image validation and OMDB fetching:
 
    ```powershell
    Remove-Item .\data\movies.db -Force
    npm run seed
    ```
 
-4. Confirm logs include expected movie count and similar-pair count.
+5. Confirm logs include expected movie count and similar-pair count.
 
 ## Data quality guidelines
 
@@ -62,7 +65,8 @@ From `backend/`:
 - Verified all movie genres are included in `GENRES` in `backend/src/db/seed.js`.
 - Updated `backend/src/db/similarities.json` for add/remove/rename title changes.
 - Passed duplicate-title, missing-title, and duplicate-pair checks.
-- Ran forced reseed and verified resulting counts in logs.
+- Set up an `OMDB_API_KEY` for fetching posters if needed.
+- Ran forced reseed and verified posters were injected properly along with the resulting counts in logs.
 
 ## Engineering focus
 
