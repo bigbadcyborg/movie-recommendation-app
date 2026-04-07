@@ -5,23 +5,39 @@ const path = require('path');
 
 const OMDB_API_KEY = process.env.OMDB_API_KEY;
 const MOVIES_PATH = path.join(__dirname, 'movies.json');
+const FALLBACK_POSTER = 'https://dummyimage.com/300x450/cccccc/000000.jpg&text=No+Poster';
 
 // Check if image URL is valid and returns an actual image
 const checkUrl = (url) => new Promise((resolve) => {
     if (!url || url.includes('dummyimage.com') || url.includes('No-Image-Placeholder')) {
         return resolve({ isValid: false, status: null });
     }
-    
-    https.get(url, (res) => {
-        let bytes = 0;
-        res.on('data', d => bytes += d.length);
-        res.on('end', () => {
-            const isValid = res.statusCode === 200 && bytes > 1000;
-            resolve({ isValid, status: res.statusCode, bytes });
+
+    let parsedUrl;
+    try {
+        parsedUrl = new URL(url);
+    } catch (e) {
+        return resolve({ isValid: false, error: e.message });
+    }
+
+    if (parsedUrl.protocol !== 'https:') {
+        return resolve({ isValid: false, error: 'Unsupported URL protocol' });
+    }
+
+    try {
+        https.get(parsedUrl, (res) => {
+            let bytes = 0;
+            res.on('data', d => bytes += d.length);
+            res.on('end', () => {
+                const isValid = res.statusCode === 200 && bytes > 1000;
+                resolve({ isValid, status: res.statusCode, bytes });
+            });
+        }).on('error', (e) => {
+            resolve({ isValid: false, error: e.message });
         });
-    }).on('error', (e) => {
+    } catch (e) {
         resolve({ isValid: false, error: e.message });
-    });
+    }
 });
 
 const fetchPosterFromOMDb = (title, year) => new Promise((resolve) => {
@@ -61,6 +77,7 @@ const fetchPosterFromOMDb = (title, year) => new Promise((resolve) => {
     }
 
     let updatedCount = 0;
+    let hasChanges = false;
 
     for (let i = 0; i < movies.length; i++) {
         const movie = movies[i];
@@ -84,19 +101,17 @@ const fetchPosterFromOMDb = (title, year) => new Promise((resolve) => {
             if (newPoster) {
                 movie.poster = newPoster;
                 updatedCount++;
+                hasChanges = true;
                 console.log(`  -> Success: ${newPoster}`);
             } else {
                 console.log(`  -> Failed to find poster for ${movie.title}`);
-                // Fallback to dummy so the application at least has structurally valid data, 
-                // but only if it's currently completely empty
-                if (!movie.poster) {
-                    movie.poster = 'https://dummyimage.com/300x450/cccccc/000000.jpg&text=No+Poster';
-                }
+                movie.poster = FALLBACK_POSTER;
+                hasChanges = true;
             }
         }
     }
 
-    if (updatedCount > 0) {
+    if (hasChanges) {
         fs.writeFileSync(MOVIES_PATH, JSON.stringify(movies, null, 2) + '\n');
         console.log(`\nUpdated ${updatedCount} posters in movies.json`);
     } else {
