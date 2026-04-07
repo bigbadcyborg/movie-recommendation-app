@@ -25,10 +25,9 @@ let output = '';
 let exitCode = 0;
 
 try {
-  output = execSync('npx jest --runInBand --verbose', {
+  output = execSync('npx jest --runInBand --verbose 2>&1', {
     cwd: backendDir,
     encoding: 'utf8',
-    stdio: ['ignore', 'pipe', 'pipe'],
   });
 } catch (err) {
   output = (err.stdout || '') + (err.stderr || '');

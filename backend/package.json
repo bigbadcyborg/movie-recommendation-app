@@ -7,7 +7,7 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "seed": "node src/db/seed.js",
-    "test": "jest --runInBand"
+    "test": "node scripts/save-test-report.js"
   },
   "jest": {
     "testEnvironment": "node",
