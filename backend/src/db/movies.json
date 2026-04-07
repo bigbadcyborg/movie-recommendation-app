@@ -1,65 +1,813 @@
 [
-  { "title": "The Shawshank Redemption", "director": "Frank Darabont", "year": 1994, "duration": 142, "desc": "A banker convicted of uxoricide forms a life-changing friendship with a fellow inmate as they find solace and eventual redemption through acts of common decency.", "genres": ["Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Godfather", "director": "Francis Ford Coppola", "year": 1972, "duration": 175, "desc": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son.", "genres": ["Crime", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Dark Knight", "director": "Christopher Nolan", "year": 2008, "duration": 152, "desc": "When a menace known as the Joker wreaks havoc on Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.", "genres": ["Action", "Crime", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg" },
-  { "title": "Pulp Fiction", "director": "Quentin Tarantino", "year": 1994, "duration": 154, "desc": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.", "genres": ["Crime", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Forrest Gump", "director": "Robert Zemeckis", "year": 1994, "duration": 142, "desc": "The history of the United States from the 1950s to the 70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.", "genres": ["Drama", "Romance"], "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVhYWU2ZjFmXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Inception", "director": "Christopher Nolan", "year": 2010, "duration": 148, "desc": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.", "genres": ["Action", "Adventure", "Sci-Fi", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg" },
-  { "title": "The Matrix", "director": "Lana Wachowski", "year": 1999, "duration": 136, "desc": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth: the life he knows is the elaborate deception of an evil cyber-intelligence.", "genres": ["Action", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDL0XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Interstellar", "director": "Christopher Nolan", "year": 2014, "duration": 169, "desc": "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot is tasked with piloting a spacecraft along with a team of researchers to find a new planet for humans.", "genres": ["Adventure", "Drama", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Gladiator", "director": "Ridley Scott", "year": 2000, "duration": 155, "desc": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.", "genres": ["Action", "Adventure", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Lord of the Rings: The Fellowship of the Ring", "director": "Peter Jackson", "year": 2001, "duration": 178, "desc": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.", "genres": ["Action", "Adventure", "Drama", "Fantasy"], "poster": "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOGY3NTVmMDVhXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Fight Club", "director": "David Fincher", "year": 1999, "duration": 139, "desc": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.", "genres": ["Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Goodfellas", "director": "Martin Scorsese", "year": 1990, "duration": 146, "desc": "The story of Henry Hill and his life in the mafia, covering his relationship with his wife Karen and his mob partners.", "genres": ["Crime", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BY2NkZjEzMDgtN2RjYy00YzM1LWI4ZmQtMjIwYjFjNmI3ZGEwXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Silence of the Lambs", "director": "Jonathan Demme", "year": 1991, "duration": 118, "desc": "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.", "genres": ["Crime", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctNzZkOS00OWZmLTk0ODgtNGI1NDY4OWI4N2Q4XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Saving Private Ryan", "director": "Steven Spielberg", "year": 1998, "duration": 169, "desc": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.", "genres": ["Drama", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BZjhkMDM4MWQtZTVjOC00ZDRhLThmYTAtM2I5NzBmNmNlMzI1XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Jurassic Park", "director": "Steven Spielberg", "year": 1993, "duration": 127, "desc": "A pragmatic paleontologist touring an almost complete theme park on an island is tasked with protecting a couple of kids after a power failure causes the parks cloned dinosaurs to run loose.", "genres": ["Action", "Adventure", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX300.jpg" },
-  { "title": "The Departed", "director": "Martin Scorsese", "year": 2006, "duration": 151, "desc": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.", "genres": ["Crime", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_SX300.jpg" },
-  { "title": "Whiplash", "director": "Damien Chazelle", "year": 2014, "duration": 106, "desc": "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a students potential.", "genres": ["Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BOTA5NDZlZGUtMjAxOS00YTRhLWJlYmMtYzNhMjgyOWQxMjI0XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Spirited Away", "director": "Hayao Miyazaki", "year": 2001, "duration": 125, "desc": "During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.", "genres": ["Animation", "Adventure", "Fantasy"], "poster": "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Parasite", "director": "Bong Joon Ho", "year": 2019, "duration": 132, "desc": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.", "genres": ["Comedy", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Grand Budapest Hotel", "director": "Wes Anderson", "year": 2014, "duration": 99, "desc": "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotels glorious years under an exceptional concierge.", "genres": ["Adventure", "Comedy", "Crime"], "poster": "https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_SX300.jpg" },
-  { "title": "Mad Max: Fury Road", "director": "George Miller", "year": 2015, "duration": 120, "desc": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper and a drifter named Max.", "genres": ["Action", "Adventure", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BZDRkODJhOGYtYzc4MC00ZTcwLThjZGYtNGU1MzgyMjg5YjI2XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Get Out", "director": "Jordan Peele", "year": 2017, "duration": 104, "desc": "A young African-American visits his white girlfriends parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.", "genres": ["Horror", "Mystery", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SX300.jpg" },
-  { "title": "La La Land", "director": "Damien Chazelle", "year": 2016, "duration": 128, "desc": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.", "genres": ["Comedy", "Drama", "Romance"], "poster": "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SX300.jpg" },
-  { "title": "Alien", "director": "Ridley Scott", "year": 1979, "duration": 117, "desc": "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission.", "genres": ["Horror", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BOGQwMDhkZGEtMjRiYS00NDY2LWE2NjItNWQxNzRjOTg3NDUzXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Prestige", "director": "Christopher Nolan", "year": 2006, "duration": 130, "desc": "After a tragic accident, two stage magicians in 1890s London engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.", "genres": ["Drama", "Mystery", "Sci-Fi", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_SX300.jpg" },
-  { "title": "Django Unchained", "director": "Quentin Tarantino", "year": 2012, "duration": 165, "desc": "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in the Deep South.", "genres": ["Drama", "Western"], "poster": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg" },
-  { "title": "WALL-E", "director": "Andrew Stanton", "year": 2008, "duration": 98, "desc": "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.", "genres": ["Animation", "Adventure", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMQ@@._V1_SX300.jpg" },
-  { "title": "The Truman Show", "director": "Peter Weir", "year": 1998, "duration": 103, "desc": "An insurance salesman discovers his whole life is actually a reality TV show.", "genres": ["Comedy", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BMDIzODcyY2EtMmY2MC00ZWVlLTgwMzAtMjQwOWUyNmJlMDU5XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "No Country for Old Men", "director": "Joel Coen", "year": 2007, "duration": 122, "desc": "Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.", "genres": ["Crime", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg" },
-  { "title": "Blade Runner 2049", "director": "Denis Villeneuve", "year": 2017, "duration": 164, "desc": "Young Blade Runner Ks discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, whos been missing for thirty years.", "genres": ["Action", "Drama", "Mystery", "Sci-Fi", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_SX300.jpg" },
-  { "title": "Eternal Sunshine of the Spotless Mind", "director": "Michel Gondry", "year": 2004, "duration": 108, "desc": "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories forever.", "genres": ["Drama", "Romance", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_SX300.jpg" },
-  { "title": "The Social Network", "director": "David Fincher", "year": 2010, "duration": 120, "desc": "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea.", "genres": ["Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BOGUyZDUxZjEtMmIzMi00YzU0LWEzMTctNDBhYjgxNmI2MThlXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Toy Story", "director": "John Lasseter", "year": 1995, "duration": 81, "desc": "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boys bedroom.", "genres": ["Animation", "Adventure", "Comedy"], "poster": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtMDQzODNlNGE3ZmFlXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Shining", "director": "Stanley Kubrick", "year": 1980, "duration": 146, "desc": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings.", "genres": ["Drama", "Horror"], "poster": "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Schindlers List", "director": "Steven Spielberg", "year": 1993, "duration": 195, "desc": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.", "genres": ["Drama", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BNjM1ZDQxYWUtMzQyZS00MTE1LWJmZGYtNGUyNTdlYjM5MGQ2XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Coco", "director": "Lee Unkrich", "year": 2017, "duration": 105, "desc": "Aspiring musician Miguel, confronted with his familys ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.", "genres": ["Animation", "Adventure", "Comedy", "Drama", "Fantasy"], "poster": "https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Wolf of Wall Street", "director": "Martin Scorsese", "year": 2013, "duration": 180, "desc": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.", "genres": ["Comedy", "Crime", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg" },
-  { "title": "A Quiet Place", "director": "John Krasinski", "year": 2018, "duration": 90, "desc": "In a post-apocalyptic world, a family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.", "genres": ["Drama", "Horror", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_SX300.jpg" },
-  { "title": "The Princess Bride", "director": "Rob Reiner", "year": 1987, "duration": 98, "desc": "While home sick in bed, a young boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies in his quest to be reunited with his true love.", "genres": ["Adventure", "Comedy", "Fantasy", "Romance"], "poster": "https://m.media-amazon.com/images/M/MV5BYmJkMTYxMjYtNGIxYy00MDQ5LTljMTEtNTI4NWIxMjE0YWY1XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Dunkirk", "director": "Christopher Nolan", "year": 2017, "duration": 106, "desc": "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.", "genres": ["Action", "Drama", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BZWU0ZTRhODAtOGQyMy00ZmZhLThlNDctNmY3ZTBjMzYxZWI0XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Arrival", "director": "Denis Villeneuve", "year": 2016, "duration": 116, "desc": "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecraft appear around the world.", "genres": ["Drama", "Mystery", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_SX300.jpg" },
-  { "title": "The Green Mile", "director": "Frank Darabont", "year": 1999, "duration": 189, "desc": "The lives of guards on Death Row are changed by one of their inmates, a gentle giant with mysterious supernatural powers.", "genres": ["Crime", "Drama", "Fantasy"], "poster": "https://m.media-amazon.com/images/M/MV5BMTUzOTczNTU3Nl5BMl5BanBnXkFtZTYwNTQ3OTM5._V1_SX300.jpg" },
-  { "title": "Se7en", "director": "David Fincher", "year": 1995, "duration": 127, "desc": "Two detectives hunt a serial killer who stages murders around the seven deadly sins.", "genres": ["Crime", "Drama", "Mystery", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BY2NmN2Q2OTgtYzNhMC00YjJkLTk2ZTktY2Y2Y2RjYzY1N2QzXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Memento", "director": "Christopher Nolan", "year": 2000, "duration": 113, "desc": "A man with short-term memory loss uses notes and tattoos to hunt his wife's killer.", "genres": ["Mystery", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BYmQ3MjliNjAtNWFiZS00YWI1LTlmZTktMzBiNDE1NjRhZjU2XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Usual Suspects", "director": "Bryan Singer", "year": 1995, "duration": 106, "desc": "A con artist's interrogation reveals a tangled crime story and the legend of Keyser Soze.", "genres": ["Crime", "Drama", "Mystery", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BY2RkOTc0YzQtN2Q0Ny00M2M5LTk3MWEtMzA3N2M4M2QxN2E0XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Back to the Future", "director": "Robert Zemeckis", "year": 1985, "duration": 116, "desc": "A teenager is accidentally sent to the 1950s and must ensure his parents fall in love to save his future.", "genres": ["Adventure", "Comedy", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BZmM0M2JhYzQtYjY3MC00YzlmLWFiYzYtOTc0YWQ0YzQwNTM4XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Terminator", "director": "James Cameron", "year": 1984, "duration": 107, "desc": "A cyborg assassin is sent back in time to kill the woman whose son will lead humanity's resistance.", "genres": ["Action", "Sci-Fi", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BNzM5MDQxNjAtOWQ2Yy00N2Y0LWE4MmEtN2ZlNmQ4M2QwM2Y3XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Terminator 2: Judgment Day", "director": "James Cameron", "year": 1991, "duration": 137, "desc": "A reprogrammed Terminator protects a young John Connor from a more advanced and deadly machine.", "genres": ["Action", "Sci-Fi", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BNGMyMGNkYzMtMjc0Yi00YjE0LWEzMGEtYzU3YmQ4N2Y5YjliXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Thing", "director": "John Carpenter", "year": 1982, "duration": 109, "desc": "Researchers in Antarctica are hunted by a shape-shifting alien that can perfectly imitate its victims.", "genres": ["Horror", "Mystery", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BYTA3NDU5MWEtNTYxMS00MGY5LTliNjQtN2Q3ZmYxZDIzZDkzXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Her", "director": "Spike Jonze", "year": 2013, "duration": 126, "desc": "A lonely writer develops an unexpected relationship with an advanced AI operating system.", "genres": ["Drama", "Romance", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BNDQ0NjM1NDg5MV5BMl5BanBnXkFtZTgwNzQ0NTQ0MDE@._V1_SX300.jpg" },
-  { "title": "The Imitation Game", "director": "Morten Tyldum", "year": 2014, "duration": 114, "desc": "During World War II, mathematician Alan Turing leads a team racing to crack Nazi Germany's Enigma code.", "genres": ["Drama", "Thriller", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BOTI1ODQxMTAtYzVkNC00YzQxLTk1OWMtN2Q0OGQ0MzEwOTlhXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Pan's Labyrinth", "director": "Guillermo del Toro", "year": 2006, "duration": 118, "desc": "In post-civil-war Spain, a young girl escapes into a dark fantasy world with dangerous trials.", "genres": ["Drama", "Fantasy", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BMDQwMGRiY2UtOWQ5Yy00NjAyLThjNWMtNDUxN2VkYjY0YzA2XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "Prisoners", "director": "Denis Villeneuve", "year": 2013, "duration": 153, "desc": "After two girls disappear, a desperate father takes matters into his own hands while police pursue leads.", "genres": ["Crime", "Drama", "Mystery", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMTg5NjY5NDczNF5BMl5BanBnXkFtZTcwNTI3MDI3OQ@@._V1_SX300.jpg" },
-  { "title": "Ex Machina", "director": "Alex Garland", "year": 2014, "duration": 108, "desc": "A programmer is invited to test an AI humanoid and uncovers unsettling motives behind the experiment.", "genres": ["Drama", "Mystery", "Sci-Fi", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMTUwOTMxNjc3MV5BMl5BanBnXkFtZTgwNzY1MzgxMzE@._V1_SX300.jpg" },
-  { "title": "Moonlight", "director": "Barry Jenkins", "year": 2016, "duration": 111, "desc": "A young man in Miami navigates identity, family, and love through three defining stages of his life.", "genres": ["Drama", "Romance"], "poster": "https://m.media-amazon.com/images/M/MV5BMjI3MzYxMTQzOV5BMl5BanBnXkFtZTgwMzY4NTU3OTE@._V1_SX300.jpg" },
-  { "title": "Spotlight", "director": "Tom McCarthy", "year": 2015, "duration": 129, "desc": "Investigative journalists uncover systemic abuse and cover-ups within a major religious institution.", "genres": ["Crime", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMjE5MzYwODk1MF5BMl5BanBnXkFtZTgwNTAzNzQ5NjE@._V1_SX300.jpg" },
-  { "title": "The Revenant", "director": "Alejandro G. Inarritu", "year": 2015, "duration": 156, "desc": "Left for dead after a brutal bear attack, a frontiersman fights to survive and seek justice.", "genres": ["Adventure", "Drama", "Thriller"], "poster": "https://m.media-amazon.com/images/M/MV5BMjA5NTA0Njc0OF5BMl5BanBnXkFtZTgwNDc0OTAzNzE@._V1_SX300.jpg" },
-  { "title": "1917", "director": "Sam Mendes", "year": 2019, "duration": 119, "desc": "Two British soldiers are sent on a near-impossible mission to deliver a message that could save hundreds.", "genres": ["Drama", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BN2YzZjg0YTUtYzYyMi00Mzk2LWEwMWQtNTRlYjdlY2E0MmQ2XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Iron Giant", "director": "Brad Bird", "year": 1999, "duration": 86, "desc": "A boy befriends a giant robot from outer space and must protect it from fearful authorities.", "genres": ["Animation", "Adventure", "Drama", "Sci-Fi"], "poster": "https://m.media-amazon.com/images/M/MV5BMTg4NzQ0NzM4NF5BMl5BanBnXkFtZTcwMTQxNzEzMQ@@._V1_SX300.jpg" },
-  { "title": "Inside Out", "director": "Pete Docter", "year": 2015, "duration": 95, "desc": "A young girl's emotions struggle to guide her through a difficult move and growing pains.", "genres": ["Animation", "Adventure", "Comedy", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BOTgxNzE4NDUtNTAxYi00N2I4LWJmZWUtZjBhNWU5M2QxYzE0XkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Lion King", "director": "Roger Allers", "year": 1994, "duration": 88, "desc": "A young lion prince flees his kingdom after tragedy and must return to reclaim his place as king.", "genres": ["Animation", "Adventure", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BMDQyM2VhNjMtN2IxNi00YWQ0LTg0Y2MtYjY4NGQ1YjNlN2FkXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "The Pianist", "director": "Roman Polanski", "year": 2002, "duration": 150, "desc": "A Polish Jewish pianist struggles to survive the destruction of Warsaw during World War II.", "genres": ["Drama", "War"], "poster": "https://m.media-amazon.com/images/M/MV5BMjEwNmE2N2YtM2RjNi00NmQwLTljM2EtN2QwNzBlYzA5YjUwXkEyXkFqcGc@._V1_SX300.jpg" },
-  { "title": "American History X", "director": "Tony Kaye", "year": 1998, "duration": 119, "desc": "A former neo-Nazi tries to stop his younger brother from following the same violent path.", "genres": ["Crime", "Drama"], "poster": "https://m.media-amazon.com/images/M/MV5BZmY3NWM1YjItZGIxNC00N2ZhLWE3NDItYzMwNDE5NjQ3MzQxXkEyXkFqcGc@._V1_SX300.jpg" }
+  {
+    "title": "The Shawshank Redemption",
+    "director": "Frank Darabont",
+    "year": 1994,
+    "duration": 142,
+    "desc": "A banker convicted of uxoricide forms a life-changing friendship with a fellow inmate as they find solace and eventual redemption through acts of common decency.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "year": 1972,
+    "duration": 175,
+    "desc": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant youngest son.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "year": 2008,
+    "duration": 152,
+    "desc": "When a menace known as the Joker wreaks havoc on Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Pulp Fiction",
+    "director": "Quentin Tarantino",
+    "year": 1994,
+    "duration": 154,
+    "desc": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Forrest Gump",
+    "director": "Robert Zemeckis",
+    "year": 1994,
+    "duration": 142,
+    "desc": "The history of the United States from the 1950s to the 70s unfolds from the perspective of an Alabama man with an IQ of 75, who yearns to be reunited with his childhood sweetheart.",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "year": 2010,
+    "duration": 148,
+    "desc": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Matrix",
+    "director": "Lana Wachowski",
+    "year": 1999,
+    "duration": 136,
+    "desc": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth: the life he knows is the elaborate deception of an evil cyber-intelligence.",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Interstellar",
+    "director": "Christopher Nolan",
+    "year": 2014,
+    "duration": 169,
+    "desc": "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot is tasked with piloting a spacecraft along with a team of researchers to find a new planet for humans.",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Gladiator",
+    "director": "Ridley Scott",
+    "year": 2000,
+    "duration": 155,
+    "desc": "A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "director": "Peter Jackson",
+    "year": 2001,
+    "duration": 178,
+    "desc": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Fight Club",
+    "director": "David Fincher",
+    "year": 1999,
+    "duration": 139,
+    "desc": "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTgyOGQ1NDItNGU3Ny00MjU3LTg2YWEtNmEyYjBiMjI1Y2M5XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Goodfellas",
+    "director": "Martin Scorsese",
+    "year": 1990,
+    "duration": 146,
+    "desc": "The story of Henry Hill and his life in the mafia, covering his relationship with his wife Karen and his mob partners.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2E5NzI2ZGMtY2VjNi00YTRjLWI1MDUtZGY5OWU1MWJjZjRjXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Silence of the Lambs",
+    "director": "Jonathan Demme",
+    "year": 1991,
+    "duration": 118,
+    "desc": "A young F.B.I. cadet must receive the help of an incarcerated and manipulative cannibal killer to help catch another serial killer.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Saving Private Ryan",
+    "director": "Steven Spielberg",
+    "year": 1998,
+    "duration": 169,
+    "desc": "Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.",
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGZhZGQ1ZWUtZTZjYS00MDJhLWFkYjctN2ZlYjE5NWYwZDM2XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Jurassic Park",
+    "director": "Steven Spielberg",
+    "year": 1993,
+    "duration": 127,
+    "desc": "A pragmatic paleontologist touring an almost complete theme park on an island is tasked with protecting a couple of kids after a power failure causes the parks cloned dinosaurs to run loose.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Departed",
+    "director": "Martin Scorsese",
+    "year": 2006,
+    "duration": 151,
+    "desc": "An undercover cop and a mole in the police attempt to identify each other while infiltrating an Irish gang in South Boston.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTI1MTY2OTIxNV5BMl5BanBnXkFtZTYwNjQ4NjY3._V1_SX300.jpg"
+  },
+  {
+    "title": "Whiplash",
+    "director": "Damien Chazelle",
+    "year": 2014,
+    "duration": 106,
+    "desc": "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a students potential.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDFjOWFkYzktYzhhMC00NmYyLTkwY2EtYjViMDhmNzg0OGFkXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Spirited Away",
+    "director": "Hayao Miyazaki",
+    "year": 2001,
+    "duration": 125,
+    "desc": "During her familys move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, and where humans are changed into beasts.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTEyNmEwOWUtYzkyOC00ZTQ4LTllZmUtMjk0Y2YwOGUzYjRiXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Parasite",
+    "director": "Bong Joon Ho",
+    "year": 2019,
+    "duration": 132,
+    "desc": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjk1Y2U4MjQtY2ZiNS00OWQyLWI3MmYtZWUwNmRjYWRiNWNhXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Grand Budapest Hotel",
+    "director": "Wes Anderson",
+    "year": 2014,
+    "duration": 99,
+    "desc": "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotels glorious years under an exceptional concierge.",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Crime"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzM5NjUxOTEyMl5BMl5BanBnXkFtZTgwNjEyMDM0MDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "Mad Max: Fury Road",
+    "director": "George Miller",
+    "year": 2015,
+    "duration": 120,
+    "desc": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in search for her homeland with the aid of a group of female prisoners, a psychotic worshiper and a drifter named Max.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDRkODJhOTgtOTc1OC00NTgzLTk4NjItNDgxZDY4YjlmNDY2XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Get Out",
+    "director": "Jordan Peele",
+    "year": 2017,
+    "duration": 104,
+    "desc": "A young African-American visits his white girlfriends parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SX300.jpg"
+  },
+  {
+    "title": "La La Land",
+    "director": "Damien Chazelle",
+    "year": 2016,
+    "duration": 128,
+    "desc": "While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SX300.jpg"
+  },
+  {
+    "title": "Alien",
+    "director": "Ridley Scott",
+    "year": 1979,
+    "duration": 117,
+    "desc": "The crew of a commercial spacecraft encounters a deadly lifeform after investigating an unknown transmission.",
+    "genres": [
+      "Horror",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2NhMDk2MmEtZDQzOC00MmY5LThhYzAtMDdjZGFjOGZjMjdjXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Prestige",
+    "director": "Christopher Nolan",
+    "year": 2006,
+    "duration": 130,
+    "desc": "After a tragic accident, two stage magicians in 1890s London engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_SX300.jpg"
+  },
+  {
+    "title": "Django Unchained",
+    "director": "Quentin Tarantino",
+    "year": 2012,
+    "duration": 165,
+    "desc": "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in the Deep South.",
+    "genres": [
+      "Drama",
+      "Western"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_SX300.jpg"
+  },
+  {
+    "title": "WALL-E",
+    "director": "Andrew Stanton",
+    "year": 2008,
+    "duration": 98,
+    "desc": "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Truman Show",
+    "director": "Peter Weir",
+    "year": 1998,
+    "duration": 103,
+    "desc": "An insurance salesman discovers his whole life is actually a reality TV show.",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzA3ZjZlNzYtMTdjMy00NjMzLTk5ZGYtMTkyYzNiOGM1YmM3XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "No Country for Old Men",
+    "director": "Joel Coen",
+    "year": 2007,
+    "duration": 122,
+    "desc": "Violence and mayhem ensue after a hunter stumbles upon a drug deal gone wrong and more than two million dollars in cash near the Rio Grande.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjA5Njk3MjM4OV5BMl5BanBnXkFtZTcwMTc5MTE1MQ@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Blade Runner 2049",
+    "director": "Denis Villeneuve",
+    "year": 2017,
+    "duration": 164,
+    "desc": "Young Blade Runner Ks discovery of a long-buried secret leads him to track down former Blade Runner Rick Deckard, whos been missing for thirty years.",
+    "genres": [
+      "Action",
+      "Drama",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_SX300.jpg"
+  },
+  {
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "director": "Michel Gondry",
+    "year": 2004,
+    "duration": 108,
+    "desc": "When their relationship turns sour, a couple undergoes a medical procedure to have each other erased from their memories forever.",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTY4NzcwODg3Nl5BMl5BanBnXkFtZTcwNTEwOTMyMw@@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Social Network",
+    "director": "David Fincher",
+    "year": 2010,
+    "duration": 120,
+    "desc": "As Harvard student Mark Zuckerberg creates the social networking site that would become known as Facebook, he is sued by the twins who claimed he stole their idea.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjlkNTE5ZTUtNGEwNy00MGVhLThmZjMtZjU1NDE5Zjk1NDZkXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Toy Story",
+    "director": "John Lasseter",
+    "year": 1995,
+    "duration": 81,
+    "desc": "A cowboy doll is profoundly threatened and jealous when a new spaceman action figure supplants him as top toy in a boys bedroom.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZTA3OWVjOWItNjE1NS00NzZiLWE1MjgtZDZhMWI1ZTlkNzYwXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Shining",
+    "director": "Stanley Kubrick",
+    "year": 1980,
+    "duration": 146,
+    "desc": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings.",
+    "genres": [
+      "Drama",
+      "Horror"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNmM5ZThhY2ItOGRjOS00NzZiLWEwYTItNDgyMjFkOTgxMmRiXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Schindlers List",
+    "director": "Steven Spielberg",
+    "year": 1993,
+    "duration": 195,
+    "desc": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "poster": "https://dummyimage.com/300x450/cccccc/000000.jpg&text=No+Poster"
+  },
+  {
+    "title": "Coco",
+    "director": "Lee Unkrich",
+    "year": 2017,
+    "duration": 105,
+    "desc": "Aspiring musician Miguel, confronted with his familys ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDIyM2E2NTAtMzlhNy00ZGUxLWI1NjgtZDY5MzhiMDc5NGU3XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Wolf of Wall Street",
+    "director": "Martin Scorsese",
+    "year": 2013,
+    "duration": 180,
+    "desc": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "A Quiet Place",
+    "director": "John Krasinski",
+    "year": 2018,
+    "duration": 90,
+    "desc": "In a post-apocalyptic world, a family is forced to live in silence while hiding from monsters with ultra-sensitive hearing.",
+    "genres": [
+      "Drama",
+      "Horror",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjI0MDMzNTQ0M15BMl5BanBnXkFtZTgwMTM5NzM3NDM@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Princess Bride",
+    "director": "Rob Reiner",
+    "year": 1987,
+    "duration": 98,
+    "desc": "While home sick in bed, a young boy's grandfather reads him the story of a farmboy-turned-pirate who encounters numerous obstacles, enemies and allies in his quest to be reunited with his true love.",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Fantasy",
+      "Romance"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjFiOTEyNGMtN2E4MC00ZjZlLTk3ZDQtNTU1ZGNiZTA1MzJlXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Dunkirk",
+    "director": "Christopher Nolan",
+    "year": 2017,
+    "duration": 106,
+    "desc": "Allied soldiers from Belgium, the British Commonwealth and Empire, and France are surrounded by the German Army and evacuated during a fierce battle in World War II.",
+    "genres": [
+      "Action",
+      "Drama",
+      "War"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTE0Mjg4MTMwMDZeQTJeQWpwZ15BbWU4MDAwMDQ1ODAy._V1_SX300.jpg"
+  },
+  {
+    "title": "Arrival",
+    "director": "Denis Villeneuve",
+    "year": 2016,
+    "duration": 116,
+    "desc": "A linguist works with the military to communicate with alien lifeforms after twelve mysterious spacecraft appear around the world.",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_SX300.jpg"
+  },
+  {
+    "title": "The Green Mile",
+    "director": "Frank Darabont",
+    "year": 1999,
+    "duration": 189,
+    "desc": "The lives of guards on Death Row are changed by one of their inmates, a gentle giant with mysterious supernatural powers.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_SX300.jpg"
+  },
+  {
+    "title": "Se7en",
+    "director": "David Fincher",
+    "year": 1995,
+    "duration": 127,
+    "desc": "Two detectives hunt a serial killer who stages murders around the seven deadly sins.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BY2IzNzMxZjctZjUxZi00YzAxLTk3ZjMtODFjODdhMDU5NDM1XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Memento",
+    "director": "Christopher Nolan",
+    "year": 2000,
+    "duration": 113,
+    "desc": "A man with short-term memory loss uses notes and tattoos to hunt his wife's killer.",
+    "genres": [
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMGQ3Y2Q4NjktN2E4Ny00Y2Q2LTliZDUtZTNiNjRhY2I0NGIyXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Usual Suspects",
+    "director": "Bryan Singer",
+    "year": 1995,
+    "duration": 106,
+    "desc": "A con artist's interrogation reveals a tangled crime story and the legend of Keyser Soze.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTE5MDUxZDUtZWZmZC00NDVmLWFhOGQtNWI2YTc4NzY3MGQ0XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Back to the Future",
+    "director": "Robert Zemeckis",
+    "year": 1985,
+    "duration": 116,
+    "desc": "A teenager is accidentally sent to the 1950s and must ensure his parents fall in love to save his future.",
+    "genres": [
+      "Adventure",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmM3ZjE0NzctNjBiOC00MDZmLTgzMTUtNGVlOWFlOTNiZDJiXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Terminator",
+    "director": "James Cameron",
+    "year": 1984,
+    "duration": 107,
+    "desc": "A cyborg assassin is sent back in time to kill the woman whose son will lead humanity's resistance.",
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmE0YzIxM2QtMGNlMi00MjRmLWE3MWMtOWQzMGVjMmU0YTFmXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Terminator 2: Judgment Day",
+    "director": "James Cameron",
+    "year": 1991,
+    "duration": 137,
+    "desc": "A reprogrammed Terminator protects a young John Connor from a more advanced and deadly machine.",
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNGMyMGNkMDUtMjc2Ni00NWFlLTgyODEtZTY2MzBiZTg0OWZiXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Thing",
+    "director": "John Carpenter",
+    "year": 1982,
+    "duration": 109,
+    "desc": "Researchers in Antarctica are hunted by a shape-shifting alien that can perfectly imitate its victims.",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTA3NDU5MWEtNTk4Yy00ZDNkLThmZTQtMjU3ZGVhYzAyMzU4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Her",
+    "director": "Spike Jonze",
+    "year": 2013,
+    "duration": 126,
+    "desc": "A lonely writer develops an unexpected relationship with an advanced AI operating system.",
+    "genres": [
+      "Drama",
+      "Romance",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjA1Nzk0OTM2OF5BMl5BanBnXkFtZTgwNjU2NjEwMDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Imitation Game",
+    "director": "Morten Tyldum",
+    "year": 2014,
+    "duration": 114,
+    "desc": "During World War II, mathematician Alan Turing leads a team racing to crack Nazi Germany's Enigma code.",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "War"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjI3NjY1Mjg3MV5BMl5BanBnXkFtZTgwMzk5MDQ3MjE@._V1_SX300.jpg"
+  },
+  {
+    "title": "Pan's Labyrinth",
+    "director": "Guillermo del Toro",
+    "year": 2006,
+    "duration": 118,
+    "desc": "In post-civil-war Spain, a young girl escapes into a dark fantasy world with dangerous trials.",
+    "genres": [
+      "Drama",
+      "Fantasy",
+      "War"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTc1NTAxMWItMWFlNy00MmU2LTkwMTMtNzMwOTg5OTQ5YTFiXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Prisoners",
+    "director": "Denis Villeneuve",
+    "year": 2013,
+    "duration": 153,
+    "desc": "After two girls disappear, a desperate father takes matters into his own hands while police pursue leads.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTg0NTIzMjQ1NV5BMl5BanBnXkFtZTcwNDc3MzM5OQ@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Ex Machina",
+    "director": "Alex Garland",
+    "year": 2014,
+    "duration": 108,
+    "desc": "A programmer is invited to test an AI humanoid and uncovers unsettling motives behind the experiment.",
+    "genres": [
+      "Drama",
+      "Mystery",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTUxNzc0OTIxMV5BMl5BanBnXkFtZTgwNDI3NzU2NDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "Moonlight",
+    "director": "Barry Jenkins",
+    "year": 2016,
+    "duration": 111,
+    "desc": "A young man in Miami navigates identity, family, and love through three defining stages of his life.",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzQxNTIyODAxMV5BMl5BanBnXkFtZTgwNzQyMDA3OTE@._V1_SX300.jpg"
+  },
+  {
+    "title": "Spotlight",
+    "director": "Tom McCarthy",
+    "year": 2015,
+    "duration": 129,
+    "desc": "Investigative journalists uncover systemic abuse and cover-ups within a major religious institution.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjIyOTM5OTIzNV5BMl5BanBnXkFtZTgwMDkzODE2NjE@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Revenant",
+    "director": "Alejandro G. Inarritu",
+    "year": 2015,
+    "duration": 156,
+    "desc": "Left for dead after a brutal bear attack, a frontiersman fights to survive and seek justice.",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYTgwNmQzZDctMjNmOS00OTExLTkwM2UtNzJmOTJhODFjOTdlXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "1917",
+    "director": "Sam Mendes",
+    "year": 2019,
+    "duration": 119,
+    "desc": "Two British soldiers are sent on a near-impossible mission to deliver a message that could save hundreds.",
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzkxZjg2NDQtMGVjMy00NWZkLTk0ZDEtZWE3NDYwYjAyMTg1XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Iron Giant",
+    "director": "Brad Bird",
+    "year": 1999,
+    "duration": 86,
+    "desc": "A boy befriends a giant robot from outer space and must protect it from fearful authorities.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BODM4ZjZjMGEtYmFiMy00MThjLWIzZjUtMDU0ODg1NTI2MzIwXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Inside Out",
+    "director": "Pete Docter",
+    "year": 2015,
+    "duration": 95,
+    "desc": "A young girl's emotions struggle to guide her through a difficult move and growing pains.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTgxMDQwMDk0OF5BMl5BanBnXkFtZTgwNjU5OTg2NDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Lion King",
+    "director": "Roger Allers",
+    "year": 1994,
+    "duration": 88,
+    "desc": "A young lion prince flees his kingdom after tragedy and must return to reclaim his place as king.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGRiZDZhZjItM2M3ZC00Y2IyLTk3Y2MtMWY5YjliNDFkZTJlXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Pianist",
+    "director": "Roman Polanski",
+    "year": 2002,
+    "duration": 150,
+    "desc": "A Polish Jewish pianist struggles to survive the destruction of Warsaw during World War II.",
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjEwNmEwYjgtNTk3ZC00NjljLTg5ZDctZTY3ZGQwZjRkZmQxXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "American History X",
+    "director": "Tony Kaye",
+    "year": 1998,
+    "duration": 119,
+    "desc": "A former neo-Nazi tries to stop his younger brother from following the same violent path.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzhiOTQ0NDItOTg0Zi00OGVmLWE0OGEtMTI4NDM0NWMxZWU4XkEyXkFqcGc@._V1_SX300.jpg"
+  }
 ]
