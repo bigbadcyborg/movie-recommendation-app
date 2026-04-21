@@ -809,5 +809,377 @@
       "Drama"
     ],
     "poster": "https://m.media-amazon.com/images/M/MV5BMzhiOTQ0NDItOTg0Zi00OGVmLWE0OGEtMTI4NDM0NWMxZWU4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "12 Angry Men",
+    "director": "Sidney Lumet",
+    "year": 1957,
+    "duration": 96,
+    "desc": "A jury of twelve men must deliberate.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjE4NzdmOTYtYjc5Yi00YzBiLWEzNDEtNTgxZGQ2MWVkN2NiXkEyXkFqcGc@._V1_QL75_UX380_CR0,11,380,562_.jpg"
+  },
+  {
+    "title": "300",
+    "director": "Zack Snyder",
+    "year": 2006,
+    "duration": 117,
+    "desc": "King Leonidas of Sparta.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjc4OTc0ODgwNV5BMl5BanBnXkFtZTcwNjM1ODE0MQ@@._V1_SX300.jpg"
+  },
+  {
+    "title": "A Fistful of Dollars",
+    "director": "Sergio Leone",
+    "year": 1964,
+    "duration": 99,
+    "desc": "A lone drifter.",
+    "genres": [
+      "Western"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BM2ZkYWU1MGQtMzM3MC00ODQ5LWE1ZGQtMDM5YjczZDZhMjg5XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Beerfest",
+    "director": "Jay Chandrasekhar",
+    "year": 2006,
+    "duration": 110,
+    "desc": "American drinkers.",
+    "genres": [
+      "Comedy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTI4NzYyMDE0OF5BMl5BanBnXkFtZTcwOTIzODczMw@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Blood In Blood Out",
+    "director": "Taylor Hackford",
+    "year": 1993,
+    "duration": 180,
+    "desc": "Three young Chicano men.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjViOTYwNWUtNTZlYi00YzMxLTljMjAtM2Y2NDAxNTU5OTI4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Citizen Kane",
+    "director": "Orson Welles",
+    "year": 1941,
+    "duration": 119,
+    "desc": "A powerful media executive.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjk1ZDJlMmUtOWQ0Zi00MDM5LTk1OGYtODczNjFmMGYwZGVkXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "City Of God",
+    "director": "Fernando Meirelles",
+    "year": 2002,
+    "duration": 130,
+    "desc": "In a Rio slum.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://dummyimage.com/300x450/cccccc/000000.jpg&text=No+Poster"
+  },
+  {
+    "title": "Cool Hand Luke",
+    "director": "Stuart Rosenberg",
+    "year": 1967,
+    "duration": 126,
+    "desc": "A defiant prisoner.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzI1NzBkNmMtOWRmMS00YmY2LTk5MjQtZjAzMmIwZDQ2M2UwXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Dazed And Confused",
+    "director": "Richard Linklater",
+    "year": 1993,
+    "duration": 102,
+    "desc": "High schoolers.",
+    "genres": [
+      "Comedy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTM5MDY5MDQyOV5BMl5BanBnXkFtZTgwMzM3NzMxMDE@._V1_SX300.jpg"
+  },
+  {
+    "title": "Fear And Loathing In Las Vegas",
+    "director": "Terry Gilliam",
+    "year": 1998,
+    "duration": 118,
+    "desc": "Las Vegas.",
+    "genres": [
+      "Comedy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjFkNjdiZjUtNzUzNy00NWM5LWFlNDUtNTRiYmJiZWNiYjkwXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "From Russia With Love",
+    "director": "Terence Young",
+    "year": 1963,
+    "duration": 110,
+    "desc": "James Bond.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWY2MWY2ODAtMTY5Ny00MzA2LWFkMWYtODU2MjE0MmM4ZTQ4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Ghost in the Shell",
+    "director": "Mamoru Oshii",
+    "year": 1995,
+    "duration": 83,
+    "desc": "A cyborg secret agent.",
+    "genres": [
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNzljMjA3MTQtMjM1OS00OGJjLWJiYzctZDRiMTk1NWI5YzQ5XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Goldfinger",
+    "director": "Guy Hamilton",
+    "year": 1964,
+    "duration": 110,
+    "desc": "James Bond.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTQ2MzE0OTU3NV5BMl5BanBnXkFtZTcwNjQxNTgzNA@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Heat",
+    "director": "Michael Mann",
+    "year": 1995,
+    "duration": 170,
+    "desc": "A veteran cop.",
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTkxYjU1OTMtYWViZC00ZjAzLWI3MDktZGQ2N2VmMjVjNDRlXkEyXkFqcGc@._V1_QL75_UY562_CR6,0,380,562_.jpg"
+  },
+  {
+    "title": "Hillbilly Elegy",
+    "director": "Ron Howard",
+    "year": 2020,
+    "duration": 161,
+    "desc": "A Yale law student.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWY0MThlOTgtNTg5ZS00ZTlkLTg2ZjAtMDE4YzAyNjExMjFkXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "IP Man",
+    "director": "Wilson Yip",
+    "year": 2008,
+    "duration": 104,
+    "desc": "Ip Man.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZmJjZDE0MmYtNzgwYy00NTg2LWE0NDYtNzA0YTA4MjA0NmYxXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Ip Man 2",
+    "director": "Wilson Yip",
+    "year": 2010,
+    "duration": 108,
+    "desc": "Ip Man continues.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzEzYTBmYjgtNjQzMi00YmNiLTkyZGItOGFhMzEzOWY3MjI4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Ip Man 3",
+    "director": "Wilson Yip",
+    "year": 2015,
+    "duration": 104,
+    "desc": "Ip Man faces.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmZhOWNlMDEtN2M1OC00Yzk5LThhOTAtZDA5NTNjNjQyZDM0XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Ip Man The Final Fight",
+    "director": "Herman Yau",
+    "year": 2013,
+    "duration": 92,
+    "desc": "Ip Man's final.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjhhNWY1ZDctN2QzMy00ZGVlLWI2NTQtMjU5NDlhMWE2MDE4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "O Brother Where Art Thou",
+    "director": "Joel Coen",
+    "year": 2000,
+    "duration": 106,
+    "desc": "Three escaped convicts.",
+    "genres": [
+      "Comedy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDhmMzZkYzctOTQ4MS00NWEzLWI1YzMtNTllZDhkYjgwOWQ0XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Oldboy",
+    "director": "Park Chan-wook",
+    "year": 2003,
+    "duration": 120,
+    "desc": "A man is imprisoned.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTAwNzNjYWItZmI0Ni00ZTcyLWIwNWMtZjlmNGMxZTEyYTJmXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Once Upon a Time in America",
+    "director": "Sergio Leone",
+    "year": 1984,
+    "duration": 229,
+    "desc": "An epic tale.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDQ0ZTg2OGUtZjMyOC00M2M5LThkMmItZmM2MmUzMmIxMWJhXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Oppenheimer",
+    "director": "Christopher Nolan",
+    "year": 2023,
+    "duration": 180,
+    "desc": "The life of Oppenheimer.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+  },
+  {
+    "title": "Sisu",
+    "director": "Jalmari Helander",
+    "year": 2022,
+    "duration": 92,
+    "desc": "A former commando.",
+    "genres": [
+      "Action"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjAxN2RmYjktMDE2OS00MWM5LThlZTQtZDY4YzAxMWQyZWY4XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Boondock Saints",
+    "director": "Troy Duffy",
+    "year": 1999,
+    "duration": 108,
+    "desc": "Two Irish-American brothers.",
+    "genres": [
+      "Action",
+      "Crime"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzIzYjE3YmMtYjdjOC00NTk5LWI0N2MtZDliYjUxNGYyNGZhXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Color of Money",
+    "director": "Martin Scorsese",
+    "year": 1986,
+    "duration": 119,
+    "desc": "A retired pool player.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMmU5NDMwOTctZTU2NS00ODc4LWJiYTAtYzMzM2JiYmY4OTg2XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Godfather Part III",
+    "director": "Francis Ford Coppola",
+    "year": 1990,
+    "duration": 170,
+    "desc": "Michael Corleone.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDVjODgzNTEtNjBiNS00ODBjLWEwZjUtMDljZTFhOTA4M2MxXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+  },
+  {
+    "title": "The Long Hot Summer",
+    "director": "Martin Ritt",
+    "year": 1958,
+    "duration": 115,
+    "desc": "A mysterious stranger.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGNhZTlkMzAtZjY2Ny00YjlhLThlOWEtOWExYTVmMzI2OWExXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Matrix Reloaded",
+    "director": "Lana Wachowski",
+    "year": 2003,
+    "duration": 138,
+    "desc": "Neo and his allies.",
+    "genres": [
+      "Action",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjAxYjkxNjktYTU0YS00NjFhLWIyMDEtMzEzMTJjMzRkMzQ1XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Outsiders",
+    "director": "Francis Ford Coppola",
+    "year": 1983,
+    "duration": 91,
+    "desc": "A group of boys.",
+    "genres": [
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BODlmMzZjZDEtOTUwOS00OTAwLTg2YzAtYTA4ZTk3ZWNjMTgxXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Sting",
+    "director": "George Roy Hill",
+    "year": 1973,
+    "duration": 129,
+    "desc": "Two con men.",
+    "genres": [
+      "Crime",
+      "Comedy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGI4OTk4MDMtYmQ1Ni00YTUzLTkyYTktZGUwMjMyN2M4NjQ5XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Thomas Crown Affair",
+    "director": "Norman Jewison",
+    "year": 1968,
+    "duration": 102,
+    "desc": "A wealthy businessman.",
+    "genres": [
+      "Crime"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOTA5NzQ4NjE4NF5BMl5BanBnXkFtZTcwMjIzMzY3NA@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Waterworld",
+    "director": "Kevin Reynolds",
+    "year": 1995,
+    "duration": 135,
+    "desc": "In a post-apocalyptic world.",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMjI5ZmQ3NTAtNWVhMi00ZmI2LTg3YTMtN2Q1MmNjYzMwZGI1XkEyXkFqcGc@._V1_SX300.jpg"
   }
 ]

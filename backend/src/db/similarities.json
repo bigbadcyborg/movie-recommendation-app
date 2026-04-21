@@ -1,120 +1,578 @@
 [
-  ["The Shawshank Redemption", "The Godfather"],
-  ["The Shawshank Redemption", "Schindlers List"],
-  ["The Shawshank Redemption", "Forrest Gump"],
-  ["The Shawshank Redemption", "The Green Mile"],
-  ["The Godfather", "Goodfellas"],
-  ["The Godfather", "Pulp Fiction"],
-  ["The Godfather", "The Departed"],
-  ["The Godfather", "No Country for Old Men"],
-  ["Goodfellas", "Pulp Fiction"],
-  ["Goodfellas", "The Departed"],
-  ["Goodfellas", "The Wolf of Wall Street"],
-  ["Goodfellas", "Django Unchained"],
-  ["Pulp Fiction", "Django Unchained"],
-  ["Pulp Fiction", "Fight Club"],
-  ["Pulp Fiction", "The Departed"],
-  ["The Departed", "No Country for Old Men"],
-  ["The Departed", "The Silence of the Lambs"],
-  ["No Country for Old Men", "The Silence of the Lambs"],
-  ["No Country for Old Men", "Parasite"],
-  ["The Dark Knight", "Inception"],
-  ["The Dark Knight", "The Prestige"],
-  ["The Dark Knight", "Interstellar"],
-  ["Inception", "The Prestige"],
-  ["Inception", "Interstellar"],
-  ["Inception", "The Matrix"],
-  ["Inception", "Blade Runner 2049"],
-  ["The Matrix", "Blade Runner 2049"],
-  ["The Matrix", "Interstellar"],
-  ["The Matrix", "Mad Max: Fury Road"],
-  ["The Matrix", "Alien"],
-  ["Interstellar", "Arrival"],
-  ["Interstellar", "Blade Runner 2049"],
-  ["Interstellar", "WALL-E"],
-  ["Blade Runner 2049", "Arrival"],
-  ["Blade Runner 2049", "Alien"],
-  ["Arrival", "Eternal Sunshine of the Spotless Mind"],
-  ["Arrival", "A Quiet Place"],
-  ["Alien", "A Quiet Place"],
-  ["Alien", "Jurassic Park"],
-  ["Jurassic Park", "Mad Max: Fury Road"],
-  ["Gladiator", "The Lord of the Rings: The Fellowship of the Ring"],
-  ["Gladiator", "Saving Private Ryan"],
-  ["Gladiator", "Dunkirk"],
-  ["Gladiator", "Mad Max: Fury Road"],
-  ["The Lord of the Rings: The Fellowship of the Ring", "The Princess Bride"],
-  ["The Lord of the Rings: The Fellowship of the Ring", "Spirited Away"],
-  ["Saving Private Ryan", "Schindlers List"],
-  ["Saving Private Ryan", "Dunkirk"],
-  ["Schindlers List", "Dunkirk"],
-  ["Fight Club", "The Prestige"],
-  ["Fight Club", "No Country for Old Men"],
-  ["The Silence of the Lambs", "Get Out"],
-  ["The Silence of the Lambs", "Parasite"],
-  ["Get Out", "Parasite"],
-  ["Get Out", "A Quiet Place"],
-  ["Get Out", "The Shining"],
-  ["A Quiet Place", "The Shining"],
-  ["The Shining", "Alien"],
-  ["Forrest Gump", "The Truman Show"],
-  ["Forrest Gump", "La La Land"],
-  ["Whiplash", "La La Land"],
-  ["Whiplash", "The Social Network"],
-  ["La La Land", "The Grand Budapest Hotel"],
-  ["La La Land", "Eternal Sunshine of the Spotless Mind"],
-  ["The Truman Show", "Eternal Sunshine of the Spotless Mind"],
-  ["The Truman Show", "The Grand Budapest Hotel"],
-  ["The Social Network", "The Wolf of Wall Street"],
-  ["Spirited Away", "The Princess Bride"],
-  ["Spirited Away", "Coco"],
-  ["Spirited Away", "WALL-E"],
-  ["Toy Story", "WALL-E"],
-  ["Toy Story", "Coco"],
-  ["WALL-E", "Coco"],
-  ["The Princess Bride", "The Grand Budapest Hotel"],
-  ["Se7en", "The Silence of the Lambs"],
-  ["Se7en", "No Country for Old Men"],
-  ["Se7en", "Prisoners"],
-  ["Memento", "The Prestige"],
-  ["Memento", "Inception"],
-  ["Memento", "The Usual Suspects"],
-  ["The Usual Suspects", "The Departed"],
-  ["The Usual Suspects", "Pulp Fiction"],
-  ["Back to the Future", "The Truman Show"],
-  ["Back to the Future", "Toy Story"],
-  ["The Terminator", "The Matrix"],
-  ["The Terminator", "Alien"],
-  ["Terminator 2: Judgment Day", "The Terminator"],
-  ["Terminator 2: Judgment Day", "Mad Max: Fury Road"],
-  ["The Thing", "Alien"],
-  ["The Thing", "A Quiet Place"],
-  ["Her", "Eternal Sunshine of the Spotless Mind"],
-  ["Her", "Arrival"],
-  ["The Imitation Game", "The Social Network"],
-  ["The Imitation Game", "Schindlers List"],
-  ["Pan's Labyrinth", "Spirited Away"],
-  ["Pan's Labyrinth", "The Grand Budapest Hotel"],
-  ["Prisoners", "The Silence of the Lambs"],
-  ["Prisoners", "The Departed"],
-  ["Ex Machina", "Blade Runner 2049"],
-  ["Ex Machina", "Arrival"],
-  ["Moonlight", "La La Land"],
-  ["Moonlight", "The Social Network"],
-  ["Spotlight", "The Social Network"],
-  ["Spotlight", "The Imitation Game"],
-  ["The Revenant", "Dunkirk"],
-  ["The Revenant", "Gladiator"],
-  ["1917", "Dunkirk"],
-  ["1917", "Saving Private Ryan"],
-  ["The Iron Giant", "WALL-E"],
-  ["The Iron Giant", "Toy Story"],
-  ["Inside Out", "Toy Story"],
-  ["Inside Out", "Coco"],
-  ["The Lion King", "Coco"],
-  ["The Lion King", "Spirited Away"],
-  ["The Pianist", "Schindlers List"],
-  ["The Pianist", "Saving Private Ryan"],
-  ["American History X", "The Green Mile"],
-  ["American History X", "Fight Club"]
+  [
+    "The Shawshank Redemption",
+    "The Godfather"
+  ],
+  [
+    "The Shawshank Redemption",
+    "Schindlers List"
+  ],
+  [
+    "The Shawshank Redemption",
+    "Forrest Gump"
+  ],
+  [
+    "The Shawshank Redemption",
+    "The Green Mile"
+  ],
+  [
+    "The Godfather",
+    "Goodfellas"
+  ],
+  [
+    "The Godfather",
+    "Pulp Fiction"
+  ],
+  [
+    "The Godfather",
+    "The Departed"
+  ],
+  [
+    "The Godfather",
+    "No Country for Old Men"
+  ],
+  [
+    "Goodfellas",
+    "Pulp Fiction"
+  ],
+  [
+    "Goodfellas",
+    "The Departed"
+  ],
+  [
+    "Goodfellas",
+    "The Wolf of Wall Street"
+  ],
+  [
+    "Goodfellas",
+    "Django Unchained"
+  ],
+  [
+    "Pulp Fiction",
+    "Django Unchained"
+  ],
+  [
+    "Pulp Fiction",
+    "Fight Club"
+  ],
+  [
+    "Pulp Fiction",
+    "The Departed"
+  ],
+  [
+    "The Departed",
+    "No Country for Old Men"
+  ],
+  [
+    "The Departed",
+    "The Silence of the Lambs"
+  ],
+  [
+    "No Country for Old Men",
+    "The Silence of the Lambs"
+  ],
+  [
+    "No Country for Old Men",
+    "Parasite"
+  ],
+  [
+    "The Dark Knight",
+    "Inception"
+  ],
+  [
+    "The Dark Knight",
+    "The Prestige"
+  ],
+  [
+    "The Dark Knight",
+    "Interstellar"
+  ],
+  [
+    "Inception",
+    "The Prestige"
+  ],
+  [
+    "Inception",
+    "Interstellar"
+  ],
+  [
+    "Inception",
+    "The Matrix"
+  ],
+  [
+    "Inception",
+    "Blade Runner 2049"
+  ],
+  [
+    "The Matrix",
+    "Blade Runner 2049"
+  ],
+  [
+    "The Matrix",
+    "Interstellar"
+  ],
+  [
+    "The Matrix",
+    "Mad Max: Fury Road"
+  ],
+  [
+    "The Matrix",
+    "Alien"
+  ],
+  [
+    "Interstellar",
+    "Arrival"
+  ],
+  [
+    "Interstellar",
+    "Blade Runner 2049"
+  ],
+  [
+    "Interstellar",
+    "WALL-E"
+  ],
+  [
+    "Blade Runner 2049",
+    "Arrival"
+  ],
+  [
+    "Blade Runner 2049",
+    "Alien"
+  ],
+  [
+    "Arrival",
+    "Eternal Sunshine of the Spotless Mind"
+  ],
+  [
+    "Arrival",
+    "A Quiet Place"
+  ],
+  [
+    "Alien",
+    "A Quiet Place"
+  ],
+  [
+    "Alien",
+    "Jurassic Park"
+  ],
+  [
+    "Jurassic Park",
+    "Mad Max: Fury Road"
+  ],
+  [
+    "Gladiator",
+    "The Lord of the Rings: The Fellowship of the Ring"
+  ],
+  [
+    "Gladiator",
+    "Saving Private Ryan"
+  ],
+  [
+    "Gladiator",
+    "Dunkirk"
+  ],
+  [
+    "Gladiator",
+    "Mad Max: Fury Road"
+  ],
+  [
+    "The Lord of the Rings: The Fellowship of the Ring",
+    "The Princess Bride"
+  ],
+  [
+    "The Lord of the Rings: The Fellowship of the Ring",
+    "Spirited Away"
+  ],
+  [
+    "Saving Private Ryan",
+    "Schindlers List"
+  ],
+  [
+    "Saving Private Ryan",
+    "Dunkirk"
+  ],
+  [
+    "Schindlers List",
+    "Dunkirk"
+  ],
+  [
+    "Fight Club",
+    "The Prestige"
+  ],
+  [
+    "Fight Club",
+    "No Country for Old Men"
+  ],
+  [
+    "The Silence of the Lambs",
+    "Get Out"
+  ],
+  [
+    "The Silence of the Lambs",
+    "Parasite"
+  ],
+  [
+    "Get Out",
+    "Parasite"
+  ],
+  [
+    "Get Out",
+    "A Quiet Place"
+  ],
+  [
+    "Get Out",
+    "The Shining"
+  ],
+  [
+    "A Quiet Place",
+    "The Shining"
+  ],
+  [
+    "The Shining",
+    "Alien"
+  ],
+  [
+    "Forrest Gump",
+    "The Truman Show"
+  ],
+  [
+    "Forrest Gump",
+    "La La Land"
+  ],
+  [
+    "Whiplash",
+    "La La Land"
+  ],
+  [
+    "Whiplash",
+    "The Social Network"
+  ],
+  [
+    "La La Land",
+    "The Grand Budapest Hotel"
+  ],
+  [
+    "La La Land",
+    "Eternal Sunshine of the Spotless Mind"
+  ],
+  [
+    "The Truman Show",
+    "Eternal Sunshine of the Spotless Mind"
+  ],
+  [
+    "The Truman Show",
+    "The Grand Budapest Hotel"
+  ],
+  [
+    "The Social Network",
+    "The Wolf of Wall Street"
+  ],
+  [
+    "Spirited Away",
+    "The Princess Bride"
+  ],
+  [
+    "Spirited Away",
+    "Coco"
+  ],
+  [
+    "Spirited Away",
+    "WALL-E"
+  ],
+  [
+    "Toy Story",
+    "WALL-E"
+  ],
+  [
+    "Toy Story",
+    "Coco"
+  ],
+  [
+    "WALL-E",
+    "Coco"
+  ],
+  [
+    "The Princess Bride",
+    "The Grand Budapest Hotel"
+  ],
+  [
+    "Se7en",
+    "The Silence of the Lambs"
+  ],
+  [
+    "Se7en",
+    "No Country for Old Men"
+  ],
+  [
+    "Se7en",
+    "Prisoners"
+  ],
+  [
+    "Memento",
+    "The Prestige"
+  ],
+  [
+    "Memento",
+    "Inception"
+  ],
+  [
+    "Memento",
+    "The Usual Suspects"
+  ],
+  [
+    "The Usual Suspects",
+    "The Departed"
+  ],
+  [
+    "The Usual Suspects",
+    "Pulp Fiction"
+  ],
+  [
+    "Back to the Future",
+    "The Truman Show"
+  ],
+  [
+    "Back to the Future",
+    "Toy Story"
+  ],
+  [
+    "The Terminator",
+    "The Matrix"
+  ],
+  [
+    "The Terminator",
+    "Alien"
+  ],
+  [
+    "Terminator 2: Judgment Day",
+    "The Terminator"
+  ],
+  [
+    "Terminator 2: Judgment Day",
+    "Mad Max: Fury Road"
+  ],
+  [
+    "The Thing",
+    "Alien"
+  ],
+  [
+    "The Thing",
+    "A Quiet Place"
+  ],
+  [
+    "Her",
+    "Eternal Sunshine of the Spotless Mind"
+  ],
+  [
+    "Her",
+    "Arrival"
+  ],
+  [
+    "The Imitation Game",
+    "The Social Network"
+  ],
+  [
+    "The Imitation Game",
+    "Schindlers List"
+  ],
+  [
+    "Pan's Labyrinth",
+    "Spirited Away"
+  ],
+  [
+    "Pan's Labyrinth",
+    "The Grand Budapest Hotel"
+  ],
+  [
+    "Prisoners",
+    "The Silence of the Lambs"
+  ],
+  [
+    "Prisoners",
+    "The Departed"
+  ],
+  [
+    "Ex Machina",
+    "Blade Runner 2049"
+  ],
+  [
+    "Ex Machina",
+    "Arrival"
+  ],
+  [
+    "Moonlight",
+    "La La Land"
+  ],
+  [
+    "Moonlight",
+    "The Social Network"
+  ],
+  [
+    "Spotlight",
+    "The Social Network"
+  ],
+  [
+    "Spotlight",
+    "The Imitation Game"
+  ],
+  [
+    "The Revenant",
+    "Dunkirk"
+  ],
+  [
+    "The Revenant",
+    "Gladiator"
+  ],
+  [
+    "1917",
+    "Dunkirk"
+  ],
+  [
+    "1917",
+    "Saving Private Ryan"
+  ],
+  [
+    "The Iron Giant",
+    "WALL-E"
+  ],
+  [
+    "The Iron Giant",
+    "Toy Story"
+  ],
+  [
+    "Inside Out",
+    "Toy Story"
+  ],
+  [
+    "Inside Out",
+    "Coco"
+  ],
+  [
+    "The Lion King",
+    "Coco"
+  ],
+  [
+    "The Lion King",
+    "Spirited Away"
+  ],
+  [
+    "The Pianist",
+    "Schindlers List"
+  ],
+  [
+    "The Pianist",
+    "Saving Private Ryan"
+  ],
+  [
+    "American History X",
+    "The Green Mile"
+  ],
+  [
+    "American History X",
+    "Fight Club"
+  ],
+  [
+    "The Godfather Part III",
+    "The Godfather"
+  ],
+  [
+    "The Departed",
+    "The Boondock Saints"
+  ],
+  [
+    "The Boondock Saints",
+    "Heat"
+  ],
+  [
+    "Heat",
+    "Oldboy"
+  ],
+  [
+    "The Matrix",
+    "The Matrix Reloaded"
+  ],
+  [
+    "IP Man",
+    "Ip Man 2"
+  ],
+  [
+    "Ip Man 2",
+    "Ip Man 3"
+  ],
+  [
+    "Ip Man 3",
+    "Ip Man The Final Fight"
+  ],
+  [
+    "300",
+    "Sisu"
+  ],
+  [
+    "Hillbilly Elegy",
+    "Once Upon a Time in America"
+  ],
+  [
+    "The Outsiders",
+    "Dazed And Confused"
+  ],
+  [
+    "City Of God",
+    "Blood In Blood Out"
+  ],
+  [
+    "Citizen Kane",
+    "12 Angry Men"
+  ],
+  [
+    "12 Angry Men",
+    "The Sting"
+  ],
+  [
+    "Once Upon a Time in America",
+    "The Long Hot Summer"
+  ],
+  [
+    "Ex Machina",
+    "Ghost in the Shell"
+  ],
+  [
+    "Inception",
+    "Ex Machina"
+  ],
+  [
+    "Beerfest",
+    "O Brother Where Art Thou"
+  ],
+  [
+    "Fear And Loathing In Las Vegas",
+    "Dazed And Confused"
+  ],
+  [
+    "From Russia With Love",
+    "Goldfinger"
+  ],
+  [
+    "A Fistful of Dollars",
+    "The Thomas Crown Affair"
+  ],
+  [
+    "The Color of Money",
+    "The Sting"
+  ],
+  [
+    "Cool Hand Luke",
+    "12 Angry Men"
+  ],
+  [
+    "Waterworld",
+    "The Matrix"
+  ],
+  [
+    "Oppenheimer",
+    "The Godfather"
+  ],
+  [
+    "Oppenheimer",
+    "Ex Machina"
+  ]
 ]
