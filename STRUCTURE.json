@@ -1,0 +1,252 @@
+{
+  "generated_at": "2026-04-21T17:43:06.098Z",
+  "tree_checksum": "cd208f108802a528f3c5b82b3d6df209f86ef90b7b3f183e5eb5f490d1a6900e",
+  "file_count": 49,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 291,
+      "hash": "20163423955ae3c62a7fcf83a84b41ef93b342f2943ff4c599f979247570e108"
+    },
+    {
+      "path": "README.md",
+      "size": 4078,
+      "hash": "756cacbe8fa7bbfd73f72cbca2f3215946515d5c467e8b932d134605cd4cc14f"
+    },
+    {
+      "path": "UPDATE_MOVIES_AGENT.md",
+      "size": 4137,
+      "hash": "9f41fa391909419aee445b0edb21f3384811b18c0514d0f548954fcca5d0c45f"
+    },
+    {
+      "path": "backend/.env",
+      "size": 85,
+      "hash": "a3702786cfc3d9b8c2da426c328c4f35a14cb9393d56eb45ef460d63e114c051"
+    },
+    {
+      "path": "backend/.env.example",
+      "size": 75,
+      "hash": "8d682b4464654567ed814d665fe3c5beebe84a7e7a441840a3890d9727f0126c"
+    },
+    {
+      "path": "backend/package.json",
+      "size": 874,
+      "hash": "d09304b9aa9b74a97e1bf656ea6fa66fcc1215125fdbf80f4cc4bf37fe83f0d8"
+    },
+    {
+      "path": "backend/scripts/save-test-report.js",
+      "size": 1328,
+      "hash": "d3f0354d241e3f163883e155c47019c17ad8e6673c4bb21fdc4453c8cb131bbe"
+    },
+    {
+      "path": "backend/src/db/__mocks__/database.js",
+      "size": 1336,
+      "hash": "37cf2103e72ce2da2c0589de61131c43bc5bfbf2622d6bb1d8e799d937e961a7"
+    },
+    {
+      "path": "backend/src/db/database.js",
+      "size": 1679,
+      "hash": "01034d3bedde755686ab4a75a7aeb47af0da43ea026bd02d38d6f61fb5613bfd"
+    },
+    {
+      "path": "backend/src/db/fetch-posters.js",
+      "size": 4066,
+      "hash": "9d26729824954e573a4ff1868f3a317bf4c75541874a478dec0c58fefcf1dc89"
+    },
+    {
+      "path": "backend/src/db/movies.json",
+      "size": 29357,
+      "hash": "a6bd0134f3eaca4cc8ec35b541fba09e528f8fd7fdf3eb7ea56d6176554b6d40"
+    },
+    {
+      "path": "backend/src/db/schema.js",
+      "size": 5372,
+      "hash": "fc186344125644d7962b7c2f0732493465eda14773a4d7e32ca507818c084b11"
+    },
+    {
+      "path": "backend/src/db/seed.js",
+      "size": 4347,
+      "hash": "c703ba0a2e07855d3ba283195835cebd237a0079aa2cb257aba52b968bb3e4e5"
+    },
+    {
+      "path": "backend/src/db/similarities.json",
+      "size": 4729,
+      "hash": "7ac12f061b93060f8c786752de3dd1e14b527d9cd6c3861850e5a325a2327ab2"
+    },
+    {
+      "path": "backend/src/middleware/auth.js",
+      "size": 1571,
+      "hash": "24a91c014d2bc8b177ac2b15a582a4d0aca6d8aff2926a11470c84c21cf6a51e"
+    },
+    {
+      "path": "backend/src/routes/auth.js",
+      "size": 5799,
+      "hash": "a0af169ff95559fb042ecba2a68c8a000bda65fa25dbe9521ae8e4789c69dcf9"
+    },
+    {
+      "path": "backend/src/routes/interactions.js",
+      "size": 6656,
+      "hash": "0d770b0d81f2054490cc3f150b91fd35b5fd1dfe84ee7a78a08f9cf4db229ba2"
+    },
+    {
+      "path": "backend/src/routes/movies.js",
+      "size": 9721,
+      "hash": "6dc046198ad0243b2ab0a8209bac6ab07ae7d04a6f2ceaa1695080a4f2b7db74"
+    },
+    {
+      "path": "backend/src/routes/onboarding.js",
+      "size": 8655,
+      "hash": "3e5885c8c11db11d3e4da10f8e1d65d6cc1d3a3c49a24ccd65227b7e466d6fa8"
+    },
+    {
+      "path": "backend/src/routes/recommendations.js",
+      "size": 9946,
+      "hash": "9c3dc523e009b80083db0229f9485f67c7b89a8633b6c2b07d8c4a677a0b42c9"
+    },
+    {
+      "path": "backend/src/server.js",
+      "size": 1302,
+      "hash": "4621060d3939b8a63a8322ef6bf0f177e920928173595d9ebbfbea7dfbb7be79"
+    },
+    {
+      "path": "backend/tests/auth.test.js",
+      "size": 7410,
+      "hash": "f94fbf4ae3e4bbffce2d8bd60868ec7fb73db54ff270d645890e7f022d0e6bdd"
+    },
+    {
+      "path": "backend/tests/helpers/seed.js",
+      "size": 3553,
+      "hash": "89e5dd7824a45c2b43a1ff8c21db1385fa97132aacbf7dbe3990664c2bcbe4b3"
+    },
+    {
+      "path": "backend/tests/interactions.test.js",
+      "size": 13223,
+      "hash": "c07b13887426e044f076feeba2cd27cf568a4eaa0d6699374b676f98af6718af"
+    },
+    {
+      "path": "backend/tests/movies.test.js",
+      "size": 9180,
+      "hash": "707ee8f421c6adad3977df2d690d067bf4349f26e22bbb51a0aa5c8ab540c046"
+    },
+    {
+      "path": "backend/tests/recommendations.test.js",
+      "size": 5016,
+      "hash": "0f818f47ce2f4a821f606fdac645fd6f6904580a39e8d6dce65542cb333b7f4a"
+    },
+    {
+      "path": "backend/tests/setupDb.js",
+      "size": 4379,
+      "hash": "d8d6fb9a277fe7d89c60fb856bfa962f39cf25959c69917522a4fbf6dff7f6c5"
+    },
+    {
+      "path": "backend/tests/testApp.js",
+      "size": 1029,
+      "hash": "4e5485983933dcb76fc8b68e9498d5673f015f989c207a08bb6f6a5b4fb44323"
+    },
+    {
+      "path": "backend/tests/unit/recommendations.unit.test.js",
+      "size": 7641,
+      "hash": "6e35c2ba3f9ae08b295d21bccc8f4d2e26df8b2f07e90bebc1133c27e15579da"
+    },
+    {
+      "path": "frontend/index.html",
+      "size": 592,
+      "hash": "37e28f1f9cb071e3f5ccfad3a27a1470813bc8f2fc4b8fb7eed4ed48f8c9f594"
+    },
+    {
+      "path": "frontend/package.json",
+      "size": 490,
+      "hash": "1f6af00d9f6bf9a05875d336a177feb0bff8df58c469be86e15e43e0f2b60c72"
+    },
+    {
+      "path": "frontend/src/App.jsx",
+      "size": 1910,
+      "hash": "307e2f046735157a0efc0d7b5c7831cac0bfe32627da98bea6cab0ad99b6c6b5"
+    },
+    {
+      "path": "frontend/src/api/client.js",
+      "size": 2545,
+      "hash": "ce92b3271a47f7410ca689af5b0704199156c8b5c4b53c41606a29f91257b9b0"
+    },
+    {
+      "path": "frontend/src/components/MovieCard.jsx",
+      "size": 1235,
+      "hash": "2bd476ec716090f6f4559b2410a87689c3f4d24be9c6362e982a2a07371827e6"
+    },
+    {
+      "path": "frontend/src/components/Navbar.jsx",
+      "size": 1527,
+      "hash": "27144dbf9f9ff9b4088ce0808d39cbfac2e9b4348a0da9f099b52bb5cf60eeb4"
+    },
+    {
+      "path": "frontend/src/components/StarRating.jsx",
+      "size": 745,
+      "hash": "09c1a1f2771a41ec41658e20995a9981a97a57d239c96ceb689c655eb4a19f15"
+    },
+    {
+      "path": "frontend/src/context/AuthContext.jsx",
+      "size": 1506,
+      "hash": "e14201e8203b94765f5dc247b083df8f890436a72d342bf13e906e831584ec37"
+    },
+    {
+      "path": "frontend/src/index.css",
+      "size": 23889,
+      "hash": "0db6ff3503eaf39e2a30bec444efea0c65b2d48280ab49562cbeee06c4d06432"
+    },
+    {
+      "path": "frontend/src/main.jsx",
+      "size": 443,
+      "hash": "e9be661953bd869f677c30fbfb73636eeea30178cd96bf550b53d8e3fbc18aed"
+    },
+    {
+      "path": "frontend/src/pages/AddMovie.jsx",
+      "size": 9292,
+      "hash": "27cfffc063c7d91c8b6ff92ccd99dcf18573dc7863fac4c839449bce4d97d217"
+    },
+    {
+      "path": "frontend/src/pages/Home.jsx",
+      "size": 3946,
+      "hash": "7861e705a4581cb8c12a1315bdac4fb9d1a98f378e987898aaa68e9b0f129428"
+    },
+    {
+      "path": "frontend/src/pages/Login.jsx",
+      "size": 2344,
+      "hash": "03c804364ca921ad911f49cc5d8b77810e3f502a87c4b01f1c3d92c1285f2baa"
+    },
+    {
+      "path": "frontend/src/pages/MovieDetail.jsx",
+      "size": 7609,
+      "hash": "02b6759a9ac1d579dd9518745061b4d9234b3c3a8e6ffdf725d18db4647c68a3"
+    },
+    {
+      "path": "frontend/src/pages/Movies.jsx",
+      "size": 4617,
+      "hash": "f0b3002418031195213d1118bfd91f364fc40570e28102326986e750b89b5a82"
+    },
+    {
+      "path": "frontend/src/pages/Onboarding.jsx",
+      "size": 6284,
+      "hash": "00d19a6d70313a55eb08b4b8f3990951726936a85f360a7fd7ec5e5ad8cc0c19"
+    },
+    {
+      "path": "frontend/src/pages/Profile.jsx",
+      "size": 6140,
+      "hash": "6fb9b421b0e4231bcee0b6f6730070f05f616da9367ed84514adef8717cc5713"
+    },
+    {
+      "path": "frontend/src/pages/Register.jsx",
+      "size": 2946,
+      "hash": "86c66c9d68692cef37f5f0732824eba42b26a5cd2093943eabafd77f7e8308d3"
+    },
+    {
+      "path": "frontend/vite.config.js",
+      "size": 817,
+      "hash": "ad2e3fdc2806134a27014c58a2215f4c8174e2e1d66c6e37183795fcf55214c7"
+    },
+    {
+      "path": "scripts/snapshot.js",
+      "size": 3651,
+      "hash": "0c3804bbf5ac8c98f465e4846bd8c3fde9b80b0015fe586dad1e04a565cc8ee7"
+    }
+  ]
+}

@@ -7,8 +7,9 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "seed": "node src/db/seed.js",
-    "test": "node scripts/save-test-report.js"
-    "preseed": "node src/db/fetch-posters.js"
+    "test": "node scripts/save-test-report.js",
+    "preseed": "node src/db/fetch-posters.js",
+    "snapshot": "node ../scripts/snapshot.js"
   },
   "jest": {
     "testEnvironment": "node",
