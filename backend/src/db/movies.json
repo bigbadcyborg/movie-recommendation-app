@@ -440,7 +440,7 @@
       "Drama",
       "War"
     ],
-    "poster": "https://dummyimage.com/300x450/cccccc/000000.jpg&text=No+Poster"
+    "poster": "https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"
   },
   {
     "title": "Coco",
@@ -887,7 +887,7 @@
       "Crime",
       "Drama"
     ],
-    "poster": "https://dummyimage.com/300x450/cccccc/000000.jpg&text=No+Poster"
+    "poster": "https://image.tmdb.org/t/p/w500/k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg"
   },
   {
     "title": "Cool Hand Luke",
@@ -1181,5 +1181,236 @@
       "Adventure"
     ],
     "poster": "https://m.media-amazon.com/images/M/MV5BMjI5ZmQ3NTAtNWVhMi00ZmI2LTg3YTMtN2Q1MmNjYzMwZGI1XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Project Hail Mary",
+    "director": "Phil Lord & Christopher Miller",
+    "year": 2026,
+    "duration": 156,
+    "desc": "A science teacher awakens alone on a spacecraft and must solve a mission-critical threat to save Earth.",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/h5FcFJzoeIjimuGhQ5Dw598T2Vu.jpg"
+  },
+  {
+    "title": "Mission: Impossible - The Final Reckoning",
+    "director": "Christopher McQuarrie",
+    "year": 2025,
+    "duration": 170,
+    "desc": "Ethan Hunt races to stop a powerful global threat in a high-stakes final mission.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZGQ5NGEyYTItMjNiMi00Y2EwLTkzOWItMjc5YjJiMjMyNTI0XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "RRR",
+    "director": "S. S. Rajamouli",
+    "year": 2022,
+    "duration": 182,
+    "desc": "Two revolutionaries forge an unlikely bond while fighting oppression in colonial-era India.",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNWMwODYyMjQtMTczMi00NTQ1LWFkYjItMGJhMWRkY2E3NDAyXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Avengers: Infinity War",
+    "director": "Anthony Russo, Joe Russo",
+    "year": 2018,
+    "duration": 149,
+    "desc": "The Avengers and their allies unite to stop Thanos from collecting all Infinity Stones.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg"
+  },
+  {
+    "title": "Barbie",
+    "director": "Greta Gerwig",
+    "year": 2023,
+    "duration": 114,
+    "desc": "Barbie's picture-perfect world changes when she begins questioning her reality and heads into the real world.",
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjU3N2QxNzYtMjk1NC00MTc4LTk1NTQtMmUxNTljM2I0NDA5XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Super Mario Bros. Movie",
+    "director": "Aaron Horvath, Michael Jelenic",
+    "year": 2023,
+    "duration": 92,
+    "desc": "Mario and Luigi are pulled into a new world where they battle Bowser to protect the Mushroom Kingdom.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg"
+  },
+  {
+    "title": "Spider-Man: Across the Spider-Verse",
+    "director": "Joaquim Dos Santos, Kemp Powers, Justin K. Thompson",
+    "year": 2023,
+    "duration": 140,
+    "desc": "Miles Morales teams up with a multiverse-wide Spider-Team while confronting a powerful new threat.",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMzI0NmVkMjEtYmY4MS00ZDMxLTlkZmEtMzU4MDQxYTMzMjU2XkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_SX300.jpg"
+  },
+  {
+    "title": "Avatar: The Way of Water",
+    "director": "James Cameron",
+    "year": 2022,
+    "duration": 192,
+    "desc": "Jake Sully and Neytiri build a family and fight to protect their home from a renewed human threat.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjhiNjBlODctY2ZiOC00YjVlLWFlNzAtNTVhNzM1YjI1NzMxXkEyXkFqcGdeQXVyMjQxNTE1MDA@._V1_SX300.jpg"
+  },
+  {
+    "title": "Top Gun: Maverick",
+    "director": "Joseph Kosinski",
+    "year": 2022,
+    "duration": 130,
+    "desc": "Pete Maverick Mitchell returns to train elite pilots for a dangerous mission.",
+    "genres": [
+      "Action",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZWYzOGEwNTgtNWU3NS00ZTQ0LWJkODUtMmVhMjIwMjA1ZmQwXkEyXkFqcGdeQXVyMjkwOTAyMDU@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Drama",
+    "director": "Kristoffer Borgli",
+    "year": 2026,
+    "duration": 115,
+    "desc": "A romance faces unexpected complications that turn a seemingly simple relationship upside down.",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/dUxoOXtoVdp9RMvVjqMAyJx9wPx.jpg"
+  },
+  {
+    "title": "Hoppers",
+    "director": "Daniel Chong",
+    "year": 2026,
+    "duration": 100,
+    "desc": "A young girl uses new technology to connect with animals and uncovers a bigger conflict in their habitat.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/6M170ISCzxx5CYUMjIRyzIEv8CO.jpg"
+  },
+  {
+    "title": "Kung Fu Panda 4",
+    "director": "Mike Mitchell, Stephanie Ma Stine",
+    "year": 2024,
+    "duration": 94,
+    "desc": "Po searches for a successor as the Dragon Warrior while facing a dangerous new villain.",
+    "genres": [
+      "Animation",
+      "Action",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/y8K9wRRv7YK1ACHqaDlMBrNebVU.jpg"
+  },
+  {
+    "title": "Despicable Me 4",
+    "director": "Chris Renaud, Patrick Delage",
+    "year": 2024,
+    "duration": 94,
+    "desc": "Gru and his family face a new nemesis while juggling life with their newest family member.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/wWba3TaojhK7NdycRhoQpsG0FaH.jpg"
+  },
+  {
+    "title": "Deadpool & Wolverine",
+    "director": "Shawn Levy",
+    "year": 2024,
+    "duration": 128,
+    "desc": "Deadpool and Wolverine are forced into an uneasy partnership to confront a multiverse-level threat.",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "poster": "https://image.tmdb.org/t/p/original/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
+  },
+  {
+    "title": "Dune: Part Two",
+    "director": "Denis Villeneuve",
+    "year": 2024,
+    "duration": 166,
+    "desc": "Paul Atreides joins the Fremen and begins his campaign against those who destroyed his family.",
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BN2QyZGU4ZDctOWMzMy00NTc5LThlOGQtODhmNDI1NmY5YzAwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Guardians of the Galaxy Vol. 3",
+    "director": "James Gunn",
+    "year": 2023,
+    "duration": 150,
+    "desc": "The Guardians embark on a final mission to save Rocket and protect what remains of their team.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDgxOTdjMzYtZGQxMS00ZTAzLWI4Y2UtMTQzN2VlYjYyZWRiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Moana 2",
+    "director": "David Derrick Jr., Jason Hand, Dana Ledoux Miller",
+    "year": 2024,
+    "duration": 100,
+    "desc": "Moana sets out on a new ocean journey after receiving an unexpected call from her ancestors.",
+    "genres": [
+      "Animation",
+      "Adventure",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/yh64qw9mgXBvlaWDi7Q9tpUBAvH.jpg"
+  },
+  {
+    "title": "Spider-Man: No Way Home",
+    "director": "Jon Watts",
+    "year": 2021,
+    "duration": 148,
+    "desc": "Peter Parker seeks help after his identity is exposed and accidentally opens the multiverse.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_SX300.jpg"
   }
 ]
