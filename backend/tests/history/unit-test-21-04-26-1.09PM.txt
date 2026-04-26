@@ -1,0 +1,125 @@
+PASS tests/unit/recommendations.unit.test.js
+  getContentBasedScores
+    √ returns {} when user has no ratings and no favorites (65 ms)
+    √ scores for movieB (Action) > 0 when user rated movieA (Action, Sci-Fi) with 5 (65 ms)
+    √ movieA is excluded from scores (user already rated it) (65 ms)
+    √ returned score values are between 0 and 1 (65 ms)
+  getCollaborativeScores
+    √ returns {} when user has no ratings (64 ms)
+    √ returns {} when no other users share rated movies (65 ms)
+    √ userY gets movieC recommended when userX rated both movieA and movieC (129 ms)
+  getSimilarMovieScores
+    √ returns {} when user has no ratings and no favorites (64 ms)
+    √ movieB appears in scores when user rated movieA (A↔B similarity) (65 ms)
+    √ movieA excluded from scores (already rated) (64 ms)
+    √ score for movieB is > 0 and <= 1 (65 ms)
+
+PASS tests/recommendations.test.js
+  GET /api/recommendations
+    √ 401 without token (17 ms)
+    √ new user with no activity returns empty array (70 ms)
+    √ after rating movieA, recommendations do not include movieA (71 ms)
+    √ each result has recommendationScore (number) and explanation (string) (70 ms)
+    √ after rating movieA (similar to movieB), movieB appears in recommendations (69 ms)
+    √ ?limit=1 returns at most 1 result (69 ms)
+    √ collaborative: userY gets movieC recommended because userX rated both movieA and movieC (133 ms)
+
+PASS tests/movies.test.js
+  GET /api/movies
+    √ returns object with movies array and pagination object (5 ms)
+    √ pagination has page, limit, total, pages fields (4 ms)
+    √ search returns only matching movie (4 ms)
+    √ genre filter returns only Action movies (3 ms)
+    √ year_min=2019 excludes movies before 2019 (2 ms)
+    √ year_max=2019 excludes movies after 2019 (2 ms)
+    √ sort=title returns alphabetical order (3 ms)
+    √ sort=rating works without error (5 ms)
+  GET /api/movies/genres
+    √ returns array containing objects with name field (3 ms)
+    √ includes Action, Drama, Sci-Fi (3 ms)
+  GET /api/movies/popular
+    √ returns an array (3 ms)
+    √ length <= 10 (3 ms)
+  GET /api/movies/:id
+    √ returns movie object with genres and comments arrays (3 ms)
+    √ userRating is null and isFavorite is false when unauthenticated (3 ms)
+    √ userRating is 4 when authenticated user has rated movieA with 4 (4 ms)
+    √ isFavorite is true when authenticated user has favorited movieA (4 ms)
+    √ 404 for nonexistent id (3 ms)
+  GET /api/movies/:id/similar
+    √ returns movieB as similar to movieA (3 ms)
+    √ 404 for nonexistent id (2 ms)
+  POST /api/movies
+    √ 201 with genres array when admin posts valid new movie (16 ms)
+    √ 403 when regular user posts (3 ms)
+    √ 401 when no token (3 ms)
+    √ 400 when title is missing (3 ms)
+    √ 409 when title already exists (3 ms)
+
+PASS tests/interactions.test.js
+  POST /api/interactions/rate
+    √ 200 + { rating, avgRating } when rating a movie (10 ms)
+    √ re-rating same movie updates rating (9 ms)
+    √ 400 when rating is 0 (3 ms)
+    √ 400 when rating is 6 (4 ms)
+    √ 400 when movieId missing (3 ms)
+    √ 404 when movieId is 99999 (3 ms)
+    √ 401 without token (2 ms)
+  POST /api/interactions/favorite
+    √ first call returns { isFavorite: true } (3 ms)
+    √ second call on same movie returns { isFavorite: false } (7 ms)
+    √ 400 when movieId missing (3 ms)
+    √ 404 when movieId is 99999 (3 ms)
+    √ 401 without token (3 ms)
+  POST /api/interactions/comment
+    √ 201 + comment object with username on success (4 ms)
+    √ 400 when text missing (3 ms)
+    √ 400 when text is whitespace only (2 ms)
+    √ 404 when movieId is 99999 (3 ms)
+    √ 401 without token (2 ms)
+  DELETE /api/interactions/comment/:id
+    √ 200 when owner deletes their own comment (4 ms)
+    √ 403 when another user tries to delete the comment (3 ms)
+    √ 404 for nonexistent comment (3 ms)
+  GET /api/interactions/favorites
+    √ returns empty array for user with no favorites (3 ms)
+    √ after favoriting movieA, returns array containing it with genres (74 ms)
+    √ 401 without token (2 ms)
+  GET /api/interactions/ratings
+    √ returns empty array for user with no ratings (69 ms)
+    √ after rating movieA with 5, returns array containing it with rating field (70 ms)
+    √ 401 without token (2 ms)
+
+PASS tests/auth.test.js
+  POST /api/auth/register
+    √ 201 + token + user on valid new registration (72 ms)
+    √ 400 when username missing (3 ms)
+    √ 400 when email missing (2 ms)
+    √ 400 when password missing (2 ms)
+    √ 400 when password < 8 chars (2 ms)
+    √ 400 when password has no uppercase (2 ms)
+    √ 400 when password has no number (2 ms)
+    √ 409 when username already taken (2 ms)
+    √ 409 when email already taken (2 ms)
+  POST /api/auth/login
+    √ 200 + token when logging in with username (69 ms)
+    √ 200 + token when logging in with email (64 ms)
+    √ 401 on wrong password (64 ms)
+    √ 401 on nonexistent user (3 ms)
+    √ 400 when login field missing (2 ms)
+    √ 400 when password field missing (3 ms)
+  GET /api/auth/me
+    √ 200 + profile with stats object using valid token (3 ms)
+    √ 401 without token (3 ms)
+    √ 403 with invalid token string (2 ms)
+  PUT /api/auth/me
+    √ 200 when updating preferredGenres (4 ms)
+    √ 200 when updating username to a new unique name (6 ms)
+    √ 409 when updating username to one already taken (3 ms)
+    √ 400 when body is empty (2 ms)
+
+Test Suites: 5 passed, 5 total
+Tests:       90 passed, 90 total
+Snapshots:   0 total
+Time:        3.983 s
+Ran all test suites.
