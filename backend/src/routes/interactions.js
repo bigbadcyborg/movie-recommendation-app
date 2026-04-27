@@ -1,5 +1,5 @@
 const express = require('express');
-const { getOne, getAll, runQuery, getLastInsertId } = require('../db/database');
+const { getOne, getAll, runQuery } = require('../db/database');
 const { authenticateToken } = require('../middleware/auth');
 
 const router = express.Router();
@@ -95,12 +95,17 @@ router.post('/comment', authenticateToken, (req, res) => {
     runQuery('INSERT INTO comments (user_id, movie_id, comment_text) VALUES (?, ?, ?)',
       [req.user.id, movieId, text.trim()]);
 
-    const id = getLastInsertId();
     const comment = getOne(`
       SELECT c.*, u.username
       FROM comments c JOIN users u ON c.user_id = u.id
-      WHERE c.id = ?
-    `, [id]);
+      WHERE c.movie_id = ? AND c.user_id = ?
+      ORDER BY c.id DESC
+      LIMIT 1
+    `, [movieId, req.user.id]);
+
+    if (!comment) {
+      return res.status(500).json({ error: 'Failed to load comment after insert' });
+    }
 
     runQuery('INSERT INTO interaction_logs (user_id, movie_id, action_type) VALUES (?, ?, ?)',
       [req.user.id, movieId, 'comment']);

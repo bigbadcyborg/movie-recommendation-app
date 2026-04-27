@@ -62,11 +62,18 @@ export default function MovieDetail() {
     setSubmitting(true);
     try {
       const comment = await api.interactions.comment(movie.id, commentText);
-      setMovie(prev => ({
-        ...prev,
-        comments: [comment, ...prev.comments]
-      }));
-      setCommentText('');
+      if (comment && typeof comment === 'object' && comment.id != null) {
+        setMovie(prev => ({
+          ...prev,
+          comments: [comment, ...(prev.comments || [])]
+        }));
+        setCommentText('');
+      } else {
+        console.error('Comment failed: invalid response');
+        const data = await api.movies.get(movie.id);
+        setMovie(data);
+        setCommentText('');
+      }
     } catch (err) {
       console.error('Comment failed:', err);
     } finally {
@@ -79,7 +86,7 @@ export default function MovieDetail() {
       await api.interactions.deleteComment(commentId);
       setMovie(prev => ({
         ...prev,
-        comments: prev.comments.filter(c => c.id !== commentId)
+        comments: (prev.comments || []).filter(c => c && c.id !== commentId)
       }));
     } catch (err) {
       console.error('Delete comment failed:', err);
@@ -169,7 +176,7 @@ export default function MovieDetail() {
       </div>
 
       <section className="comments-section">
-        <h2>Comments ({movie.comments?.length || 0})</h2>
+        <h2>Comments ({movie.comments?.filter(Boolean).length ?? 0})</h2>
 
         {user && (
           <form onSubmit={handleComment} className="comment-form">
@@ -191,14 +198,16 @@ export default function MovieDetail() {
         )}
 
         <div className="comments-list">
-          {movie.comments?.length === 0 ? (
+          {(movie.comments?.filter(Boolean).length ?? 0) === 0 ? (
             <p className="no-comments">No comments yet. Be the first to share your thoughts!</p>
           ) : (
-            movie.comments?.map(comment => (
+            movie.comments?.filter(Boolean).map(comment => (
               <div key={comment.id} className="comment">
                 <div className="comment-header">
-                  <span className="comment-avatar">{comment.username[0].toUpperCase()}</span>
-                  <span className="comment-author">{comment.username}</span>
+                  <span className="comment-avatar">
+                    {(comment.username?.[0] ?? '?').toUpperCase()}
+                  </span>
+                  <span className="comment-author">{comment.username ?? 'Unknown'}</span>
                   <span className="comment-date">
                     {new Date(comment.created_at).toLocaleDateString()}
                   </span>

@@ -1,8 +1,8 @@
 const initSqlJs = require('sql.js');
-const path = require('path');
 const fs = require('fs');
+const { MOVIES_DB_PATH } = require('./dbPaths');
 
-const DB_PATH = path.join(__dirname, '..', '..', 'data', 'movies.db');
+const DB_PATH = MOVIES_DB_PATH;
 
 let db = null;
 

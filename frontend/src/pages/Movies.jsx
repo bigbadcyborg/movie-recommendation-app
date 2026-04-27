@@ -3,6 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import MovieCard from '../components/MovieCard';
 
+/** Large enough to fetch the full catalog in one request (backend applies LIMIT/OFFSET). */
+const BROWSE_PAGE_SIZE = 10000;
+
 export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
@@ -23,7 +26,7 @@ export default function Movies() {
     async function load() {
       setLoading(true);
       try {
-        const params = { page: currentPage, limit: 12 };
+        const params = { page: currentPage, limit: BROWSE_PAGE_SIZE };
         if (searchParams.get('search')) params.search = searchParams.get('search');
         if (currentGenre) params.genre = currentGenre;
         if (currentSort) params.sort = currentSort;

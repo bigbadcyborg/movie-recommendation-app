@@ -181,6 +181,9 @@ describe('POST /api/interactions/comment', () => {
       .set('Authorization', `Bearer ${ids.userToken}`)
       .send({ movieId: ids.movieA, text: 'Great movie!' });
     expect(res.status).toBe(201);
+    expect(res.body).not.toBeNull();
+    expect(typeof res.body).toBe('object');
+    expect(res.body).toHaveProperty('id');
     expect(res.body).toHaveProperty('username');
     expect(res.body).toHaveProperty('comment_text', 'Great movie!');
   });

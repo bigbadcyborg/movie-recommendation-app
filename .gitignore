@@ -4,7 +4,7 @@ node_modules/
 # Build output
 frontend/dist/
 
-# Database
+# Database (movies.db, WAL/SHM files, data/backups snapshots)
 backend/data/
 
 # Environment
