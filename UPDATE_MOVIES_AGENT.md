@@ -25,6 +25,24 @@ This repository stores the canonical movie catalog in JSON, then seeds SQLite fr
 - Ensure newly added movies have at least one related entry in `backend/src/db/similarities.json`.
 - Posters are validated automatically. If adding a new movie, you can leave the `poster` empty, or provide a URL. During `npm run seed`, the `preseed` script will automatically fetch and repair missing or broken URLs via the OMDb API.
 
+## SQLite, user data, and migration
+
+The **catalog** lives in JSON (`movies.json`, `similarities.json`), but the **running app** persists everything in one SQLite file: `backend/data/movies.db` (see `backend/src/db/dbPaths.js` and `backend/src/db/database.js`). That file holds **movies/genres** and **all user data** (accounts, ratings, comments, favorites, interaction logs, etc.). **Deleting `movies.db` wipes user data** unless you restore it from a backup using migration.
+
+**How migration works:** `backend/scripts/migrate-from-db.js` copies user-scoped rows **from** a source `.db` file **into** the current `movies.db`. It remaps **users by `email`** and **movies by `title`** (numeric `movie_id` values change after a reseed). If you rename a movie title in JSON without aligning migration strategy, old ratings/comments may not attach.
+
+**What `npm run seed` does:** `package.json` defines `preseed`, which runs **before** `seed`: `backup-db.js` (copy `movies.db` → `data/backups/` if the file exists), then `fetch-posters.js`, then `seed.js` applies schema and inserts catalog/demo data **only when** the database has **no** movies yet. Details: `README.md` → **Database backups and migration**.
+
+**Recovering user data after delete/reseed:** (1) Ensure you have a backup—run `npm run db:backup` from `backend/` **before** deleting `movies.db`, or rely on the automatic backup from `preseed` **on the last run that still had** `movies.db`. (2) Delete/reseed as needed. (3) Merge old user rows back: `npm run db:migrate -- --from path\to\backup.db` (stop the backend first). Optionally use `npm run seed:migrate` to run `npm run seed` and then migrate from the **newest** file under `data/backups\*.db` (skipped if no backups). Use `npm run db:migrate -- --from ... --dry-run` to preview counts without writing.
+
+**Caveats:** Do not set migrate `--from` to the **same path** as the live `movies.db` you are writing into. Merging from a backup that is essentially a duplicate of the current DB can **duplicate comments** (ratings mostly upsert). See README for full caveats.
+
+| Command | Role |
+|---------|------|
+| `npm run db:backup` | Copy `movies.db` → `data/backups/movies-<timestamp>.db` |
+| `npm run db:migrate -- --from <file>` | Merge user-side data from the source SQLite file into the current DB |
+| `npm run seed:migrate` | Run `npm run seed`, then migrate from the newest `data/backups/*.db` (or skip migrate if none) |
+
 ## Validation steps after editing
 
 From `backend/`:
@@ -43,12 +61,16 @@ From `backend/`:
 
 3. Ensure `.env` is populated with `OMDB_API_KEY` for fetching posters.
 
-4. Force a fresh seed so counts are deterministic (seed does nothing if DB already exists), which will trigger automatic image validation and OMDB fetching:
+4. **Fresh seed (destructive to user data):** Removing `movies.db` clears **all** local accounts, ratings, comments, and favorites. Before deleting, **back up** (`npm run db:backup` or ensure a recent file exists under `data/backups\`). After reseed, **migrate** from that backup if you must preserve user data:
 
    ```powershell
+   npm run db:backup
    Remove-Item .\data\movies.db -Force
    npm run seed
+   npm run db:migrate -- --from .\data\backups\<choose-your-backup-file>.db
    ```
+
+   Adjust the migrate path to your actual backup filename. Use `--dry-run` on migrate to preview. Alternatively, after reseed, `npm run seed:migrate` can combine seed + migrate-from-latest-backup when that matches your intent (see README). If you only need poster validation and the DB already has movies, **`npm run seed`** alone may suffice—seed will skip inserts when data exists.
 
 5. Confirm logs include expected movie count and similar-pair count.
 
@@ -67,8 +89,10 @@ From `backend/`:
 - Passed duplicate-title, missing-title, and duplicate-pair checks.
 - Set up an `OMDB_API_KEY` for fetching posters if needed.
 - Ran forced reseed and verified posters were injected properly along with the resulting counts in logs.
+- If `movies.db` was deleted for reseed: confirmed a **backup** exists (`db:backup` or `data/backups\`), reseed completed, and **migrate** / **`seed:migrate`** run when preserving user ratings and comments matters.
 
 ## Engineering focus
 
 - Keep changes minimal and focused strictly on the requested movie-list update.
 - Prioritize data integrity and reproducible validation over broad refactors.
+- When changing the catalog, **do not blindly delete `movies.db`** without a backup if local user data matters; prefer **backup + migrate** over wiping without recovery.
