@@ -1,0 +1,293 @@
+create a control flow path diagram in the readme concerning the ollama agent
+
+is this agent able to modify the movies.json and similarities.json files?
+
+add detailed comments to each file in backend/scripts/
+
+npm run ollama:run -- --once
+
+movie-recommendation-backend@1.0.0 ollama:run
+bash scripts/ollama/run_daily_update.sh --once
+
+scripts/ollama/run_daily_update.sh: line 9: $'\r': command not found
+: invalid option nameily_update.sh: line 10: set: pipefail
+
+
+the script should print all movies and similarities added: npm run ollama:run -- --once
+
+movie-recommendation-backend@1.0.0 ollama:run
+bash scripts/ollama/run_daily_update.sh --once
+
+[2026-03-10T13:28:42-05:00] Starting movie update (model=cinematch-movie-curator, count=5)
+node:child_process:929
+throw err;
+^
+
+Error: Command failed: ollama run cinematch-movie-curator Generate 5 unique movies NOT present in the existing title list.
+Return JSON only: an array of movie objects with fields:
+title, director, year, duration, desc, genres, poster.
+Genres should be broad labels like Drama, Comedy, Sci-Fi, Thriller, Action, Romance, Horror.
+Poster should be a URL string or empty string if unknown.
+Existing titles to avoid: ["The Shawshank Redemption","The Godfather","The Dark Knight","Pulp Fiction","Forrest Gump","Inception","The Matrix","Interstellar","Gladiator","The Lord of the Rings: The Fellowship of the Ring","Fight Club","Goodfellas","The Silence of the Lambs","Saving Private Ryan","Jurassic Park","The Departed","Whiplash","Spirited Away","Parasite","The Grand Budapest Hotel","Mad Max: Fury Road","Get Out","La La Land","Alien","The Prestige","Django Unchained","WALL-E","The Truman Show","No Country for Old Men","Blade Runner 2049","Eternal Sunshine of the Spotless Mind","The Social Network","Toy Story","The Shining","Schindlers List","Coco","The Wolf of Wall Street","A Quiet Place","The Princess Bride","Dunkirk","Arrival"]
+Existing similarity pairs for style/context (do not duplicate): [["The Shawshank Redemption","The Godfather"],["The Shawshank Redemption","Schindlers List"],["The Shawshank Redemption","Forrest Gump"],["The Shawshank Redemption","The Green Mile"],["The Godfather","Goodfellas"],["The Godfather","Pulp Fiction"],["The Godfather","The Departed"],["The Godfather","No Country for Old Men"],["Goodfellas","Pulp Fiction"],["Goodfellas","The Departed"],["Goodfellas","The Wolf of Wall Street"],["Goodfellas","Django Unchained"],["Pulp Fiction","Django Unchained"],["Pulp Fiction","Fight Club"],["Pulp Fiction","The Departed"],["The Departed","No Country for Old Men"],["The Departed","The Silence of the Lambs"],["No Country for Old Men","The Silence of the Lambs"],["No Country for Old Men","Parasite"],["The Dark Knight","Inception"],["The Dark Knight","The Prestige"],["The Dark Knight","Interstellar"],["Inception","The Prestige"],["Inception","Interstellar"],["Inception","The Matrix"],["Inception","Blade Runner 2049"],["The Matrix","Blade Runner 2049"],["The Matrix","Interstellar"],["The Matrix","Mad Max: Fury Road"],["The Matrix","Alien"],["Interstellar","Arrival"],["Interstellar","Blade Runner 2049"],["Interstellar","WALL-E"],["Blade Runner 2049","Arrival"],["Blade Runner 2049","Alien"],["Arrival","Eternal Sunshine of the Spotless Mind"],["Arrival","A Quiet Place"],["Alien","A Quiet Place"],["Alien","Jurassic Park"],["Jurassic Park","Mad Max: Fury Road"],["Gladiator","The Lord of the Rings: The Fellowship of the Ring"],["Gladiator","Saving Private Ryan"],["Gladiator","Dunkirk"],["Gladiator","Mad Max: Fury Road"],["The Lord of the Rings: The Fellowship of the Ring","The Princess Bride"],["The Lord of the Rings: The Fellowship of the Ring","Spirited Away"],["Saving Private Ryan","Schindlers List"],["Saving Private Ryan","Dunkirk"],["Schindlers List","Dunkirk"],["Fight Club","The Prestige"],["Fight Club","No Country for Old Men"],["The Silence of the Lambs","Get Out"],["The Silence of the Lambs","Parasite"],["Get Out","Parasite"],["Get Out","A Quiet Place"],["Get Out","The Shining"],["A Quiet Place","The Shining"],["The Shining","Alien"],["Forrest Gump","The Truman Show"],["Forrest Gump","La La Land"],["Whiplash","La La Land"],["Whiplash","The Social Network"],["La La Land","The Grand Budapest Hotel"],["La La Land","Eternal Sunshine of the Spotless Mind"],["The Truman Show","Eternal Sunshine of the Spotless Mind"],["The Truman Show","The Grand Budapest Hotel"],["The Social Network","The Wolf of Wall Street"],["Spirited Away","Princess Bride"],["Spirited Away","Coco"],["Spirited Away","WALL-E"],["Toy Story","WALL-E"],["Toy Story","Coco"],["WALL-E","Coco"],["The Princess Bride","The Grand Budapest Hotel"]]
+pulling manifest
+Error: pull model manifest: file does not exist
+
+status: 1,
+signal: null,
+output: [
+null,
+'',
+'\x1B[?2026h\x1B[?25l\x1B[1Gpulling manifest ⠋ \x1B[K\x1B[?25h\x1B[?2026l\x1B[?2026h\x1B[?25l\x1B[1Gpulling manifest ⠙ \x1B[K\x1B[?25h\x1B[?2026l\x1B[?2026h\x1B[?25l\x1B[1Gpulling manifest \x1B[K\x1B[?25h\x1B[?2026l\n' +
+'Error: pull model manifest: file does not exist\n'
+],
+pid: 1727,
+stdout: '',
+stderr: '\x1B[?2026h\x1B[?25l\x1B[1Gpulling manifest ⠋ \x1B[K\x1B[?25h\x1B[?2026l\x1B[?2026h\x1B[?25l\x1B[1Gpulling manifest ⠙ \x1B[K\x1B[?25h\x1B[?2026l\x1B[?2026h\x1B[?25l\x1B[1Gpulling manifest \x1B[K\x1B[?25h\x1B[?2026l\n' +
+'Error: pull model manifest: file does not exist\n'
+}
+
+Node.js v18.19.1
+
+
+how can we make the Modelfile be built with the smallest model possible. only 1 cpu will be running this on a v server
+
+
+npm run ollama:run -- --once
+
+movie-recommendation-backend@1.0.0 ollama:run
+bash scripts/ollama/run_daily_update.sh --once
+
+[2026-03-10T13:33:36-05:00] Starting movie update (model=cinematch-movie-curator, count=5)
+[ollama-client] Failed to generate for model cinematch-movie-curator. Error: Error: unknown flag: --now
+
+/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:138
+throw error;
+^
+
+Error: Command failed: ollama run cinematch-movie-curator --now Generate 5 unique movies NOT present in the existing title list.
+Return JSON only: an array of movie objects with fields:
+title, director, year, duration, desc, genres, poster.
+Genres should be broad labels like Drama, Comedy, Sci-Fi, Thriller, Action, Romance, Horror.
+Poster should be a URL string or empty string if unknown.
+Existing titles to avoid: ["The Shawshank Redemption","The Godfather","The Dark Knight","Pulp Fiction","Forrest Gump","Inception","The Matrix","Interstellar","Gladiator","The Lord of the Rings: The Fellowship of the Ring","Fight Club","Goodfellas","The Silence of the Lambs","Saving Private Ryan","Jurassic Park","The Departed","Whiplash","Spirited Away","Parasite","The Grand Budapest Hotel","Mad Max: Fury Road","Get Out","La La Land","Alien","The Prestige","Django Unchained","WALL-E","The Truman Show","No Country for Old Men","Blade Runner 2049","Eternal Sunshine of the Spotless Mind","The Social Network","Toy Story","The Shining","Schindlers List","Coco","The Wolf of Wall Street","A Quiet Place","The Princess Bride","Dunkirk","Arrival"]
+Existing similarity pairs for style/context (do not duplicate): [["The Shawshank Redemption","The Godfather"],["The Shawshank Redemption","Schindlers List"],["The Shawshank Redemption","Forrest Gump"],["The Shawshank Redemption","The Green Mile"],["The Godfather","Goodfellas"],["The Godfather","Pulp Fiction"],["The Godfather","The Departed"],["The Godfather","No Country for Old Men"],["Goodfellas","Pulp Fiction"],["Goodfellas","The Departed"],["Goodfellas","The Wolf of Wall Street"],["Goodfellas","Django Unchained"],["Pulp Fiction","Django Unchained"],["Pulp Fiction","Fight Club"],["Pulp Fiction","The Departed"],["The Departed","No Country for Old Men"],["The Departed","The Silence of the Lambs"],["No Country for Old Men","The Silence of the Lambs"],["No Country for Old Men","Parasite"],["The Dark Knight","Inception"],["The Dark Knight","The Prestige"],["The Dark Knight","Interstellar"],["Inception","The Prestige"],["Inception","Interstellar"],["Inception","The Matrix"],["Inception","Blade Runner 2049"],["The Matrix","Blade Runner 2049"],["The Matrix","Interstellar"],["The Matrix","Mad Max: Fury Road"],["The Matrix","Alien"],["Interstellar","Arrival"],["Interstellar","Blade Runner 2049"],["Interstellar","WALL-E"],["Blade Runner 2049","Arrival"],["Blade Runner 2049","Alien"],["Arrival","Eternal Sunshine of the Spotless Mind"],["Arrival","A Quiet Place"],["Alien","A Quiet Place"],["Alien","Jurassic Park"],["Jurassic Park","Mad Max: Fury Road"],["Gladiator","The Lord of the Rings: The Fellowship of the Ring"],["Gladiator","Saving Private Ryan"],["Gladiator","Dunkirk"],["Gladiator","Mad Max: Fury Road"],["The Lord of the Rings: The Fellowship of the Ring","The Princess Bride"],["The Lord of the Rings: The Fellowship of the Ring","Spirited Away"],["Saving Private Ryan","Schindlers List"],["Saving Private Ryan","Dunkirk"],["Schindlers List","Dunkirk"],["Fight Club","The Prestige"],["Fight Club","No Country for Old Men"],["The Silence of the Lambs","Get Out"],["The Silence of the Lambs","Parasite"],["Get Out","Parasite"],["Get Out","A Quiet Place"],["Get Out","The Shining"],["A Quiet Place","The Shining"],["The Shining","Alien"],["Forrest Gump","The Truman Show"],["Forrest Gump","La La Land"],["Whiplash","La La Land"],["Whiplash","The Social Network"],["La La Land","The Grand Budapest Hotel"],["La La Land","Eternal Sunshine of the Spotless Mind"],["The Truman Show","Eternal Sunshine of the Spotless Mind"],["The Truman Show","The Grand Budapest Hotel"],["The Social Network","The Wolf of Wall Street"],["Spirited Away","Princess Bride"],["Spirited Away","Coco"],["Spirited Away","WALL-E"],["Toy Story","WALL-E"],["Toy Story","Coco"],["WALL-E","Coco"],["The Princess Bride","The Grand Budapest Hotel"]]
+Error: unknown flag: --now
+
+status: 1,
+signal: null,
+output: [ null, '', 'Error: unknown flag: --now\n' ],
+pid: 5088,
+stdout: '',
+stderr: 'Error: unknown flag: --now\n'
+}
+
+Node.js v18.19.1
+
+
+npm run ollama:run -- --once
+
+movie-recommendation-backend@1.0.0 ollama:run
+bash scripts/ollama/run_daily_update.sh --once
+
+[2026-03-10T13:34:20-05:00] Starting movie update (model=cinematch-movie-curator, count=5)
+undefined:47
+],
+^
+
+SyntaxError: Unexpected token , in JSON at position 1185
+at JSON.parse (<anonymous>)
+at MovieCatalogUpdater.extractJsonArray (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:265:25)
+at MovieCatalogUpdater.run (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:303:40)
+at main (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:382:26)
+at Object.<anonymous> (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:389:1)
+at Module._compile (node:internal/modules/cjs/loader:1356:14)
+at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+at Module.load (node:internal/modules/cjs/loader:1197:32)
+at Module._load (node:internal/modules/cjs/loader:1013:12)
+at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+
+Node.js v18.19.1
+
+
+also, can we pass an argument to this script so that it adds x movies
+
+add this detail to the README.md
+
+why is this error occurring? },
+{
+"title": "The Prestige",
+"director": "Christopher Nolan",
+"year": 2006,
+"duration": 147,
+"desc": "Two rival magicians engage in a game of one-upmanship that becomes increasingly sinister.",
+"genres": ["Drama", "Thriller"],
+"poster": "https://www.google.com/search?q=prestige+movie+poster&tbm=isch"
+},
+{
+"title": "The Prestige",
+"director": "Christopher Nolan",
+"year": 2006,
+"duration": 147,
+"desc": "Two rival magicians engage in a game of one-upmanship that becomes increasingly sinister.",
+"genres": ["Drama", "Thriller"],
+"poster": "https://www.google.com/search?q=prestige+movie+poster&tbm=isch"
+},
+{
+"title": "The Prestige",
+"director": "Christopher Nolan",
+"year": 2006,
+"duration": 147,
+"desc": "Two rival magicians engage in a game of one-upmanship that becomes increasingly sinister.",
+"genres": ["Drama", "Thriller"],
+"poster": "https://www.google.com/search?q=prestige+movie+poster&tbm=isch"
+},
+{
+"title": "The Prestige",
+"director": "Christopher Nolan",
+"year": 2006,
+"duration": 147,
+"desc": "Two rival magicians engage in a game of one-upmanship that becomes increasingly sinister.",
+"genres": ["Drama", "Thriller"]
+/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:288
+throw e;
+^
+
+SyntaxError: Unexpected end of JSON input
+at JSON.parse (<anonymous>)
+at MovieCatalogUpdater.extractJsonArray (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:280:27)
+at MovieCatalogUpdater.run (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:307:34)
+at main (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:401:26)
+at Object.<anonymous> (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:408:1)
+at Module._compile (node:internal/modules/cjs/loader:1356:14)
+at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+at Module.load (node:internal/modules/cjs/loader:1197:32)
+at Module._load (node:internal/modules/cjs/loader:1013:12)
+at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+
+Node.js v18.19.1
+
+
+im not seeing any new movies
+
+i see the addition of the grand budapest hotel to similarities.json but we need its info to also be on movies.json
+
+how can we enable the agent to search the internet for related movies
+
+
+node scripts/ollama/update-movie-list.js --search "The Revenant" --count 1
+[movie-updater] Searching the internet for: "The Revenant"...
+[movie-updater] Found 0 related links.
+[movie-updater] Added 1 new movies:
+
+The Revenant (2015) by Alejandro G. Iñárritu
+[movie-updater] Added 3 new similarity links:
+Jurassic Park <-> Saving Private Ryan
+Get Out <-> Whiplash
+Parasite <-> Toy Story
+[movie-updater] movies_generated=1 movies_added=1 movies_total=42 similarities_generated=3 similarities_added=3 similarities_total=80 dryRun=false
+PS C:\Users\sully\Documents\projects\movie-recommendation-app\test\movie-recommendation-app\backend> npm run ollama:run -- --once
+movie-recommendation-backend@1.0.0 ollama:run
+bash scripts/ollama/run_daily_update.sh --once
+
+[2026-03-10T14:09:25-05:00] Starting movie update (model=cinematch-movie-curator, count=5)
+/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:296
+if (start === -1) throw new Error('No JSON array "[" found in response.');
+^
+
+Error: No JSON array "[" found in response.
+at MovieCatalogUpdater.extractJsonArray (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:296:29)
+at MovieCatalogUpdater.run (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:394:30)
+at main (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:493:26)
+at Object.<anonymous> (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:504:1)
+at Module._compile (node:internal/modules/cjs/loader:1356:14)
+at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+at Module.load (node:internal/modules/cjs/loader:1197:32)
+at Module._load (node:internal/modules/cjs/loader:1013:12)
+at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+at node:internal/main/run_main_module:28:49
+
+Node.js v18.19.1
+
+can we update the Modelfile to prevent these errors?
+
+whats the issue here?
+
+apply these changes and test
+
+go ahead
+
+create a commit message
+
+many of the poster urls are not working. how can we ensure all of them work
+
+add command to readme as well
+
+Start implementation
+
+the matrix image isnt working. so really just replace all images with wiki link?
+
+start implementation
+
+so, the ollama model works how exactly? it checks for similiarties or movies first?
+
+create a flowchart describing the ollama model's flow of action and put it in README.md as mermaid
+
+npm run ollama:run -- --once --count 1
+
+movie-recommendation-backend@1.0.0 ollama:run
+bash scripts/ollama/run_daily_update.sh --once --count 1
+
+[2026-03-10T14:50:40-05:00] Starting movie update (model=cinematch-movie-curator, count=1)
+[json-parser] Skipping unparseable object: {"title": "Inception", "director": "Christopher Nolan", "year": "2010", "duration": "138", "desc": "A thief who
+/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:437
+throw new Error('No parseable JSON objects found after repair attempts.');
+^
+
+Error: No parseable JSON objects found after repair attempts.
+at MovieCatalogUpdater.extractJsonArray (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:437:13)
+at MovieCatalogUpdater.run (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:480:30)
+at main (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:589:32)
+at Object.<anonymous> (/mnt/c/Users/sully/Documents/projects/movie-recommendation-app/test/movie-recommendation-app/backend/scripts/ollama/update-movie-list.js:600:1)
+at Module._compile (node:internal/modules/cjs/loader:1356:14)
+at Module._extensions..js (node:internal/modules/cjs/loader:1414:10)
+at Module.load (node:internal/modules/cjs/loader:1197:32)
+at Module._load (node:internal/modules/cjs/loader:1013:12)
+at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+at node:internal/main/run_main_module:28:49
+
+Node.js v18.19.1
+
+should we repair this by being more specific in the Modelfile ?
+
+the similarities being added are actually not similar. Alien is not similar to The grand budapest hotel. how can we ensure no similiarities are hallucinated and that a movie always get added according to the count number
+
+Start implementation
+
+why does it keep hallucinating movies that are already on the list? it needs to use the internet to find new movies
+
+start implementation
+
+movies_generated=10 movies_added=0 movies_total=51 similarities_generated=0 similarities_added=0 similarities_total=99 dryRun=false
+[2026-03-10T15:52:56-05:00] Re-seeding database from updated movies.json and similarities.json
+
+movie-recommendation-backend@1.0.0 seed
+node src/db/seed.js --force
+
+Database schema initialized
+Force seed enabled. Clearing existing seeded data...
+Seeding database...
+Database seeded successfully!
+
+15 genres
+51 movies
+99 similar-movie pairs
+1 demo user (demo / Password123)
+1 admin user (admin / Admin1234)
+[2026-03-10T15:52:57-05:00] Movie update finished
+
+give me a brief commit message
+
+the ollama model appears to be hallucinating movies\
+
+start implementation
