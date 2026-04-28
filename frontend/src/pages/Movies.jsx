@@ -3,12 +3,16 @@ import { useSearchParams } from 'react-router-dom';
 import { api } from '../api/client';
 import MovieCard from '../components/MovieCard';
 
+/** Large enough to fetch the full catalog in one request (backend applies LIMIT/OFFSET). */
+const BROWSE_PAGE_SIZE = 10000;
+
 export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const [search, setSearch] = useState(searchParams.get('search') || '');
 
   const currentGenre = searchParams.get('genre') || '';
@@ -22,8 +26,9 @@ export default function Movies() {
   useEffect(() => {
     async function load() {
       setLoading(true);
+      setLoadError(null);
       try {
-        const params = { page: currentPage, limit: 12 };
+        const params = { page: currentPage, limit: BROWSE_PAGE_SIZE };
         if (searchParams.get('search')) params.search = searchParams.get('search');
         if (currentGenre) params.genre = currentGenre;
         if (currentSort) params.sort = currentSort;
@@ -33,6 +38,9 @@ export default function Movies() {
         setPagination(data.pagination);
       } catch (err) {
         console.error('Failed to load movies:', err);
+        setMovies([]);
+        setPagination({});
+        setLoadError(err.message || 'Could not load movies.');
       } finally {
         setLoading(false);
       }
@@ -98,6 +106,13 @@ export default function Movies() {
 
       {loading ? (
         <div className="spinner" />
+      ) : loadError ? (
+        <div className="empty-state">
+          <p>{loadError}</p>
+          <p className="empty-state-hint">
+            Start the API in another terminal: <code>cd backend</code> then <code>npm run dev</code> (port 3001).
+          </p>
+        </div>
       ) : movies.length === 0 ? (
         <div className="empty-state">
           <p>No movies found matching your criteria.</p>

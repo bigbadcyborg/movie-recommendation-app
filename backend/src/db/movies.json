@@ -1412,5 +1412,135 @@
       "Sci-Fi"
     ],
     "poster": "https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_SX300.jpg"
+  },
+  {
+    "title": "Casablanca",
+    "director": "Michael Curtiz",
+    "year": 1942,
+    "duration": 102,
+    "desc": "An American expatriate in Morocco must choose between love and duty when his former lover arrives with her husband, a Czech resistance leader.",
+    "genres": [
+      "Drama",
+      "Romance",
+      "War"
+    ],
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/b/b3/CasablancaPoster-Gold.jpg"
+  },
+  {
+    "title": "The Godfather Part II",
+    "director": "Francis Ford Coppola",
+    "year": 1974,
+    "duration": 202,
+    "desc": "Parallel stories follow young Vito Corleone's rise in New York and his son Michael expanding and defending the family empire in the 1950s.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMDIxMzBlZDktZjMxNy00ZGI4LTgxNDEtYWRlNzRjMjJmOGQ1XkEyXkFqcGc@._V1_QL75_UX380_CR0,4,380,562_.jpg"
+  },
+  {
+    "title": "Psycho",
+    "director": "Alfred Hitchcock",
+    "year": 1960,
+    "duration": 109,
+    "desc": "A secretary on the run checks into a remote motel run by a shy young man dominated by his mother.",
+    "genres": [
+      "Horror",
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYjZhMzFiZjItODA3ZC00MmRhLWIzMGYtMmVjOWUwYTA3MTRjXkEyXkFqcGc@._V1_QL75_UX380_CR0,1,380,562_.jpg"
+  },
+  {
+    "title": "Raiders of the Lost Ark",
+    "director": "Steven Spielberg",
+    "year": 1981,
+    "duration": 115,
+    "desc": "Archaeologist Indiana Jones races the Nazis to recover the lost Ark of the Covenant before they can harness its power.",
+    "genres": [
+      "Action",
+      "Adventure"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOGNhMjg2ZjgtYzk4Ni00MTViLTg1MmUtYzM2MDZiYjZlMmU3XkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Titanic",
+    "director": "James Cameron",
+    "year": 1997,
+    "duration": 194,
+    "desc": "A seventeen-year-old aristocrat falls for a kind artist aboard the luxurious but doomed R.M.S. Titanic.",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_QL75_UX380_CR0,2,380,562_.jpg"
+  },
+  {
+    "title": "Star Wars: Episode V - The Empire Strikes Back",
+    "director": "Irvin Kershner",
+    "year": 1980,
+    "duration": 124,
+    "desc": "The Rebel Alliance flees the Empire as Luke Skywalker trains with Yoda and Darth Vader closes in on his friends.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTkxNGFlNDktZmJkNC00MDdhLTg0MTEtZjZiYWI3MGE5NWIwXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "The Lord of the Rings: The Two Towers",
+    "director": "Peter Jackson",
+    "year": 2002,
+    "duration": 179,
+    "desc": "Frodo and Sam march toward Mordor while the fellowship scatters to defend Rohan and face Saruman's armies at Helm's Deep.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BMGQxMDdiOWUtYjc1Ni00YzM1LWE2NjMtZTg3Y2JkMjEzMTJjXkEyXkFqcGc@._V1_SX300.jpg"
+  },
+  {
+    "title": "Gravity",
+    "director": "Alfonso Cuarón",
+    "year": 2013,
+    "duration": 91,
+    "desc": "Two astronauts stranded in orbit after debris destroys their shuttle fight to survive and find a way home.",
+    "genres": [
+      "Drama",
+      "Sci-Fi",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjE5MzYwMzYxMF5BMl5BanBnXkFtZTcwOTk4MTk0OQ@@._V1_SX300.jpg"
+  },
+  {
+    "title": "Knives Out",
+    "director": "Rian Johnson",
+    "year": 2019,
+    "duration": 130,
+    "desc": "A renowned detective investigates the death of a wealthy crime novelist after a family gathering turns deadly.",
+    "genres": [
+      "Comedy",
+      "Crime",
+      "Mystery",
+      "Thriller"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BZDU5ZTRkYmItZjg0Mi00ZTQwLThjMWItNWM3MTMxMzVjZmVjXkEyXkFqcGc@._V1_QL75_UX380_CR0,0,380,562_.jpg"
+  },
+  {
+    "title": "Everything Everywhere All at Once",
+    "director": "Daniel Kwan, Daniel Scheinert",
+    "year": 2022,
+    "duration": 139,
+    "desc": "An overwhelmed laundromat owner is pulled into a multiverse-spanning battle where she alone can save existence.",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Sci-Fi"
+    ],
+    "poster": "https://m.media-amazon.com/images/M/MV5BOWNmMzAzZmQtNDQ1NC00Nzk5LTkyMmUtNGI2N2NkOWM4MzEyXkEyXkFqcGc@._V1_QL75_UY562_CR4,0,380,562_.jpg"
   }
 ]

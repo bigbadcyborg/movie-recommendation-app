@@ -1,0 +1,7 @@
+is the save-test-report.js ran during npm run test? and the files contain the output?
+
+like this?
+
+why is this file empty then?
+
+implement this fix

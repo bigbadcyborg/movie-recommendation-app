@@ -1,0 +1,17 @@
+use UPDATE_MOVIES_AGENT.md to fix the broken movie images
+
+which node script?
+
+is there a way to fix the no poster issue?
+
+create a plan for this, and for the workflow to be simple and no missing poster images in the future
+
+system to also validate and fetch posters for existing URLs that return a 404/error
+
+Start implementation
+
+api key included. now, how can i run the fetch-poster.js
+
+create a commit title
+
+how to run the unit tests

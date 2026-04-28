@@ -46,10 +46,47 @@ npm run dev
 
 Visit **http://localhost:5173** in your browser.
 
+### Database backups and migration
+
+All application data lives in a single SQLite file: `backend/data/movies.db`. User accounts, ratings, comments, favorites, and related rows are stored there.
+
+**One-step seed + migrate (automatic source)** — from `backend/`:
+
+```bash
+npm run seed:migrate
+```
+
+This runs `npm run seed` (backup snapshot, poster validation, then seed), then runs migration **automatically** using the **newest** `*.db` file in `backend/data/backups/` (by modification time). You do not pass `--from` unless you want a specific file.
+
+- `npm run seed:migrate -- --dry-run` — same flow, but migrate only prints a summary (target file unchanged).
+- `npm run seed:migrate -- --from latest` — same as omitting `--from` (explicit “use newest backup”).
+- `npm run seed:migrate -- --from /path/to/other.db` — migrate from that file instead of the newest backup.
+
+If there are no files under `data/backups/`, migrate is skipped (exit 0). Stop the backend before running if another process might write `movies.db`.
+
+**Caveat:** If you did **not** replace `movies.db`, the newest backup is often a snapshot of the **same** database you merge back into. That can **duplicate comments** (there is no uniqueness constraint); ratings mostly upsert. Prefer `seed:migrate` when restoring after a **reshuffle of movie IDs** (delete/reseed + merge from an older backup) or when `--from` points at a **meaningfully different** DB. Inspect impact with `--dry-run`.
+
+| Goal | Steps |
+|------|--------|
+| Snapshot before risky changes | Run `npm run db:backup` from `backend/` (writes `backend/data/backups/movies-<timestamp>.db`). |
+| Backup before every seed | `npm run seed` runs `preseed`, which backs up `movies.db`, then runs poster fetch, then seeds. |
+| One-command seed + automatic migrate | `npm run seed:migrate` (see above). |
+| Reseed without losing user data | `npm run db:backup` → delete or replace `movies.db` only if intentional → `npm run seed` → `npm run db:migrate -- --from path/to/your-backup.db` (stop the backend first), or use `seed:migrate` if the correct source is already the latest backup. |
+| Move data to a fresh install | Copy the old `movies.db` (or a backup file) to the machine → seed the new DB so movies/genres exist → `npm run db:migrate -- --from /path/to/old.db`. |
+
+Migration remaps **users by email** and **movies by title** (IDs change after reseed). Manual migrate only:
+
+`npm run db:migrate -- --from path/to/old.db --dry-run`
+
+Do not point `--from` at the same file as the live `movies.db` you are writing into.
+
 ### Demo Account
 
 - **Username:** `demo`
 - **Password:** `Password123`
+
+- **Username:** `test`
+- **Password:** `Test1234`
 
 ## Features
 
