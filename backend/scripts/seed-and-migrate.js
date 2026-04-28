@@ -65,6 +65,16 @@ function main() {
   const cwd = path.join(__dirname, '..');
   const { fromArg, dryRun } = parseArgs(process.argv.slice(2));
 
+  // Fail before seed when an explicit --from path is invalid (avoid a freshly
+  // seeded DB if migrate cannot run).
+  if (fromArg != null && fromArg !== 'latest') {
+    const resolvedFrom = path.resolve(process.cwd(), fromArg);
+    if (!fs.existsSync(resolvedFrom)) {
+      console.error('[seed-and-migrate] Source DB does not exist:', resolvedFrom);
+      process.exit(1);
+    }
+  }
+
   const seedResult = spawnSync('npm run seed', {
     cwd,
     shell: true,
@@ -83,11 +93,6 @@ function main() {
       '[seed-and-migrate] No backup file found (nothing under data/backups/*.db). Skipping migrate.'
     );
     process.exit(0);
-  }
-
-  if (fromArg && fromArg !== 'latest' && !fs.existsSync(migrateFrom)) {
-    console.error('[seed-and-migrate] Source DB does not exist:', migrateFrom);
-    process.exit(1);
   }
 
   console.log('[seed-and-migrate] Migrating from:', migrateFrom);
