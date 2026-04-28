@@ -12,6 +12,7 @@ export default function Movies() {
   const [genres, setGenres] = useState([]);
   const [pagination, setPagination] = useState({});
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(null);
   const [search, setSearch] = useState(searchParams.get('search') || '');
 
   const currentGenre = searchParams.get('genre') || '';
@@ -25,6 +26,7 @@ export default function Movies() {
   useEffect(() => {
     async function load() {
       setLoading(true);
+      setLoadError(null);
       try {
         const params = { page: currentPage, limit: BROWSE_PAGE_SIZE };
         if (searchParams.get('search')) params.search = searchParams.get('search');
@@ -36,6 +38,9 @@ export default function Movies() {
         setPagination(data.pagination);
       } catch (err) {
         console.error('Failed to load movies:', err);
+        setMovies([]);
+        setPagination({});
+        setLoadError(err.message || 'Could not load movies.');
       } finally {
         setLoading(false);
       }
@@ -101,6 +106,13 @@ export default function Movies() {
 
       {loading ? (
         <div className="spinner" />
+      ) : loadError ? (
+        <div className="empty-state">
+          <p>{loadError}</p>
+          <p className="empty-state-hint">
+            Start the API in another terminal: <code>cd backend</code> then <code>npm run dev</code> (port 3001).
+          </p>
+        </div>
       ) : movies.length === 0 ? (
         <div className="empty-state">
           <p>No movies found matching your criteria.</p>
